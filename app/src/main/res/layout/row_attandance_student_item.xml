@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginBottom="2dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:orientation="horizontal">
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/lyt_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".9"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ToggleButton
+                        android:id="@+id/toggle"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/toggle"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:textColor="@color/white"
+                        android:textOff=""
+                        android:textOn=""
+                        android:textSize="30dp" />
+                    <!--
+                    <TextView
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:text="1"
+                        android:id="@+id/studentId"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent" />-->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".5">
+
+                        <TextView
+                            android:id="@+id/studentName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left"
+                            android:text="Student Name"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".5">
+
+                        <TextView
+                            android:id="@+id/studentRoll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left"
+                            android:text="Roll Num"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!--<LinearLayout
+                android:background="@color/grey_hard"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"></LinearLayout>-->
+            <!-- <LinearLayout
+                 android:orientation="horizontal"
+                 android:background="@color/white"
+                 android:layout_width="80dp"
+                 android:layout_height="match_parent"
+                 android:layout_weight=".2">
+                 &lt;!&ndash;<ToggleButton
+                     android:background="@drawable/toggle"
+                     android:id="@+id/toggle"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_margin="10dp"
+                     android:textOn=""
+                     android:textOff=""
+                     android:focusable="false"
+                     android:focusableInTouchMode="false"
+                     android:layout_centerVertical="true"/>&ndash;&gt;
+                 &lt;!&ndash;<ImageView
+                     android:id="@+id/present"
+                     android:src="@drawable/ic_present"
+                     android:padding="15dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent" />
+                 <ImageView
+                     android:id="@+id/abscent"
+                     android:src="@drawable/ic_abscent"
+                     android:padding="15dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent" />&ndash;&gt;
+             </LinearLayout>-->
+
+        </LinearLayout>
+    </com.balysv.materialripple.MaterialRippleLayout>
+</RelativeLayout>
