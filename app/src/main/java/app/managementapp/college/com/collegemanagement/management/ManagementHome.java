@@ -58,6 +58,7 @@ public class ManagementHome extends AppCompatActivity
         items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[6], "", drw_arr.getResourceId(6, -1)));
         items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[7], "", drw_arr.getResourceId(7, -1)));
         items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[8], "", drw_arr.getResourceId(8, -1)));
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[9], "", drw_arr.getResourceId(9, -1)));
 
         return items;
     }

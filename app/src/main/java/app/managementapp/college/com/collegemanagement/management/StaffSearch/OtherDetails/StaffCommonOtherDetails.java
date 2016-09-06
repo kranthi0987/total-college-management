@@ -93,24 +93,24 @@ public class StaffCommonOtherDetails extends AppCompatActivity {
 
 
         switch (CommonClassCase) {
-//            case 1:
-//                commonClass = new AdmissionDetails();
-//                break;
-//            case 2:
-//                commonClass = new AttendanceDetails();
-//                break;
+            case 1:
+                commonClass = new StaffAttendanceDetails();
+                break;
+            case 2:
+                commonClass = new StaffFeedbackDetails();
+                break;
 //            case 3:
-//                commonClass = new ExamMarksDetails();
+//                commonClass = new StaffLeaveDetails();
 //                break;
-//            case 4:
-//                commonClass = new PaymentDetails();
-//                break;
-//            case 5:
-//                commonClass = new QualificationDetails();
-//                break;
-//            case 6:
-//                commonClass = new StudentActivityDetails();
-//                break;
+            case 4:
+                commonClass = new StaffMemoEntryDetails();
+                break;
+            case 5:
+                commonClass = new StaffMovementRegisterDetails();
+                break;
+            case 6:
+                commonClass = new StaffSeminarDetails();
+                break;
             default:
                 commonClass = new StaffAbstractOtherDetails();
                 break;

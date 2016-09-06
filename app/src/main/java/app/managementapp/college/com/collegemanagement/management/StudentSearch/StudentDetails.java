@@ -36,37 +36,37 @@ public class StudentDetails extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.admissionDetailsButton:
                 Intent i = new Intent(this, CommonOtherDetails.class);
-//                i.putExtra("data",data);
+                i.putExtra("data", data);
                 i.putExtra("case1", 1);
                 startActivity(i);
                 break;
             case R.id.qualificationDetailsButton:
                 i = new Intent(this, CommonOtherDetails.class);
-//                i.putExtra("data",data);
+                i.putExtra("data", data);
                 i.putExtra("case1", 5);
                 startActivity(i);
                 break;
             case R.id.attendanceDetailsButton:
                 i = new Intent(this, CommonOtherDetails.class);
-//                i.putExtra("data",data);
+                i.putExtra("data", data);
                 i.putExtra("case1", 2);
                 startActivity(i);
                 break;
             case R.id.examMarkDetailsButton:
                 i = new Intent(this, CommonOtherDetails.class);
-//                i.putExtra("data",data);
+                i.putExtra("data", data);
                 i.putExtra("case1", 3);
                 startActivity(i);
                 break;
             case R.id.studentActivityDetailsButton:
                 i = new Intent(this, CommonOtherDetails.class);
-//                i.putExtra("data",data);
+                i.putExtra("data", data);
                 i.putExtra("case1", 6);
                 startActivity(i);
                 break;
             case R.id.paymentDetailsButton:
                 i = new Intent(this, CommonOtherDetails.class);
-//                i.putExtra("data",data);
+                i.putExtra("data", data);
                 i.putExtra("case1", 4);
                 startActivity(i);
                 break;

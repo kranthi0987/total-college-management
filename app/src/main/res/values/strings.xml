@@ -39,6 +39,7 @@
         <item>University Profile</item>
         <item>Feedback</item>
         <item>Academic Calendar</item>
+        <item>StaffSearch</item>
     </string-array>
 
     <integer-array name="menu_photos">

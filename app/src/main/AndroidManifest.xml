@@ -113,7 +113,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".management.StaffSearch.OtherDetails.StaffCommonOtherDetails"
+            android:label="Staff Search"
             android:theme="@style/AppTheme.NoActionBar" />
+
 
     </application>
 
