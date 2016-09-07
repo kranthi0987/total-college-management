@@ -26,6 +26,7 @@ import app.managementapp.college.com.collegemanagement.api.StudentSearch.Semeste
 import app.managementapp.college.com.collegemanagement.api.StudentSearch.StudentList.StudentListRequest;
 import app.managementapp.college.com.collegemanagement.api.StudentSearch.StudentList.StudentListResponse;
 import app.managementapp.college.com.collegemanagement.api.TimeTableSchedule.TimeTableScheduleResponse;
+import app.managementapp.college.com.collegemanagement.api.UniversityProfile.UniversityProfileResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -76,9 +77,9 @@ public interface CollegeManagementApiService {
 
     @GET("ManagementService.svc/GetFeePaymentDetails")
     Call<FeePaymentDetailsResponse> getFeePaymentDetails(@Header("Token") String token, @Query("StudentID") Integer studentid);
-//
-//    @GET("ManagementService.svc/GetUniversityProfile")
-//    Call<UniversityProfileResponse> getUniversityProfile(@Header("Token") String token, @Query("ID") Integer id);
+
+    @GET("ManagementService.svc/GetUniversityProfile")
+    Call<UniversityProfileResponse> getUniversityProfile(@Header("Token") String token, @Query("ID") Integer id);
 
     @GET("ManagementService.svc/GetQualificationDetails")
     Call<QualificationDetailsResponse> getQualificationDetails(@Header("Token") String token, @Query("StudentID") Integer studentid);
@@ -99,7 +100,7 @@ public interface CollegeManagementApiService {
     Call<StaffLeavesAppliedResponse> getStaffLeavesApplied(@Header("Token") String token, @Query("Staffid") String staffid);
 
     @GET("ManagementService.svc/GetStaffList")
-    Call<StaffListResponse> getStaffList(@Header("Token") String token, @Query("StaffName") String staffname, @Query("StaffCode") String staffcode);
+    Call<StaffListResponse> getStaffList(@Header("Token") String token, @Query("Department") String departmentId, @Query("StaffName") String staffname, @Query("StaffCode") String staffcode);
 
     @GET("ManagementService.svc/GetStaffMemoEntry")
     Call<StaffMemoEntryResponse> getStaffMemoEntry(@Header("Token") String token, @Query("StaffID") String staffid);

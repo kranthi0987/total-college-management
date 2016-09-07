@@ -20,15 +20,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.AcademicCalendar;
-import app.managementapp.college.com.collegemanagement.ApplyLeave;
 import app.managementapp.college.com.collegemanagement.ExternalExams;
 import app.managementapp.college.com.collegemanagement.FeedbackList;
-import app.managementapp.college.com.collegemanagement.InvigilationDetails;
 import app.managementapp.college.com.collegemanagement.R;
+import app.managementapp.college.com.collegemanagement.management.CollegeProfile.CollegeProfileActivity;
 import app.managementapp.college.com.collegemanagement.management.FeeSummary.FeeSummary;
-import app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails.StaffCommonOtherDetails;
 import app.managementapp.college.com.collegemanagement.management.StudentSearch.OtherDetails.CommonOtherDetails;
 import app.managementapp.college.com.collegemanagement.management.StudentSearch.StudentSearch;
+import app.managementapp.college.com.collegemanagement.management.UniversityProfile.UniversityProfileActivity;
+import app.managementapp.college.com.collegemanagement.management.staffsearch.OtherDetails.StaffCommonOtherDetails;
+import app.managementapp.college.com.collegemanagement.management.staffsearch.StaffSearch;
 import app.managementapp.college.com.collegemanagement.model.MenuItem;
 import app.managementapp.college.com.collegemanagement.model.StudentItem;
 import app.managementapp.college.com.collegemanagement.widget.CircleTransform;
@@ -157,13 +158,13 @@ public class MenuGridAdapter extends RecyclerView.Adapter<MenuGridAdapter.ViewHo
                 i = new Intent(ctx, StudentSearch.class);
             }
             if (position == 1) {
-                i = new Intent(ctx, InvigilationDetails.class);
+                i = new Intent(ctx, StaffSearch.class);
             }
             if (position == 2) {
-                i = new Intent(ctx, InvigilationDetails.class);
+                i = new Intent(ctx, CollegeProfileActivity.class);
             }
             if (position == 3) {
-                i = new Intent(ctx, ApplyLeave.class);
+                i = new Intent(ctx, UniversityProfileActivity.class);
             }
             if (position == 4) {
                 i = new Intent(ctx, ExternalExams.class);

@@ -1,6 +1,9 @@
 
 package app.managementapp.college.com.collegemanagement.api.UniversityProfile;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -8,8 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("CollegeList")
     @Expose
     private List<CollegeList> collegeList = new ArrayList<CollegeList>();
@@ -19,6 +33,18 @@ public class DataList {
     @SerializedName("UniversityName")
     @Expose
     private Object universityName;
+
+    protected DataList(Parcel in) {
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     /**
      * @return The collegeList

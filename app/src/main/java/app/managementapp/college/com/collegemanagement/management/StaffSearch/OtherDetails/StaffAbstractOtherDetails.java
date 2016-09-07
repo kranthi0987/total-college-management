@@ -1,4 +1,4 @@
-package app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails;
+package app.managementapp.college.com.collegemanagement.management.staffsearch.OtherDetails;
 
 import android.os.Parcel;
 import android.os.Parcelable;

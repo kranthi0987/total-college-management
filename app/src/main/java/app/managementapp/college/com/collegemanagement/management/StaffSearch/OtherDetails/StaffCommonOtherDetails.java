@@ -1,4 +1,4 @@
-package app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails;
+package app.managementapp.college.com.collegemanagement.management.staffsearch.OtherDetails;
 
 import android.content.Context;
 import android.content.Intent;
@@ -83,7 +83,7 @@ public class StaffCommonOtherDetails extends AppCompatActivity {
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
 
         Intent i2 = getIntent();
-        Integer CommonClassCase = i2.getIntExtra("case1", 0);
+        Integer CommonClassCase = i2.getIntExtra("case1", 2);
 // i.getExtras().getParcelable("data");
 //                    = (Integer) i.getIntExtra("admission", 6);
 //            Integer studentId = (Integer) i.getIntExtra("studentId", 0);

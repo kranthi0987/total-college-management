@@ -88,12 +88,11 @@
         <activity
             android:name=".management.ManagementHome"
             android:label="@string/title_activity_management_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AcademicCalendar"
             android:label="@string/title_activity_management_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".management.StudentSearch.StudentSearch"
             android:label="@string/title_activity_student_search"
@@ -101,7 +100,7 @@
         <activity
             android:name=".management.StudentSearch.StudentSearchList"
             android:label="@string/title_activity_student_search_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".management.StudentSearch.OtherDetails.CommonOtherDetails"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -112,11 +111,27 @@
             android:name=".management.Absentees.Absentees"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".management.StaffSearch.OtherDetails.StaffCommonOtherDetails"
+            android:name=".management.staffsearch.OtherDetails.StaffCommonOtherDetails"
             android:label="Staff Search"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
+        <activity
+            android:name=".management.staffsearch.StaffSearch"
+            android:label="Staff Search"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".management.staffsearch.StaffDetailListActivity"
+            android:label="Staff search"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".management.CollegeProfile.CollegeDetailedView"
+            android:label="College Detailed"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".management.CollegeProfile.CollegeProfileActivity"
+            android:label="college profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".management.UniversityProfile.UniversityProfileActivity" />
+        <activity android:name=".management.UniversityProfile.UniversityDetailedActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails;
+package app.managementapp.college.com.collegemanagement.management.staffsearch.OtherDetails;
 
 import android.util.Log;
 
@@ -97,7 +97,7 @@ public class StaffMemoEntryDetails extends StaffAbstractOtherDetails {
     }
 
     public String getURL(String id) {
-        return "/ManagementService.svc/GetStaffAttendance?StaffID=01B5A3AC-3274-44AF-A06F-03D085AB57F7\n";
+        return "/ManagementService.svc/GetStaffMemoEntry?StaffID=01B5A3AC-3274-44AF-A06F-03D085AB57F7";
     }
 
 

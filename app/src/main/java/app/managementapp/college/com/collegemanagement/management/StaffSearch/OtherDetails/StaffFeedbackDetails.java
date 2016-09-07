@@ -1,4 +1,4 @@
-package app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails;
+package app.managementapp.college.com.collegemanagement.management.staffsearch.OtherDetails;
 
 import android.util.Log;
 
@@ -103,14 +103,14 @@ public class StaffFeedbackDetails extends StaffAbstractOtherDetails {
                         );
                 data.add(OtherStaffFeedbackDetailsItem);
             } catch (Exception e) {
-                Log.e(DEBUG_TAG, "getattendanceList: " + e.getMessage());
+                Log.e(DEBUG_TAG, "getfeedbackList: " + e.getMessage());
             }
         }
         return data;
     }
 
     public String getURL(String id) {
-        return "/ManagementService.svc/GetStaffAttendance?StaffID=01B5A3AC-3274-44AF-A06F-03D085AB57F7\n";
+        return "/ManagementService.svc/GetStaffFeedback?StaffId=01B5A3AC-3274-44AF-A06F-03D085AB57F7\n";
     }
 
 
