@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import app.managementapp.college.com.collegemanagement.api.CollegeManagementApiS
 import app.managementapp.college.com.collegemanagement.api.ServiceGenerator;
 import app.managementapp.college.com.collegemanagement.api.Staff.Department.DataList;
 import app.managementapp.college.com.collegemanagement.api.Staff.Department.DepartmentResponse;
+import app.managementapp.college.com.collegemanagement.management.ManagementHome;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +34,13 @@ public class StaffSearch extends AppCompatActivity {
     EditText staffId;
     EditText staffName;
     app.managementapp.college.com.collegemanagement.api.Staff.Department.DataList defaultdepartment=new DataList();
+    View.OnClickListener onFilterbackclickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.d("Staff Search", "onClick: onFilterbackTimeTableclickListener");
+            moveToLanding();
+        }
+    };
     private CredentialManager credentialManager;
     private Call<RegularLoginResponse> loginCall;
     private DepartmentAdapter departmentDropDownAdapter;
@@ -44,7 +53,7 @@ public class StaffSearch extends AppCompatActivity {
         setContentView(R.layout.activity_staff_search);
         defaultdepartment.setDrpID("0");
         defaultdepartment.setDrpName("Pick Department");
-
+        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackclickListener);
         departmentSpinner = (Spinner) this.findViewById(R.id.department_spinner);
         departmentDropDownAdapter = new DepartmentAdapter(getApplicationContext(), departmentList);
         departmentDropDownAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -55,6 +64,7 @@ public class StaffSearch extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 departmentDropDownAdapter.deptId=departmentDropDownAdapter.departments.get(position).getDrpID();
             }
+
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -98,6 +108,21 @@ public class StaffSearch extends AppCompatActivity {
 
         staffId = (EditText)this.findViewById(R.id.staffId);
         staffName = (EditText)this.findViewById(R.id.staffName);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+
+        moveToLanding();
+
+
+    }
+
+    private void moveToLanding() {
+        Intent i = new Intent(this, ManagementHome.class);
+        startActivity(i);
+        finish();
     }
 
 

@@ -83,7 +83,7 @@ public class StaffCommonOtherDetails extends AppCompatActivity {
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
 
         Intent i2 = getIntent();
-        Integer CommonClassCase = i2.getIntExtra("case1", 2);
+        Integer CommonClassCase = i2.getIntExtra("case1", 0);
 // i.getExtras().getParcelable("data");
 //                    = (Integer) i.getIntExtra("admission", 6);
 //            Integer studentId = (Integer) i.getIntExtra("studentId", 0);
@@ -99,9 +99,9 @@ public class StaffCommonOtherDetails extends AppCompatActivity {
             case 2:
                 commonClass = new StaffFeedbackDetails();
                 break;
-//            case 3:
-//                commonClass = new StaffLeaveDetails();
-//                break;
+            case 3:
+                commonClass = new StaffLeaveDetails();
+                break;
             case 4:
                 commonClass = new StaffMemoEntryDetails();
                 break;

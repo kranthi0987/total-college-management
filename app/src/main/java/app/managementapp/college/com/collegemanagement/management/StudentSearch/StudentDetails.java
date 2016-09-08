@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import app.managementapp.college.com.collegemanagement.R;
@@ -16,6 +18,13 @@ import app.managementapp.college.com.collegemanagement.management.StudentSearch.
  */
 public class StudentDetails extends AppCompatActivity {
     DataList data;
+    View.OnClickListener onFilterbackclickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.d("Student details", "onClick: onFilterbackTimeTableclickListener");
+            moveToLanding();
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,12 +34,26 @@ public class StudentDetails extends AppCompatActivity {
         data = getIntent().getParcelableExtra("data");
         TextView textView = (TextView) this.findViewById(R.id.aboutdetails);
         textView.setText(data.getBranchName() + "\n" + data.getDateOfBirth() + "\n" + data.getEmail() + "\n" + data.getMobile());
-
+        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackclickListener);
         TextView addressTextView = (TextView) this.findViewById(R.id.addressdetails);
         addressTextView.setText(data.getAddressal());
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+
+        moveToLanding();
+
+
+    }
+
+    private void moveToLanding() {
+        Intent i = new Intent(this, StudentSearchList.class);
+        startActivity(i);
+        finish();
+    }
 
     public void otherDetails(View view) {
         switch (view.getId()) {

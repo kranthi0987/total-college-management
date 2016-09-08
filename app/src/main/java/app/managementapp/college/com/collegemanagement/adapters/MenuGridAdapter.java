@@ -21,6 +21,7 @@ import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.AcademicCalendar;
 import app.managementapp.college.com.collegemanagement.ExternalExams;
+import app.managementapp.college.com.collegemanagement.InternalExams;
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.management.CollegeProfile.CollegeProfileActivity;
 import app.managementapp.college.com.collegemanagement.management.FeeSummary.FeeSummary;
@@ -161,10 +162,10 @@ public class MenuGridAdapter extends RecyclerView.Adapter<MenuGridAdapter.ViewHo
                 i = new Intent(ctx, StaffSearch.class);
             }
             if (position == 2) {
-                i = new Intent(ctx, CollegeProfileActivity.class);
+                i = new Intent(ctx, InternalExams.class);
             }
             if (position == 3) {
-                i = new Intent(ctx, UniversityProfileActivity.class);
+                i = new Intent(ctx, ExternalExams.class);
             }
             if (position == 4) {
                 i = new Intent(ctx, ExternalExams.class);
@@ -184,7 +185,15 @@ public class MenuGridAdapter extends RecyclerView.Adapter<MenuGridAdapter.ViewHo
             if (position == 9) {
                 i = new Intent(ctx, StaffCommonOtherDetails.class);
             }
-
+            if (position == 10) {
+                i = new Intent(ctx, CollegeProfileActivity.class);
+            }
+            if (position == 11) {
+                i = new Intent(ctx, UniversityProfileActivity.class);
+            }
+            if (position == 12) {
+                i = new Intent(ctx, FeeSummary.class);
+            }
             if (i != null) ctx.startActivity(i);
         }
     }

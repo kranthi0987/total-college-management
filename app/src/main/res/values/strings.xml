@@ -40,6 +40,9 @@
         <item>Feedback</item>
         <item>Academic Calendar</item>
         <item>StaffSearch</item>
+        <item>College Profile</item>
+        <item>University Profile</item>
+        <item>Fee Summary</item>
     </string-array>
 
     <integer-array name="menu_photos">
