@@ -1,4 +1,4 @@
-package app.managementapp.college.com.collegemanagement;
+package app.managementapp.college.com.collegemanagement.management.Feedback;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth.RegularLoginResponse;
 import app.managementapp.college.com.collegemanagement.api.CollegeManagementApiService;
 import app.managementapp.college.com.collegemanagement.api.FeedbackList.DataList;
@@ -106,7 +107,7 @@ public class FeedbackReply extends AppCompatActivity {
             case android.R.id.home:
                 // app icon in action bar clicked; go home
                 Intent intent = new Intent(this, FeedbackList.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 return true;
             default:

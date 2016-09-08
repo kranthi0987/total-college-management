@@ -1,4 +1,4 @@
-package app.managementapp.college.com.collegemanagement.management.staffsearch;
+package app.managementapp.college.com.collegemanagement.management.StaffSearch;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -63,7 +63,7 @@
             android:name=".ExternalExams"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".FeedbackList"
+            android:name=".management.Feedback.FeedbackList"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ExternalExamSingle"
@@ -111,15 +111,15 @@
             android:name=".management.Absentees.Absentees"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".management.staffsearch.OtherDetails.StaffCommonOtherDetails"
+            android:name=".management.StaffSearch.OtherDetails.StaffCommonOtherDetails"
             android:label="Staff Search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".management.staffsearch.StaffSearch"
+            android:name=".management.StaffSearch.StaffSearch"
             android:label="Staff Search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".management.staffsearch.StaffDetailListActivity"
+            android:name=".management.StaffSearch.StaffDetailListActivity"
             android:label="Staff search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -131,7 +131,11 @@
             android:label="college profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".management.UniversityProfile.UniversityProfileActivity" />
-        <activity android:name=".management.UniversityProfile.UniversityDetailedActivity"></activity>
+        <activity android:name=".management.UniversityProfile.UniversityDetailedActivity" />
+        <activity
+            android:name=".management.StaffSearch.StaffFullDetails"
+            android:label="Staff full Details"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

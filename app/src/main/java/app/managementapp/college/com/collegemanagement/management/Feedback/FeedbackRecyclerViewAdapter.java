@@ -1,8 +1,9 @@
-package app.managementapp.college.com.collegemanagement;
+package app.managementapp.college.com.collegemanagement.management.Feedback;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,9 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.FeedbackFragment.OnListFragmentInteractionListener;
+import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.FeedbackList.DataList;
+import app.managementapp.college.com.collegemanagement.management.Feedback.FeedbackFragment.OnListFragmentInteractionListener;
 
 public class FeedbackRecyclerViewAdapter extends RecyclerView.Adapter<FeedbackRecyclerViewAdapter.ViewHolder> {
 
@@ -60,6 +62,7 @@ public class FeedbackRecyclerViewAdapter extends RecyclerView.Adapter<FeedbackRe
         try {
             return mValues.size();
         } catch (NullPointerException e) {
+            Log.d("", "getItemCount: ist empty");
             return 0;
         }
 

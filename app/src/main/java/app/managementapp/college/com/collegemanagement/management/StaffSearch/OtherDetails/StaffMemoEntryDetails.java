@@ -1,4 +1,4 @@
-package app.managementapp.college.com.collegemanagement.management.staffsearch.OtherDetails;
+package app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails;
 
 import android.util.Log;
 

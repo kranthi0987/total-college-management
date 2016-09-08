@@ -1,4 +1,4 @@
-package app.managementapp.college.com.collegemanagement.management.staffsearch;
+package app.managementapp.college.com.collegemanagement.management.StaffSearch;
 
 import android.content.Context;
 import android.view.LayoutInflater;

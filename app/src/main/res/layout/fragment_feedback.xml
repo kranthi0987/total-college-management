@@ -35,5 +35,6 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/message_title"
         android:singleLine="true"
-        android:text="This is the message" />
+        android:text="This is the message"
+        android:textColor="@color/black" />
 </RelativeLayout>

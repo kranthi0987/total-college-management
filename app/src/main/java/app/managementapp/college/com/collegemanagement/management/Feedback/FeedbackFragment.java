@@ -1,4 +1,4 @@
-package app.managementapp.college.com.collegemanagement;
+package app.managementapp.college.com.collegemanagement.management.Feedback;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth.RegularLoginResponse;
 import app.managementapp.college.com.collegemanagement.api.CollegeManagementApiService;
 import app.managementapp.college.com.collegemanagement.api.FeedbackList.DataList;
@@ -103,9 +104,10 @@ public class FeedbackFragment extends Fragment {
                     @Override
                     public void onResponse(Call<FeedbackListResponse> call, Response<FeedbackListResponse> response) {
                         try {
-                            Log.i("feed", response.body().toString());
+                            Log.i("feed", response.body().getDataList().toString());
                             data = response.body().getDataList();
                             feedbackRecyclerViewAdapter.mValues = data;
+                            Log.d("", "onResponse: " + data);
                             feedbackRecyclerViewAdapter.notifyDataSetChanged();
                             progressBarHolder.setVisibility(View.INVISIBLE);
 

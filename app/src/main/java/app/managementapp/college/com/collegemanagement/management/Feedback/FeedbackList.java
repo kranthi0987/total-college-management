@@ -1,4 +1,4 @@
-package app.managementapp.college.com.collegemanagement;
+package app.managementapp.college.com.collegemanagement.management.Feedback;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.CollegeManagementApiService;
 import app.managementapp.college.com.collegemanagement.api.FeedbackList.DataList;
 import app.managementapp.college.com.collegemanagement.management.ManagementHome;

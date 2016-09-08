@@ -1,260 +1,264 @@
 
 package app.managementapp.college.com.collegemanagement.api.FeedbackList;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-public class DataList implements Parcelable {
 
-    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
-        @Override
-        public DataList createFromParcel(Parcel in) {
-            return new DataList(in);
-        }
+public class DataList {
 
-        @Override
-        public DataList[] newArray(int size) {
-            return new DataList[size];
-        }
-    };
+    @SerializedName("Date")
+    @Expose
     private String date;
+    @SerializedName("FeedbackPerson")
+    @Expose
     private String feedbackPerson;
+    @SerializedName("FileContent")
+    @Expose
     private Object fileContent;
+    @SerializedName("FileName")
+    @Expose
     private String fileName;
+    @SerializedName("FilePath")
+    @Expose
     private String filePath;
+    @SerializedName("Message")
+    @Expose
     private String message;
+    @SerializedName("MessageTitle")
+    @Expose
     private String messageTitle;
+    @SerializedName("MessageType")
+    @Expose
     private Integer messageType;
+    @SerializedName("RefID")
+    @Expose
     private Integer refID;
+    @SerializedName("Reply")
+    @Expose
     private String reply;
+    @SerializedName("StudentID")
+    @Expose
     private Integer studentID;
+    @SerializedName("UserType")
+    @Expose
     private String userType;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    protected DataList(Parcel in) {
-        date = in.readString();
-        feedbackPerson = in.readString();
-        fileName = in.readString();
-        filePath = in.readString();
-        message = in.readString();
-        messageTitle = in.readString();
-        reply = in.readString();
-        userType = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(date);
-        dest.writeString(feedbackPerson);
-        dest.writeString(fileName);
-        dest.writeString(filePath);
-        dest.writeString(message);
-        dest.writeString(messageTitle);
-        dest.writeString(reply);
-        dest.writeString(userType);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
     /**
-     * @return The date
+     *
+     * @return
+     *     The date
      */
     public String getDate() {
         return date;
     }
 
     /**
-     * @param date The Date
+     *
+     * @param date
+     *     The Date
      */
     public void setDate(String date) {
         this.date = date;
     }
 
     /**
-     * @return The feedbackPerson
+     *
+     * @return
+     *     The feedbackPerson
      */
     public String getFeedbackPerson() {
         return feedbackPerson;
     }
 
     /**
-     * @param feedbackPerson The FeedbackPerson
+     *
+     * @param feedbackPerson
+     *     The FeedbackPerson
      */
     public void setFeedbackPerson(String feedbackPerson) {
         this.feedbackPerson = feedbackPerson;
     }
 
     /**
-     * @return The fileContent
+     *
+     * @return
+     *     The fileContent
      */
     public Object getFileContent() {
         return fileContent;
     }
 
     /**
-     * @param fileContent The FileContent
+     *
+     * @param fileContent
+     *     The FileContent
      */
     public void setFileContent(Object fileContent) {
         this.fileContent = fileContent;
     }
 
     /**
-     * @return The fileName
+     *
+     * @return
+     *     The fileName
      */
     public String getFileName() {
         return fileName;
     }
 
     /**
-     * @param fileName The FileName
+     *
+     * @param fileName
+     *     The FileName
      */
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
     /**
-     * @return The filePath
+     *
+     * @return
+     *     The filePath
      */
     public String getFilePath() {
         return filePath;
     }
 
     /**
-     * @param filePath The FilePath
+     *
+     * @param filePath
+     *     The FilePath
      */
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
 
     /**
-     * @return The message
+     *
+     * @return
+     *     The message
      */
     public String getMessage() {
         return message;
     }
 
     /**
-     * @param message The Message
+     *
+     * @param message
+     *     The Message
      */
     public void setMessage(String message) {
         this.message = message;
     }
 
     /**
-     * @return The messageTitle
+     *
+     * @return
+     *     The messageTitle
      */
     public String getMessageTitle() {
         return messageTitle;
     }
 
     /**
-     * @param messageTitle The MessageTitle
+     *
+     * @param messageTitle
+     *     The MessageTitle
      */
     public void setMessageTitle(String messageTitle) {
         this.messageTitle = messageTitle;
     }
 
     /**
-     * @return The messageType
+     *
+     * @return
+     *     The messageType
      */
     public Integer getMessageType() {
         return messageType;
     }
 
     /**
-     * @param messageType The MessageType
+     *
+     * @param messageType
+     *     The MessageType
      */
     public void setMessageType(Integer messageType) {
         this.messageType = messageType;
     }
 
     /**
-     * @return The refID
+     *
+     * @return
+     *     The refID
      */
     public Integer getRefID() {
         return refID;
     }
 
     /**
-     * @param refID The RefID
+     *
+     * @param refID
+     *     The RefID
      */
     public void setRefID(Integer refID) {
         this.refID = refID;
     }
 
     /**
-     * @return The reply
+     *
+     * @return
+     *     The reply
      */
     public String getReply() {
         return reply;
     }
 
     /**
-     * @param reply The Reply
+     *
+     * @param reply
+     *     The Reply
      */
     public void setReply(String reply) {
         this.reply = reply;
     }
 
     /**
-     * @return The studentID
+     *
+     * @return
+     *     The studentID
      */
     public Integer getStudentID() {
         return studentID;
     }
 
     /**
-     * @param studentID The StudentID
+     *
+     * @param studentID
+     *     The StudentID
      */
     public void setStudentID(Integer studentID) {
         this.studentID = studentID;
     }
 
     /**
-     * @return The userType
+     *
+     * @return
+     *     The userType
      */
     public String getUserType() {
         return userType;
     }
 
     /**
-     * @param userType The UserType
+     *
+     * @param userType
+     *     The UserType
      */
     public void setUserType(String userType) {
         this.userType = userType;
-    }
-
-    @Override
-    public String toString() {
-        return "DataList{" +
-                "date='" + date + '\'' +
-                ", feedbackPerson='" + feedbackPerson + '\'' +
-                ", fileContent=" + fileContent +
-                ", fileName='" + fileName + '\'' +
-                ", filePath='" + filePath + '\'' +
-                ", message='" + message + '\'' +
-                ", messageTitle='" + messageTitle + '\'' +
-                ", messageType=" + messageType +
-                ", refID=" + refID +
-                ", reply='" + reply + '\'' +
-                ", studentID=" + studentID +
-                ", userType='" + userType + '\'' +
-                ", additionalProperties=" + additionalProperties +
-                '}';
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }
