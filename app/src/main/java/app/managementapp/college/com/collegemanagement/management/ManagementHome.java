@@ -1,6 +1,7 @@
 package app.managementapp.college.com.collegemanagement.management;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -28,6 +29,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.managementapp.college.com.collegemanagement.LoginActivity;
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.adapters.MenuGridAdapter;
 import app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth.RegularLoginResponse;
@@ -59,9 +61,9 @@ public class ManagementHome extends AppCompatActivity
         items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[7], "", drw_arr.getResourceId(7, -1)));
         items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[8], "", drw_arr.getResourceId(8, -1)));
         items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[9], "", drw_arr.getResourceId(9, -1)));
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[10], "", drw_arr.getResourceId(10, -1)));
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[11], "", drw_arr.getResourceId(11, -1)));
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[12], "", drw_arr.getResourceId(12, -1)));
+//        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[10], "", drw_arr.getResourceId(10, -1)));
+//        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[11], "", drw_arr.getResourceId(11, -1)));
+//        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[12], "", drw_arr.getResourceId(12, -1)));
 
         return items;
     }
@@ -72,17 +74,15 @@ public class ManagementHome extends AppCompatActivity
         setContentView(R.layout.activity_management_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
-        toggle.syncState();
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         parent_view = findViewById(R.id.main_content);
         setSupportActionBar(toolbar);
         setTitle("Home");
@@ -204,9 +204,13 @@ public class ManagementHome extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+
             return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -230,6 +234,7 @@ public class ManagementHome extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

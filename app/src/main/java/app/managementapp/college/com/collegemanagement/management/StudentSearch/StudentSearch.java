@@ -227,6 +227,7 @@ public class StudentSearch extends AppCompatActivity {
 
                     }
 
+
                     @Override
                     public void onFailure(Call<RegularLoginResponse> call, Throwable t) {
                         Log.e("ERROR", t.toString());

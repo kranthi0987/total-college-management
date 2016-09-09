@@ -15,7 +15,7 @@ import app.managementapp.college.com.collegemanagement.model.Staff.OtherStaffLea
  */
 public class StaffLeaveDetails extends StaffAbstractOtherDetails {
 
-    private static final String DEBUG_TAG = "StaffattendanceDetails";
+    private static final String DEBUG_TAG = "StaffleaveDetails";
     List<OtherStaffLeaveDetailsItem> StaffLeaveDetailsList;
 
     public StaffLeaveDetails() {

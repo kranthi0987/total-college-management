@@ -64,14 +64,14 @@
             android:orientation="vertical">
 
 
-            <EditText
-                android:id="@+id/usn_field"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="number" />
+            <!--<EditText-->
+            <!--android:id="@+id/usn_field"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="number" />-->
 
             <Spinner
                 android:id="@+id/course_spinner"
