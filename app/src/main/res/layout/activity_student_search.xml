@@ -77,13 +77,15 @@
                 android:id="@+id/course_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@drawable/bluegradient" />
 
             <Spinner
                 android:id="@+id/semester_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@drawable/custom2" />
 
             <Spinner
                 android:id="@+id/branch_spinner"
