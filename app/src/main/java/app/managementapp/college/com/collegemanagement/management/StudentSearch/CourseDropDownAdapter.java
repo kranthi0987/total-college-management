@@ -60,6 +60,8 @@ public class CourseDropDownAdapter extends ArrayAdapter<DataList> {
         TextView label = (TextView) row.findViewById(R.id.text1);
         if (position == 0) {
             label.setText("Select Course");
+            label.setTextSize(15);
+
         } else {
             label.setText(courses.get(position).getDrpName());
         }

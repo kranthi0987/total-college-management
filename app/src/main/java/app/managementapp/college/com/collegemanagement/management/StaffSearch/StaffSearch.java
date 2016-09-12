@@ -7,9 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.lusfold.spinnerloading.SpinnerLoading;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +32,8 @@ import retrofit2.Response;
 
 
 public class StaffSearch extends AppCompatActivity {
-
+    public FrameLayout progressBarHolder;
+    SpinnerLoading progressBarholder;
 
     EditText staffId;
     EditText staffName;
@@ -58,6 +62,8 @@ public class StaffSearch extends AppCompatActivity {
         departmentDropDownAdapter = new DepartmentAdapter(getApplicationContext(), departmentList);
         departmentDropDownAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         departmentSpinner.setAdapter(departmentDropDownAdapter);
+        progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
+        progressBarHolder.setVisibility(View.VISIBLE);
 
         departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -88,6 +94,7 @@ public class StaffSearch extends AppCompatActivity {
                         departmentDropDownAdapter.departments=response.body().getDataList();
                         departmentDropDownAdapter.departments.add(0,defaultdepartment);
                         departmentDropDownAdapter.notifyDataSetChanged();
+                        progressBarHolder.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(), "Course List Fetched " + response.body().getErrorMessage(), Toast.LENGTH_LONG).show();
                     }
 

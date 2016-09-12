@@ -17,6 +17,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.lusfold.spinnerloading.SpinnerLoading;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -49,6 +51,7 @@ public class FeeSummary extends AppCompatActivity {
     public FrameLayout progressBarHolder;
     public CredentialManager credentialManager;
     public String loginURL;
+    SpinnerLoading progressBarholder;
     FeeSummaryAdapter feeSummaryAdapter;
     Context ctx;
     Exception error;

@@ -9,4 +9,16 @@
         <item name="android:windowTitleBackgroundStyle">@style/CustomWindowTitleBarBG</item>
         <item name="android:datePickerStyle">@android:style/Widget.DeviceDefault.DatePicker</item>
     </style>
+
+    <style name="dropdownstyle">
+        <item name="android:dropDownListViewStyle">@style/DropDownStyle</item>
+        <item name="android:dropDownSpinnerStyle">@style/DropDownStyle</item>
+        <item name="android:dropDownSelector">@style/DropDownStyle</item>
+    </style>
+
+    <style name="DropDownStyle">
+        <item name="android:background">#FFF000</item>
+        <item name="android:popupBackground">#FFF000</item>
+        <item name="android:cacheColorHint">#FFF000</item>
+    </style>
 </resources>

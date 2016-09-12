@@ -46,7 +46,7 @@
                     android:id="@+id/image"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_margin="10dp"
+                    android:layout_margin="15dp"
                     android:src="@drawable/unknown_avatar" />
 
                 <!--<TextView
@@ -57,15 +57,15 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                     android:textColor="@color/material_grey_600" />
     -->
-                <TextView
-                    android:id="@+id/content"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:text="Description"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/material_grey_600" />
+                <!--<TextView-->
+                <!--android:id="@+id/content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:maxLines="1"-->
+                <!--android:singleLine="true"-->
+                <!--android:text="Description"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+                <!--android:textColor="@color/material_grey_600" />-->
             </LinearLayout>
 
         </com.balysv.materialripple.MaterialRippleLayout>

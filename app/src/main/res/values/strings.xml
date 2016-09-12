@@ -48,7 +48,7 @@
         <item>@drawable/student_profile</item>
         <item>@drawable/staff</item>
         <item>@drawable/university</item>
-        <item>@drawable/external_exam_marks</item>
+        <item>@drawable/ic_college_profile</item>
         <item>@drawable/academiccalendar</item>
         <item>@drawable/results</item>
         <item>@drawable/absent</item>

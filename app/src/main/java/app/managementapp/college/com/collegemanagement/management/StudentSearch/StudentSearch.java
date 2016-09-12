@@ -7,9 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.lusfold.spinnerloading.SpinnerLoading;
 
 import java.util.ArrayList;
 
@@ -30,11 +33,13 @@ import retrofit2.Response;
 
 public class StudentSearch extends AppCompatActivity {
     private static final String DEBUG_TAG = "StudentSearch";
+    public FrameLayout progressBarHolder;
     CourseDropDownAdapter courseAdapter;
     Spinner courseSpinner;
     Spinner branchSpinner;
     Spinner semesterSpinner;
     CredentialManager credentialManager;
+    SpinnerLoading progressBarholder;
     app.managementapp.college.com.collegemanagement.api.CourseList.DataList defaultcourse = new DataList();
     app.managementapp.college.com.collegemanagement.api.StudentSearch.SemesterList.DataList defaultsemester = new app.managementapp.college.com.collegemanagement.api.StudentSearch.SemesterList.DataList();
     app.managementapp.college.com.collegemanagement.api.StudentSearch.BranchList.DataList defaultbranch = new app.managementapp.college.com.collegemanagement.api.StudentSearch.BranchList.DataList();
@@ -109,7 +114,8 @@ public class StudentSearch extends AppCompatActivity {
 
         defaultbranch.setDrpID("0");
         defaultbranch.setDrpName("Pick Course");
-
+        progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
+        progressBarHolder.setVisibility(View.VISIBLE);
         final CollegeManagementApiService collegeManagementApiService = ServiceGenerator.createService(CollegeManagementApiService.class);
         credentialManager = new CredentialManager(this);
         loginCall = collegeManagementApiService.doRegularLogin(credentialManager.getUserName(), credentialManager.getPassword());
@@ -125,6 +131,7 @@ public class StudentSearch extends AppCompatActivity {
                         courseAdapter.courses.add(0, defaultcourse);
                         courseAdapter.notifyDataSetChanged();
                         Toast.makeText(getApplicationContext(), "Course List Fetched " + response.body().getErrorMessage(), Toast.LENGTH_LONG).show();
+
                     }
 
                     @Override
@@ -138,6 +145,7 @@ public class StudentSearch extends AppCompatActivity {
             public void onFailure(Call<RegularLoginResponse> call, Throwable t) {
                 Log.e("ERROR", t.toString());
                 Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -148,6 +156,7 @@ public class StudentSearch extends AppCompatActivity {
                 branchAdapter.branchId = "";
                 semesterAdapter.semesterId = "";
                 courseAdapter.courseId = courseAdapter.courses.get(position).getDrpID();
+                progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
                 loginCall = collegeManagementApiService.doRegularLogin(credentialManager.getUserName(), credentialManager.getPassword());
                 loginCall.enqueue(new Callback<RegularLoginResponse>() {
                     @Override
@@ -159,6 +168,7 @@ public class StudentSearch extends AppCompatActivity {
                                 semesterAdapter.semesters = (ArrayList<app.managementapp.college.com.collegemanagement.api.StudentSearch.SemesterList.DataList>) response.body().getDataList();
                                 semesterAdapter.semesters.add(0, defaultsemester);
                                 semesterAdapter.notifyDataSetChanged();
+                                progressBarHolder.setVisibility(View.GONE);
                                 Toast.makeText(getApplicationContext(), "Semester List Fetched " + response.body().getErrorMessage(), Toast.LENGTH_LONG).show();
                                 semesterSpinner.setEnabled(true);
                                 semesterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -166,8 +176,10 @@ public class StudentSearch extends AppCompatActivity {
                                     public void onItemSelected(AdapterView<?> parent, View view, final int semposition, long id) {
                                         semesterAdapter.semesterId = semesterAdapter.semesters.get(semposition).getDrpID();
                                         branchAdapter.branchId = "";
+
                                         loginCall = collegeManagementApiService.doRegularLogin(credentialManager.getUserName(), credentialManager.getPassword());
                                         loginCall.enqueue(new Callback<RegularLoginResponse>() {
+
                                             @Override
                                             public void onResponse(Call<RegularLoginResponse> call, Response<RegularLoginResponse> response) {
                                                 Call<BranchListResponse> branchListResponseCall = collegeManagementApiService.getBranchOrCycle(response.body().getToken(), Integer.valueOf(courseAdapter.courses.get(position).getDrpID()), Integer.valueOf(semesterAdapter.semesters.get(semposition).getDrpID()));
@@ -180,6 +192,7 @@ public class StudentSearch extends AppCompatActivity {
                                                         Toast.makeText(getApplicationContext(), "Branches  List Fetched " + response.body().getErrorMessage(), Toast.LENGTH_LONG).show();
                                                         branchSpinner.setEnabled(true);
                                                         branchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
 
                                                             @Override
                                                             public void onItemSelected(AdapterView<?> parent, View view, int brposition, long id) {

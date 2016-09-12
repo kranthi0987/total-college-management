@@ -44,6 +44,9 @@ public class ManagementHome extends AppCompatActivity
     RecyclerView recyclerView;
     private CredentialManager credentialManager;
     private View parent_view;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mActionBarDrawerToggle;
+
 
     public static List<app.managementapp.college.com.collegemanagement.model.MenuItem> getMenuData(Context ctx) {
         List<app.managementapp.college.com.collegemanagement.model.MenuItem> items = new ArrayList<>();
@@ -74,28 +77,28 @@ public class ManagementHome extends AppCompatActivity
         setContentView(R.layout.activity_management_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         parent_view = findViewById(R.id.main_content);
         setSupportActionBar(toolbar);
-        setTitle("Home");
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         credentialManager = new CredentialManager(this);
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         final View headerView = navView.inflateHeaderView(R.layout.nav_menu_header);
-
         ImageView avatar = (ImageView) headerView.findViewById(R.id.avatar);
         final TextView nameLabel = (TextView) headerView.findViewById(R.id.profile_name);
         final TextView departmentLabel = (TextView) headerView.findViewById(R.id.profile_dept);
         final TextView phoneLabel = (TextView) headerView.findViewById(R.id.profile_phone);
         final TextView emailLabel = (TextView) headerView.findViewById(R.id.profile_email);
-
         byte[] decodedString = Base64.decode(credentialManager.getUniversityLogo(), Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
@@ -174,6 +177,8 @@ public class ManagementHome extends AppCompatActivity
         MenuGridAdapter mAdapter = new MenuGridAdapter(this, getMenuData(this));
         recyclerView.setAdapter(mAdapter);
     }
+//
+
 
     public void clicked(String clickOn) {
         Log.d("yyy", "clicked: " + clickOn);

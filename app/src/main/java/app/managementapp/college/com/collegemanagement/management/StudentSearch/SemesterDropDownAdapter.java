@@ -52,6 +52,8 @@ public class SemesterDropDownAdapter extends ArrayAdapter<DataList> {
         TextView label = (TextView) row.findViewById(R.id.text1);
         if (position == 0) {
             label.setText("Select Semester");
+            label.setTextSize(15);
+
         } else {
             label.setText(semesters.get(position).getDrpName());
         }

@@ -58,6 +58,7 @@ public class DepartmentAdapter extends ArrayAdapter<DataList> {
         TextView label = (TextView) row.findViewById(R.id.text1);
         if (position == 0) {
             label.setText("Select Department");
+            label.setTextSize(15);
         } else {
             label.setText(departments.get(position).getDrpName());
         }
