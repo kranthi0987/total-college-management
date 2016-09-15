@@ -41,6 +41,7 @@ import retrofit2.Call;
 public class ManagementHome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
     RecyclerView recyclerView;
     private CredentialManager credentialManager;
     private View parent_view;

@@ -32,6 +32,22 @@ public class StudentSearchList extends AppCompatActivity implements OnListFragme
 
     }
 
+    public void backNavigator() {
+        if (level == 1) {
+            moveToLanding();
+        } else {
+            level -= 1;
+            levelIds.remove(levelIds.size() - 1);
+            makeNetworkCall();
+        }
+    }
+
+    void moveToLanding() {
+        Intent i = new Intent(this, ManagementHome.class);
+        startActivity(i);
+        finish();
+    }
+
     private void moveToSearch() {
         Intent i = new Intent(StudentSearchList.this, StudentSearch.class);
         startActivity(i);
