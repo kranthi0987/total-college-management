@@ -32,7 +32,7 @@ import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.LoginActivity;
 import app.managementapp.college.com.collegemanagement.R;
-import app.managementapp.college.com.collegemanagement.management.ManagementHome;
+import app.managementapp.college.com.collegemanagement.management.StudentSearch.StudentDetails;
 import app.managementapp.college.com.collegemanagement.model.GlobalData;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
 
@@ -54,7 +54,7 @@ public class CommonOtherDetails extends AppCompatActivity {
     }
 
     private void moveToLanding() {
-        Intent i = new Intent(CommonOtherDetails.this, ManagementHome.class);
+        Intent i = new Intent(CommonOtherDetails.this, StudentDetails.class);
         startActivity(i);
         finish();
     }

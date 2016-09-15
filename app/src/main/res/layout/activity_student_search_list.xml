@@ -71,6 +71,10 @@
                 android:layout_weight="1"
                 tools:layout="@layout/fragment_student_list" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
         </LinearLayout>
 
     </LinearLayout>

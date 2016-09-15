@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth.RegularLoginResponse;
 import app.managementapp.college.com.collegemanagement.api.StudentSearch.StudentList.DataList;
@@ -15,6 +18,8 @@ import retrofit2.Call;
 
 public class StudentSearchList extends AppCompatActivity implements OnListFragmentInteractionListener {
     private static final String DEBUG_TAG = "StudentSearchList";
+    public Integer level;
+    public List<String> levelIds = new ArrayList<String>();
     View.OnClickListener onFilterbackclickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -27,23 +32,24 @@ public class StudentSearchList extends AppCompatActivity implements OnListFragme
 
     @Override
     public void onBackPressed() {
-
-        moveToSearch();
-
+        Log.d("onBackPressed", "onBackPressed: ");
+//        backNavigator();
+        moveToLanding();
     }
 
     public void backNavigator() {
+
         if (level == 1) {
             moveToLanding();
         } else {
             level -= 1;
             levelIds.remove(levelIds.size() - 1);
-            makeNetworkCall();
+//            makeNetworkCall();
         }
     }
 
     void moveToLanding() {
-        Intent i = new Intent(this, ManagementHome.class);
+        Intent i = new Intent(this, StudentSearch.class);
         startActivity(i);
         finish();
     }
