@@ -28,7 +28,7 @@ public class CollegeList {
     @SerializedName("CollegeName")
     @Expose
     private String collegeName;
-    @SerializedName("DepartmentList")
+    @SerializedName("Department")
     @Expose
     private List<Object> departmentList = new ArrayList<Object>();
     @SerializedName("Email")
@@ -133,7 +133,7 @@ public class CollegeList {
     }
 
     /**
-     * @param departmentList The DepartmentList
+     * @param departmentList The Department
      */
     public void setDepartmentList(List<Object> departmentList) {
         this.departmentList = departmentList;

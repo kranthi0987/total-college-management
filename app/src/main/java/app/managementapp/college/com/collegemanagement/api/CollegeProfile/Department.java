@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.CollegeProfile;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class DepartmentList {
+public class Department implements Parcelable {
 
+    public static final Creator<Department> CREATOR = new Creator<Department>() {
+        @Override
+        public Department createFromParcel(Parcel in) {
+            return new Department(in);
+        }
+
+        @Override
+        public Department[] newArray(int size) {
+            return new Department[size];
+        }
+    };
     @SerializedName("DepartmentHODID")
     @Expose
     private Integer departmentHODID;
@@ -29,6 +43,14 @@ public class DepartmentList {
     @SerializedName("Qualification")
     @Expose
     private String qualification;
+
+    protected Department(Parcel in) {
+        departmentName = in.readString();
+        hODName = in.readString();
+        hODPhone = in.readString();
+        mGUID = in.readString();
+        qualification = in.readString();
+    }
 
     /**
      * @return The departmentHODID
@@ -128,4 +150,17 @@ public class DepartmentList {
         this.qualification = qualification;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(departmentName);
+        dest.writeString(hODName);
+        dest.writeString(hODPhone);
+        dest.writeString(mGUID);
+        dest.writeString(qualification);
+    }
 }

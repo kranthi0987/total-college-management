@@ -42,9 +42,9 @@ public class DataList implements Parcelable {
     @SerializedName("CollegeName")
     @Expose
     private String collegeName;
-    @SerializedName("DepartmentList")
+    @SerializedName("Department")
     @Expose
-    private List<DepartmentList> departmentList = new ArrayList<DepartmentList>();
+    private List<Department> departmentList = new ArrayList<Department>();
     @SerializedName("Email")
     @Expose
     private String email;
@@ -152,14 +152,14 @@ public class DataList implements Parcelable {
     /**
      * @return The departmentList
      */
-    public List<DepartmentList> getDepartmentList() {
+    public List<Department> getDepartmentList() {
         return departmentList;
     }
 
     /**
-     * @param departmentList The DepartmentList
+     * @param departmentList The Department
      */
-    public void setDepartmentList(List<DepartmentList> departmentList) {
+    public void setDepartmentList(List<Department> departmentList) {
         this.departmentList = departmentList;
     }
 
