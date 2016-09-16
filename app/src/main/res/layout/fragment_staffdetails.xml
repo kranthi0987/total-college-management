@@ -5,13 +5,14 @@
     android:divider="?android:dividerVertical"
     android:orientation="vertical"
     android:showDividers="end">
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:divider="?android:dividerVertical"-->
-    <!--android:showDividers="middle"-->
-    <!--android:dividerPadding="5dp">-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="?android:dividerVertical"
+        android:dividerPadding="5dp"
+        android:orientation="horizontal"
+        android:showDividers="middle">
     <TextView
         android:id="@+id/id"
         android:layout_width="wrap_content"
@@ -28,6 +29,6 @@
         android:textAppearance="?attr/textAppearanceListItem"
         android:textColor="@color/black" />
 
-    <!--</LinearLayout>-->
+    </LinearLayout>
 
 </LinearLayout>

@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import app.managementapp.college.com.collegemanagement.R;
@@ -31,7 +30,7 @@ public class StaffFullDetails extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.staff_full_details);
-        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackclickListener);
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
         data = getIntent().getParcelableExtra("data");
         TextView textView = (TextView) this.findViewById(R.id.aboutdetails);
         textView.setText(data.getFullName() +"\n" + data.getDOJ() + "\n" + data.getDateOfBirth() + "\n" + data.getEmail() + "\n" + data.getCode());
@@ -42,11 +41,7 @@ public class StaffFullDetails extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
-
         moveToLanding();
-
-
     }
 
     private void moveToLanding() {
