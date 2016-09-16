@@ -30,10 +30,6 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".LandingScreen"
-            android:label="@string/title_activity_landig_screen"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".management.StudentSearch.StudentDetails"
             android:label="@string/title_activity_landing_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -51,26 +47,32 @@
             android:name=".InvigilationAttendance"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TimeTableV2"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".TimeTableV3"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".TimeTableV2SingleDetails"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ExternalExams"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="M_EXTERNAL_EXAMS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".management.Feedback.FeedbackList"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="M_FEEDBACK" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ExternalExamSingle"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".InternalExams"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="M_INTERNAL_EXAMS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".InternalExamSingle"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -92,24 +94,45 @@
         <activity
             android:name=".AcademicCalendar"
             android:label="@string/title_activity_management_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="M_ACADEMIC_CALENDAR" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".management.StudentSearch.StudentSearch"
             android:label="@string/title_activity_student_search"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="M_STUDENT_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".management.StudentSearch.StudentSearchList"
             android:label="@string/title_activity_student_search_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".management.StudentSearch.OtherDetails.CommonOtherDetails"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".management.FeeSummary.FeeSummary"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="M_FEE_SUMMARY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".management.Absentees.Absentees"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="M_ABSENTEES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".management.StaffSearch.OtherDetails.StaffCommonOtherDetails"
             android:label="Staff Search"
@@ -117,7 +140,12 @@
         <activity
             android:name=".management.StaffSearch.StaffSearch"
             android:label="Staff Search"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="M_STAFF_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".management.StaffSearch.StaffDetailListActivity"
             android:label="Staff search"
@@ -129,13 +157,37 @@
         <activity
             android:name=".management.CollegeProfile.CollegeProfileActivity"
             android:label="college profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".management.UniversityProfile.UniversityProfileActivity" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="M_COLLEGE_PROFILE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".management.UniversityProfile.UniversityProfileActivity"
+            android:label="Staff full Details"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="M_UNIVERSITY_PROFILE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".management.UniversityProfile.UniversityDetailedActivity" />
         <activity
             android:name=".management.StaffSearch.StaffFullDetails"
             android:label="Staff full Details"
             android:theme="@style/AppTheme.NoActionBar" />
-    </application>
 
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
 </manifest>
