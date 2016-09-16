@@ -48,7 +48,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:text="@string/title_activity_management_home"
+                        android:text="@string/title_activity_academic_calendar"
                         android:textColor="@color/white"
                         android:textSize="18dp" />
                 </LinearLayout>

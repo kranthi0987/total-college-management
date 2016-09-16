@@ -45,15 +45,15 @@
     </string-array>
 
     <integer-array name="menu_photos">
-        <item>@drawable/student_profile</item>
-        <item>@drawable/staff</item>
-        <item>@drawable/university</item>
-        <item>@drawable/ic_college_profile</item>
-        <item>@drawable/academiccalendar</item>
-        <item>@drawable/results</item>
-        <item>@drawable/absent</item>
+        <item>@drawable/menu_icon_student_profile</item>
+        <item>@drawable/menu_icon_staff_profile</item>
+        <item>@drawable/menu_icon_university</item>
+        <item>@drawable/menu_icon_colege_profile</item>
+        <item>@drawable/menu_icon_academiccalendar</item>
+        <item>@drawable/menu_icon_feesummary</item>
+        <item>@drawable/menu_icon_absent</item>
         <item>@drawable/menu_icon_feedback</item>
-        <item>@drawable/internal_exam_marks</item>
+        <item>@drawable/menu_icon_internal_exam_marks</item>
         <item>@drawable/external_exam_marks</item>
     </integer-array>
 
@@ -82,6 +82,11 @@
     <string name="title_activity_student_search_list">title_activity_student_search_list
     </string>
     <string name="title_activity_management_home">ManagementHome</string>
+    <string name="title_activity_academic_calendar">Academic Calendar</string>
+    <string name="title_activity_feesummary">Fee Summary</string>
+    <string name="title_activity_college_profile">College Profile</string>
+    <string name="title_activity_university_profile">University Profile</string>
+    <string name="title_activity_feedback">Feedback</string>
     <string name="university_profile">University Profile</string>
 
 </resources>
