@@ -176,7 +176,6 @@
 
         <activity
             android:name=".management.UniversityProfile.UniversityDetailedActivity"
-            android:label="college profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".management.StaffSearch.StaffFullDetails"
