@@ -43,6 +43,7 @@ public class ManagementHome extends AppCompatActivity
 
 
     RecyclerView recyclerView;
+    app.managementapp.college.com.collegemanagement.api.Staff.StaffList.DataList datalist;
     private CredentialManager credentialManager;
     private View parent_view;
     private DrawerLayout mDrawerLayout;
@@ -93,13 +94,20 @@ public class ManagementHome extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         credentialManager = new CredentialManager(this);
+        //new profile <code></code>
+
+
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         final View headerView = navView.inflateHeaderView(R.layout.nav_menu_header);
         ImageView avatar = (ImageView) headerView.findViewById(R.id.avatar);
         final TextView nameLabel = (TextView) headerView.findViewById(R.id.profile_name);
+//        nameLabel.setText(datalist.getFullName());
         final TextView departmentLabel = (TextView) headerView.findViewById(R.id.profile_dept);
+//        departmentLabel.setText(datalist.getDepartment());
         final TextView phoneLabel = (TextView) headerView.findViewById(R.id.profile_phone);
+//        phoneLabel.setText(datalist.getPhone());
         final TextView emailLabel = (TextView) headerView.findViewById(R.id.profile_email);
+//        emailLabel.setText(datalist.getEmail());
         byte[] decodedString = Base64.decode(credentialManager.getUniversityLogo(), Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
@@ -107,7 +115,7 @@ public class ManagementHome extends AppCompatActivity
             public void onGenerated(Palette palette) {
                 // Do something with colors...
                 headerView.setBackgroundColor(palette.getVibrantColor(Color.BLUE));
-                //  nameLabel.setTextColor(palette.getMutedColor(Color.WHITE));
+                nameLabel.setTextColor(palette.getMutedColor(Color.WHITE));
                 departmentLabel.setTextColor(palette.getMutedColor(Color.BLACK));
                 phoneLabel.setTextColor(palette.getMutedColor(Color.BLACK));
                 emailLabel.setTextColor(palette.getMutedColor(Color.BLACK));
