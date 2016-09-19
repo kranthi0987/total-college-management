@@ -88,9 +88,9 @@ public class UniversityFragment extends Fragment {
                         universityRecyclerViewAdapter.notifyDataSetChanged();
                         if (response.body().getDataList().size() == 1) {
                             i = new Intent(getActivity(), UniversityDetailedActivity.class);
+                            i.putExtra("data", response.body().getDataList().get(0));
                             startActivity(i);
                         }
-
                         Log.e("success", "Succesfully fetched");
                         Toast.makeText(getContext(), "Succesfully fetched", Toast.LENGTH_LONG).show();
                     }

@@ -25,9 +25,13 @@
                 android:layout_marginLeft="@dimen/spacing_middle"
                 android:layout_marginRight="@dimen/spacing_middle"
                 android:layout_marginTop="@dimen/spacing_middle"
-
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@color/material_grey_800" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="#c0c0c0" />
 
             <TableLayout
                 android:layout_width="match_parent"

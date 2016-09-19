@@ -30,7 +30,7 @@ public class CollegeDetailedView extends AppCompatActivity implements CollegeLis
         findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
         dataList = getIntent().getParcelableExtra("data");
         Log.d("college", "onCreate: " + dataList);
-
+        Log.d("college", "onCreate: " + dataList.getCollegeName());
         FragmentManager fragmentManager = getSupportFragmentManager();
         DepartmentFragment fragment = DepartmentFragment.newInstance(dataList.getDepartmentList());
         fragmentManager.beginTransaction().add(R.id.department_list_container, fragment).commit();
