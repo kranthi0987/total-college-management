@@ -64,6 +64,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".management.Feedback.FeedbackReply"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ExternalExamSingle"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -126,6 +129,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".management.Absentees.Absentees"
             android:theme="@style/AppTheme.NoActionBar">

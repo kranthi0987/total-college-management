@@ -16,8 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="37dp"
         android:layout_marginStart="37dp"
-        android:elevation="8dp"
-        android:src="@drawable/profile" />
+        android:elevation="8dp" />
 
     <TextView
         android:id="@+id/profile_name"
@@ -35,23 +34,20 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/avatar"
         android:layout_alignStart="@+id/avatar"
-        android:layout_below="@+id/avatar"
-        android:text="Computer Science" />
+        android:layout_below="@+id/avatar" />
 
     <TextView
         android:id="@+id/profile_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/avatar"
-        android:layout_below="@+id/profile_dept"
-        android:text="8190978951" />
+        android:layout_below="@+id/profile_dept" />
 
     <TextView
         android:id="@+id/profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/avatar"
-        android:layout_below="@+id/profile_phone"
-        android:text="android.studio@android.com" />
+        android:layout_below="@+id/profile_phone" />
 
 </RelativeLayout>

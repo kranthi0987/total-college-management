@@ -32,7 +32,7 @@ public class FeedbackReply extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback_reply);
-        messagedata = (DataList) getIntent().getParcelableExtra("data");
+        messagedata = getIntent().getParcelableExtra("data");
         TextView messageTitle = (TextView) findViewById(R.id.message_title);
         messageTitle.setText(messagedata.getMessageTitle().toString().trim());
         TextView messageContent = (TextView) findViewById(R.id.message);
@@ -40,8 +40,8 @@ public class FeedbackReply extends AppCompatActivity {
         replyView = (EditText) findViewById(R.id.reply_field);
         repliedTextView = (TextView) findViewById(R.id.replied_message);
         repliedTextView.setText(messagedata.getReply().trim());
-        getSupportActionBar().setTitle("Feedback");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setTitle("Feedback");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void onReplyClick(View view) {

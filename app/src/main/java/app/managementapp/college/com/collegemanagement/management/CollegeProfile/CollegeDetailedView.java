@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import app.managementapp.college.com.collegemanagement.R;
@@ -15,7 +14,7 @@ import app.managementapp.college.com.collegemanagement.management.CollegeProfile
 import app.managementapp.college.com.collegemanagement.management.ManagementHome;
 
 public class CollegeDetailedView extends AppCompatActivity implements CollegeListFragment.OnListFragmentInteractionListener {
-    public DataList dataList;
+    DataList dataList;
     View.OnClickListener onFilterbackclickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -28,8 +27,8 @@ public class CollegeDetailedView extends AppCompatActivity implements CollegeLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_college_profile_detailed);
-        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackclickListener);
-        dataList = (DataList) getIntent().getParcelableExtra("data");
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
+        dataList = getIntent().getParcelableExtra("data");
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         DepartmentFragment fragment = DepartmentFragment.newInstance(dataList.getDepartmentList());
@@ -39,15 +38,15 @@ public class CollegeDetailedView extends AppCompatActivity implements CollegeLis
         TextView collegeName = (TextView) findViewById(R.id.college_name);
         collegeName.setText(dataList.getCollegeName());
         TextView universityName = (TextView) findViewById(R.id.university_name);
-//        universityName.setText(dataList.getUniversityName());
-//        TextView email=(TextView) findViewById(R.id.email);
-//        email.setText(dataList.getEmail().trim());
-//        TextView fax=(TextView) findViewById(R.id.fax);
-//        fax.setText(dataList.getFax().trim());
-//        TextView website=(TextView)findViewById(R.id.website);
-//        website.setText(dataList.getWebSite().trim());
+        universityName.setText(dataList.getUniversityName());
+        TextView email = (TextView) findViewById(R.id.email);
+        email.setText(dataList.getEmail());
+        TextView fax = (TextView) findViewById(R.id.fax);
+        fax.setText(dataList.getFax());
+        TextView website = (TextView) findViewById(R.id.website);
+        website.setText(dataList.getWebSite());
 //        TextView addressal=(TextView)findViewById(R.id.addressdetails);
-//        addressal.setText(dataList);
+//        addressal.setText(dataList.getAddress().toString());
 
 
     }

@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +35,13 @@ import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.adapters.MenuGridAdapter;
 import app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth.RegularLoginResponse;
 import app.managementapp.college.com.collegemanagement.api.CollegeManagementApiService;
+import app.managementapp.college.com.collegemanagement.api.FacultyProfile.DataList;
+import app.managementapp.college.com.collegemanagement.api.FacultyProfile.FacultyProfileResult;
 import app.managementapp.college.com.collegemanagement.api.ServiceGenerator;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ManagementHome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -125,13 +130,13 @@ public class ManagementHome extends AppCompatActivity
 
         final CollegeManagementApiService collegeApiService = ServiceGenerator.createService(CollegeManagementApiService.class);
         Call<RegularLoginResponse> firstcall = collegeApiService.doRegularLogin(credentialManager.getUserName(), credentialManager.getPassword());
-      /*  firstcall.enqueue(new Callback<RegularLoginResponse>() {
+        firstcall.enqueue(new Callback<RegularLoginResponse>() {
 
             public DataList data;
 
             @Override
             public void onResponse(Call<RegularLoginResponse> call, Response<RegularLoginResponse> response) {
-               // Log.i("token",response.body().toString());
+                Log.i("token", response.body().toString());
 
                 final Call<FacultyProfileResult> facultyProfileCall=collegeApiService.getProfileData(response.body().getToken());
                 facultyProfileCall.enqueue(new Callback<FacultyProfileResult>() {
@@ -163,16 +168,13 @@ public class ManagementHome extends AppCompatActivity
 
             @Override
             public void onFailure(Call<RegularLoginResponse> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
             }
 
 
         });
 
-*/
-
-
-        //      avatar.setImageBitmap(decodedByte);
+        avatar.setImageBitmap(decodedByte);
 
 
         // setting the required menus

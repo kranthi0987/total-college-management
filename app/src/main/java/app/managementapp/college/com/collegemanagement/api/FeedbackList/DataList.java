@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.FeedbackList;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("Date")
     @Expose
     private String date;
@@ -44,6 +58,17 @@ public class DataList {
     @SerializedName("UserType")
     @Expose
     private String userType;
+
+    protected DataList(Parcel in) {
+        date = in.readString();
+        feedbackPerson = in.readString();
+        fileName = in.readString();
+        filePath = in.readString();
+        message = in.readString();
+        messageTitle = in.readString();
+        reply = in.readString();
+        userType = in.readString();
+    }
 
     /**
      *
@@ -261,4 +286,20 @@ public class DataList {
         this.userType = userType;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(date);
+        dest.writeString(feedbackPerson);
+        dest.writeString(fileName);
+        dest.writeString(filePath);
+        dest.writeString(message);
+        dest.writeString(messageTitle);
+        dest.writeString(reply);
+        dest.writeString(userType);
+    }
 }

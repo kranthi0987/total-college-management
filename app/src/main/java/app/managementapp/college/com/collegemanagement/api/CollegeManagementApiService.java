@@ -8,6 +8,7 @@ import app.managementapp.college.com.collegemanagement.api.CollegeProfile.Colleg
 import app.managementapp.college.com.collegemanagement.api.CourseFeedback.CourseFeedbackResponse;
 import app.managementapp.college.com.collegemanagement.api.CourseList.CourseListResponse;
 import app.managementapp.college.com.collegemanagement.api.ExamMark.ExamMarkResponse;
+import app.managementapp.college.com.collegemanagement.api.FacultyProfile.FacultyProfileResult;
 import app.managementapp.college.com.collegemanagement.api.FeePaymentDetails.FeePaymentDetailsResponse;
 import app.managementapp.college.com.collegemanagement.api.FeedbackList.FeedbackListResponse;
 import app.managementapp.college.com.collegemanagement.api.QualificationDetails.QualificationDetailsResponse;
@@ -123,4 +124,6 @@ public interface CollegeManagementApiService {
     @POST("ManagementService.svc/GetStudentList")
     Call<StudentListResponse> getStudentList(@Header("Token") String token, @Body StudentListRequest studentListRequest);
 
+    @GET("FacultyProfileService.svc/GetFacultyProfile")
+    Call<FacultyProfileResult> getProfileData(@Header("Token") String token);
 }

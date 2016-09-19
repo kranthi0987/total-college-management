@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.UniversityProfile.DataList;
@@ -26,20 +25,15 @@ public class UniversityProfileActivity extends AppCompatActivity implements Univ
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_university_profile2);
-        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackclickListener);
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
         FragmentManager fragmentManager = getSupportFragmentManager();
         UniversityFragment fragment = UniversityFragment.newInstance(0);
         fragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit();
-
     }
 
     @Override
     public void onBackPressed() {
-
-
         moveToLanding();
-
-
     }
 
     private void moveToLanding() {
