@@ -46,7 +46,6 @@ public class Address implements Parcelable {
     public Address() {
     }
 
-
     protected Address(Parcel in) {
         this.address = in.readString();
         this.addressType = in.readString();
@@ -73,11 +72,6 @@ public class Address implements Parcelable {
      */
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    @Override
-    public String toString() {
-        return getAddress() + "\n" + getCity() + "\n" + getState() + "\n" + getCountry() + "\n";
     }
 
     /**
@@ -202,5 +196,10 @@ public class Address implements Parcelable {
         dest.writeString(this.mobile);
         dest.writeString(this.phone);
         dest.writeString(this.state);
+    }
+
+    @Override
+    public String toString() {
+        return getAddress() + "\n" + getCity() + "\n" + getState() + "\n" + getState() + "\n";
     }
 }

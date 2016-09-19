@@ -1,6 +1,5 @@
 package app.managementapp.college.com.collegemanagement.management.CollegeProfile;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.CollegeProfile.DataList;
 import app.managementapp.college.com.collegemanagement.management.CollegeProfile.DepartmentList.DepartmentFragment;
-import app.managementapp.college.com.collegemanagement.management.ManagementHome;
 
 public class CollegeDetailedView extends AppCompatActivity implements CollegeListFragment.OnListFragmentInteractionListener {
     DataList dataList;
@@ -71,23 +69,12 @@ public class CollegeDetailedView extends AppCompatActivity implements CollegeLis
         FragmentManager fragmentManager = getSupportFragmentManager();
         DepartmentFragment fragment = DepartmentFragment.newInstance(dataList.getDepartmentList());
         fragmentManager.beginTransaction().add(R.id.department_list_container, fragment).commit();
-
-
-    }
-
-    @Override
-    public void onBackPressed() {
-
-
-        moveToLanding();
-
+        Log.i("deptlist", "" + dataList.getDepartmentList());
 
     }
 
     private void moveToLanding() {
-        Intent i = new Intent(this, ManagementHome.class);
-        startActivity(i);
-        finish();
+        onBackPressed();
     }
 
     @Override

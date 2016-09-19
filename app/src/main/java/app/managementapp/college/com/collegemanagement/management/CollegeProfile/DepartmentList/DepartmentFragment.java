@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.R;
-import app.managementapp.college.com.collegemanagement.api.CollegeProfile.Department;
+import app.managementapp.college.com.collegemanagement.api.CollegeProfile.DepartmentList;
 
 public class DepartmentFragment extends Fragment {
 
@@ -22,7 +23,7 @@ public class DepartmentFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private List<Department> mDepartmentList;
+    private List<DepartmentList> mDepartmentList;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -33,11 +34,12 @@ public class DepartmentFragment extends Fragment {
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static DepartmentFragment newInstance(List<Department> departmentList) {
+    public static DepartmentFragment newInstance(List<DepartmentList> departmentList) {
         DepartmentFragment fragment = new DepartmentFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, 0);
-        args.putParcelableArrayList("dept", (ArrayList<Department>) departmentList);
+        args.putParcelableArrayList("dept", (ArrayList<DepartmentList>) departmentList);
+        Log.i("deptarg", "" + departmentList);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,6 +51,7 @@ public class DepartmentFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
             mDepartmentList = getArguments().getParcelableArrayList("dept");
+            Log.i("dept", "" + mDepartmentList);
         }
     }
 

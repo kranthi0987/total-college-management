@@ -9,7 +9,6 @@ import android.view.View;
 
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.UniversityProfile.DataList;
-import app.managementapp.college.com.collegemanagement.management.ManagementHome;
 
 public class UniversityProfileActivity extends AppCompatActivity implements UniversityFragment.OnListFragmentInteractionListener {
 
@@ -31,15 +30,10 @@ public class UniversityProfileActivity extends AppCompatActivity implements Univ
         fragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit();
     }
 
-    @Override
-    public void onBackPressed() {
-        moveToLanding();
-    }
+
 
     private void moveToLanding() {
-        Intent i = new Intent(this, ManagementHome.class);
-        startActivity(i);
-        finish();
+        onBackPressed();
     }
 
 

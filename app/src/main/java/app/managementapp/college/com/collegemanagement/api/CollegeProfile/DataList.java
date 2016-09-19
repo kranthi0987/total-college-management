@@ -42,9 +42,9 @@ public class DataList implements Parcelable {
     @SerializedName("CollegeName")
     @Expose
     private String collegeName;
-    @SerializedName("Department")
+    @SerializedName("DepartmentList")
     @Expose
-    private List<Department> departmentList = new ArrayList<Department>();
+    private List<DepartmentList> departmentList = new ArrayList<DepartmentList>();
     @SerializedName("Email")
     @Expose
     private String email;
@@ -65,7 +65,7 @@ public class DataList implements Parcelable {
         this.universityShortName = in.readString();
         this.collegeID = (Integer) in.readValue(Integer.class.getClassLoader());
         this.collegeName = in.readString();
-        this.departmentList = in.createTypedArrayList(Department.CREATOR);
+        this.departmentList = in.createTypedArrayList(DepartmentList.CREATOR);
         this.email = in.readString();
         this.fax = in.readString();
         this.webSite = in.readString();
@@ -184,16 +184,16 @@ public class DataList implements Parcelable {
      * @return
      *     The departmentList
      */
-    public List<Department> getDepartmentList() {
+    public List<DepartmentList> getDepartmentList() {
         return departmentList;
     }
 
     /**
      *
      * @param departmentList
-     *     The Department
+     *     The DepartmentList
      */
-    public void setDepartmentList(List<Department> departmentList) {
+    public void setDepartmentList(List<DepartmentList> departmentList) {
         this.departmentList = departmentList;
     }
 

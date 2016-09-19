@@ -9,13 +9,13 @@ import android.widget.TextView;
 import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.R;
-import app.managementapp.college.com.collegemanagement.api.CollegeProfile.Department;
+import app.managementapp.college.com.collegemanagement.api.CollegeProfile.DepartmentList;
 
 public class DepartmentRecyclerViewAdapter extends RecyclerView.Adapter<DepartmentRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Department> mValues;
+    private final List<DepartmentList> mValues;
 
-    public DepartmentRecyclerViewAdapter(List<Department> items) {
+    public DepartmentRecyclerViewAdapter(List<DepartmentList> items) {
         mValues = items;
     }
 
@@ -30,7 +30,7 @@ public class DepartmentRecyclerViewAdapter extends RecyclerView.Adapter<Departme
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mDepartmentName.setText(mValues.get(position).getDepartmentName());
-        holder.mHodName.setText(mValues.get(position).getDepartmentHODID());
+        holder.mHodName.setText(mValues.get(position).getHODName());
         holder.mHodPhone.setText(mValues.get(position).getHODPhone());
         holder.mHodQualification.setText(mValues.get(position).getQualification());
     }
@@ -47,7 +47,7 @@ public class DepartmentRecyclerViewAdapter extends RecyclerView.Adapter<Departme
         public final TextView mHodPhone;
         public final TextView mHodQualification;
 
-        public Department mItem;
+        public DepartmentList mItem;
 
         public ViewHolder(View view) {
             super(view);

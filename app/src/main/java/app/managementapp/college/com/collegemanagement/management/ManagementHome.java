@@ -119,7 +119,7 @@ public class ManagementHome extends AppCompatActivity
         Palette.generateAsync(decodedByte, new Palette.PaletteAsyncListener() {
             public void onGenerated(Palette palette) {
                 // Do something with colors...
-                headerView.setBackgroundColor(palette.getVibrantColor(Color.BLACK));
+                headerView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 nameLabel.setTextColor(palette.getMutedColor(Color.WHITE));
                 departmentLabel.setTextColor(palette.getMutedColor(Color.BLACK));
                 phoneLabel.setTextColor(palette.getMutedColor(Color.BLACK));

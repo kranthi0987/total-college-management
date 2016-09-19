@@ -8,17 +8,17 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Department implements Parcelable {
+public class DepartmentList implements Parcelable {
 
-    public static final Parcelable.Creator<Department> CREATOR = new Parcelable.Creator<Department>() {
+    public static final Parcelable.Creator<DepartmentList> CREATOR = new Parcelable.Creator<DepartmentList>() {
         @Override
-        public Department createFromParcel(Parcel source) {
-            return new Department(source);
+        public DepartmentList createFromParcel(Parcel source) {
+            return new DepartmentList(source);
         }
 
         @Override
-        public Department[] newArray(int size) {
-            return new Department[size];
+        public DepartmentList[] newArray(int size) {
+            return new DepartmentList[size];
         }
     };
     @SerializedName("DepartmentHODID")
@@ -43,10 +43,10 @@ public class Department implements Parcelable {
     @Expose
     private String qualification;
 
-    public Department() {
+    public DepartmentList() {
     }
 
-    protected Department(Parcel in) {
+    protected DepartmentList(Parcel in) {
         this.departmentHODID = (Integer) in.readValue(Integer.class.getClassLoader());
         this.departmentID = (Integer) in.readValue(Integer.class.getClassLoader());
         this.departmentName = in.readString();
@@ -57,126 +57,98 @@ public class Department implements Parcelable {
     }
 
     /**
-     *
-     * @return
-     *     The departmentHODID
+     * @return The departmentHODID
      */
     public Integer getDepartmentHODID() {
         return departmentHODID;
     }
 
     /**
-     *
-     * @param departmentHODID
-     *     The DepartmentHODID
+     * @param departmentHODID The DepartmentHODID
      */
     public void setDepartmentHODID(Integer departmentHODID) {
         this.departmentHODID = departmentHODID;
     }
 
     /**
-     *
-     * @return
-     *     The departmentID
+     * @return The departmentID
      */
     public Integer getDepartmentID() {
         return departmentID;
     }
 
     /**
-     *
-     * @param departmentID
-     *     The DepartmentID
+     * @param departmentID The DepartmentID
      */
     public void setDepartmentID(Integer departmentID) {
         this.departmentID = departmentID;
     }
 
     /**
-     *
-     * @return
-     *     The departmentName
+     * @return The departmentName
      */
     public String getDepartmentName() {
         return departmentName;
     }
 
     /**
-     *
-     * @param departmentName
-     *     The DepartmentName
+     * @param departmentName The DepartmentName
      */
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
     }
 
     /**
-     *
-     * @return
-     *     The hODName
+     * @return The hODName
      */
     public String getHODName() {
         return hODName;
     }
 
     /**
-     *
-     * @param hODName
-     *     The HODName
+     * @param hODName The HODName
      */
     public void setHODName(String hODName) {
         this.hODName = hODName;
     }
 
     /**
-     *
-     * @return
-     *     The hODPhone
+     * @return The hODPhone
      */
     public String getHODPhone() {
         return hODPhone;
     }
 
     /**
-     *
-     * @param hODPhone
-     *     The HODPhone
+     * @param hODPhone The HODPhone
      */
     public void setHODPhone(String hODPhone) {
         this.hODPhone = hODPhone;
     }
 
     /**
-     *
-     * @return
-     *     The mGUID
+     * @return The mGUID
      */
     public String getMGUID() {
         return mGUID;
     }
 
     /**
-     *
-     * @param mGUID
-     *     The MGUID
+     * @param mGUID The MGUID
      */
     public void setMGUID(String mGUID) {
         this.mGUID = mGUID;
     }
 
     /**
-     *
-     * @return
-     *     The qualification
+     * @return The qualification
      */
     public String getQualification() {
         return qualification;
     }
 
     /**
-     *
-     * @param qualification
-     *     The Qualification
+     * @param qualification The Qualification
      */
     public void setQualification(String qualification) {
         this.qualification = qualification;

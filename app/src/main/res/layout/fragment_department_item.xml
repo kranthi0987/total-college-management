@@ -8,25 +8,21 @@
         android:id="@+id/dept_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
         android:text="Department Name" />
 
     <TextView
         android:id="@+id/hod_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/hod_number"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/hod_qualification"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
