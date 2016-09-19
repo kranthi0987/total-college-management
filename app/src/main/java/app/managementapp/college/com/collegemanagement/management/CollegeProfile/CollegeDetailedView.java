@@ -1,11 +1,16 @@
 package app.managementapp.college.com.collegemanagement.management.CollegeProfile;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import app.managementapp.college.com.collegemanagement.R;
@@ -31,9 +36,22 @@ public class CollegeDetailedView extends AppCompatActivity implements CollegeLis
         dataList = getIntent().getParcelableExtra("data");
         Log.d("college", "onCreate: " + dataList);
         Log.d("college", "onCreate: " + dataList.getCollegeName());
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        DepartmentFragment fragment = DepartmentFragment.newInstance(dataList.getDepartmentList());
-        fragmentManager.beginTransaction().add(R.id.department_list_container, fragment).commit();
+        Log.d("college", "onCreate: " + dataList.getUniversityName());
+        Log.d("college", "onCreate: " + dataList.getEmail());
+        Log.d("college", "onCreate: " + dataList.getFax());
+
+        Bitmap decodedBitmap = null;
+        ImageView collegeimage = (ImageView) findViewById(R.id.college_profile_pic);
+        try {
+            byte[] decodedString = Base64.decode(dataList.getBase64Image(), Base64.DEFAULT);
+            decodedBitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            collegeimage.setImageBitmap(decodedBitmap);
+        } catch (Exception e) {
+            //// TODO: 9/19/2016 change this try catch
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                collegeimage.setImageDrawable(getDrawable(R.drawable.menu_icon_colege_profile));
+            }
+        }
 
 
         TextView collegeName = (TextView) findViewById(R.id.college_name);
@@ -46,8 +64,13 @@ public class CollegeDetailedView extends AppCompatActivity implements CollegeLis
         fax.setText(dataList.getFax());
         TextView website = (TextView) findViewById(R.id.website);
         website.setText(dataList.getWebSite());
-//        TextView addressal=(TextView)findViewById(R.id.addressdetails);
-//        addressal.setText(dataList.getAddress().toString());
+        TextView address = (TextView) findViewById(R.id.addressHolder);
+        address.setText(dataList.getAddress().toString());
+
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        DepartmentFragment fragment = DepartmentFragment.newInstance(dataList.getDepartmentList());
+        fragmentManager.beginTransaction().add(R.id.department_list_container, fragment).commit();
 
 
     }

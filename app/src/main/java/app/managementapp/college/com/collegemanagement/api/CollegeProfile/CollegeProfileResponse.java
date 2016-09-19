@@ -13,10 +13,10 @@ import java.util.List;
 
 public class CollegeProfileResponse implements Parcelable {
 
-    public static final Creator<CollegeProfileResponse> CREATOR = new Creator<CollegeProfileResponse>() {
+    public static final Parcelable.Creator<CollegeProfileResponse> CREATOR = new Parcelable.Creator<CollegeProfileResponse>() {
         @Override
-        public CollegeProfileResponse createFromParcel(Parcel in) {
-            return new CollegeProfileResponse(in);
+        public CollegeProfileResponse createFromParcel(Parcel source) {
+            return new CollegeProfileResponse(source);
         }
 
         @Override
@@ -37,62 +37,83 @@ public class CollegeProfileResponse implements Parcelable {
     @Expose
     private Integer serviceResult;
 
+    public CollegeProfileResponse() {
+    }
+
     protected CollegeProfileResponse(Parcel in) {
-        dataList = in.createTypedArrayList(DataList.CREATOR);
-        extendedToken = in.readString();
+        this.dataList = in.createTypedArrayList(DataList.CREATOR);
+        this.errorMessage = in.readParcelable(Object.class.getClassLoader());
+        this.extendedToken = in.readString();
+        this.serviceResult = (Integer) in.readValue(Integer.class.getClassLoader());
     }
 
     /**
-     * @return The dataList
+     *
+     * @return
+     *     The dataList
      */
     public List<DataList> getDataList() {
         return dataList;
     }
 
     /**
-     * @param dataList The DataList
+     *
+     * @param dataList
+     *     The DataList
      */
     public void setDataList(List<DataList> dataList) {
         this.dataList = dataList;
     }
 
     /**
-     * @return The errorMessage
+     *
+     * @return
+     *     The errorMessage
      */
     public Object getErrorMessage() {
         return errorMessage;
     }
 
     /**
-     * @param errorMessage The ErrorMessage
+     *
+     * @param errorMessage
+     *     The ErrorMessage
      */
     public void setErrorMessage(Object errorMessage) {
         this.errorMessage = errorMessage;
     }
 
     /**
-     * @return The extendedToken
+     *
+     * @return
+     *     The extendedToken
      */
     public String getExtendedToken() {
         return extendedToken;
     }
 
     /**
-     * @param extendedToken The ExtendedToken
+     *
+     * @param extendedToken
+     *     The ExtendedToken
      */
     public void setExtendedToken(String extendedToken) {
         this.extendedToken = extendedToken;
     }
 
     /**
-     * @return The serviceResult
+     *
+     * @return
+     *     The serviceResult
      */
     public Integer getServiceResult() {
         return serviceResult;
     }
 
     /**
-     * @param serviceResult The ServiceResult
+     *
+     * @param serviceResult
+     *     The ServiceResult
      */
     public void setServiceResult(Integer serviceResult) {
         this.serviceResult = serviceResult;
@@ -105,7 +126,9 @@ public class CollegeProfileResponse implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(dataList);
-        dest.writeString(extendedToken);
+        dest.writeTypedList(this.dataList);
+        dest.writeParcelable((Parcelable) this.errorMessage, flags);
+        dest.writeString(this.extendedToken);
+        dest.writeValue(this.serviceResult);
     }
 }

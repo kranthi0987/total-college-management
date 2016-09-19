@@ -81,7 +81,7 @@ public class CollegeListFragment extends Fragment {
         loginCall.enqueue(new Callback<RegularLoginResponse>() {
             @Override
             public void onResponse(Call<RegularLoginResponse> call, Response<RegularLoginResponse> response) {
-                final Call<CollegeProfileResponse> collegeListResponseCall = collegeManagementApiService.getCollegeProfile(response.body().getToken(), 0);
+                final Call<CollegeProfileResponse> collegeListResponseCall = collegeManagementApiService.getCollegeProfile(response.body().getToken(), 1);
                 collegeListResponseCall.enqueue(new Callback<CollegeProfileResponse>() {
                     @Override
                     public void onResponse(Call<CollegeProfileResponse> call, Response<CollegeProfileResponse> response) {

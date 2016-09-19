@@ -66,6 +66,11 @@ public class Address implements Parcelable {
     }
 
     @Override
+    public String toString() {
+        return getAddress() + "\n" + getCity() + "\n" + getState() + "\n" + getState() + "\n";
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }

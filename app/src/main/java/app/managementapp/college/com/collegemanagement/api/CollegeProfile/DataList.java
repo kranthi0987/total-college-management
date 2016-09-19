@@ -13,10 +13,10 @@ import java.util.List;
 
 public class DataList implements Parcelable {
 
-    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+    public static final Parcelable.Creator<DataList> CREATOR = new Parcelable.Creator<DataList>() {
         @Override
-        public DataList createFromParcel(Parcel in) {
-            return new DataList(in);
+        public DataList createFromParcel(Parcel source) {
+            return new DataList(source);
         }
 
         @Override
@@ -55,151 +55,197 @@ public class DataList implements Parcelable {
     @Expose
     private String webSite;
 
+    public DataList() {
+    }
+
     protected DataList(Parcel in) {
-        base64Image = in.readString();
-        universityName = in.readString();
-        universityShortName = in.readString();
-        collegeName = in.readString();
-        email = in.readString();
-        fax = in.readString();
-        webSite = in.readString();
+        this.address = in.readParcelable(Address.class.getClassLoader());
+        this.base64Image = in.readString();
+        this.universityName = in.readString();
+        this.universityShortName = in.readString();
+        this.collegeID = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.collegeName = in.readString();
+        this.departmentList = in.createTypedArrayList(Department.CREATOR);
+        this.email = in.readString();
+        this.fax = in.readString();
+        this.webSite = in.readString();
     }
 
     /**
-     * @return The address
+     *
+     * @return
+     *     The address
      */
     public Address getAddress() {
         return address;
     }
 
     /**
-     * @param address The Address
+     *
+     * @param address
+     *     The Address
      */
     public void setAddress(Address address) {
         this.address = address;
     }
 
     /**
-     * @return The base64Image
+     *
+     * @return
+     *     The base64Image
      */
     public String getBase64Image() {
         return base64Image;
     }
 
     /**
-     * @param base64Image The Base64Image
+     *
+     * @param base64Image
+     *     The Base64Image
      */
     public void setBase64Image(String base64Image) {
         this.base64Image = base64Image;
     }
 
     /**
-     * @return The universityName
+     *
+     * @return
+     *     The universityName
      */
     public String getUniversityName() {
         return universityName;
     }
 
     /**
-     * @param universityName The UniversityName
+     *
+     * @param universityName
+     *     The UniversityName
      */
     public void setUniversityName(String universityName) {
         this.universityName = universityName;
     }
 
     /**
-     * @return The universityShortName
+     *
+     * @return
+     *     The universityShortName
      */
     public String getUniversityShortName() {
         return universityShortName;
     }
 
     /**
-     * @param universityShortName The UniversityShortName
+     *
+     * @param universityShortName
+     *     The UniversityShortName
      */
     public void setUniversityShortName(String universityShortName) {
         this.universityShortName = universityShortName;
     }
 
     /**
-     * @return The collegeID
+     *
+     * @return
+     *     The collegeID
      */
     public Integer getCollegeID() {
         return collegeID;
     }
 
     /**
-     * @param collegeID The CollegeID
+     *
+     * @param collegeID
+     *     The CollegeID
      */
     public void setCollegeID(Integer collegeID) {
         this.collegeID = collegeID;
     }
 
     /**
-     * @return The collegeName
+     *
+     * @return
+     *     The collegeName
      */
     public String getCollegeName() {
         return collegeName;
     }
 
     /**
-     * @param collegeName The CollegeName
+     *
+     * @param collegeName
+     *     The CollegeName
      */
     public void setCollegeName(String collegeName) {
         this.collegeName = collegeName;
     }
 
     /**
-     * @return The departmentList
+     *
+     * @return
+     *     The departmentList
      */
     public List<Department> getDepartmentList() {
         return departmentList;
     }
 
     /**
-     * @param departmentList The Department
+     *
+     * @param departmentList
+     *     The Department
      */
     public void setDepartmentList(List<Department> departmentList) {
         this.departmentList = departmentList;
     }
 
     /**
-     * @return The email
+     *
+     * @return
+     *     The email
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * @param email The Email
+     *
+     * @param email
+     *     The Email
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     * @return The fax
+     *
+     * @return
+     *     The fax
      */
     public String getFax() {
         return fax;
     }
 
     /**
-     * @param fax The Fax
+     *
+     * @param fax
+     *     The Fax
      */
     public void setFax(String fax) {
         this.fax = fax;
     }
 
     /**
-     * @return The webSite
+     *
+     * @return
+     *     The webSite
      */
     public String getWebSite() {
         return webSite;
     }
 
     /**
-     * @param webSite The WebSite
+     *
+     * @param webSite
+     *     The WebSite
      */
     public void setWebSite(String webSite) {
         this.webSite = webSite;
@@ -212,12 +258,15 @@ public class DataList implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(base64Image);
-        dest.writeString(universityName);
-        dest.writeString(universityShortName);
-        dest.writeString(collegeName);
-        dest.writeString(email);
-        dest.writeString(fax);
-        dest.writeString(webSite);
+        dest.writeParcelable(this.address, flags);
+        dest.writeString(this.base64Image);
+        dest.writeString(this.universityName);
+        dest.writeString(this.universityShortName);
+        dest.writeValue(this.collegeID);
+        dest.writeString(this.collegeName);
+        dest.writeTypedList(this.departmentList);
+        dest.writeString(this.email);
+        dest.writeString(this.fax);
+        dest.writeString(this.webSite);
     }
 }
