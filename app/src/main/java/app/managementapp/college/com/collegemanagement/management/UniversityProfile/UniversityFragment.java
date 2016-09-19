@@ -20,7 +20,6 @@ import app.managementapp.college.com.collegemanagement.api.Authentication.Regula
 import app.managementapp.college.com.collegemanagement.api.CollegeManagementApiService;
 import app.managementapp.college.com.collegemanagement.api.ServiceGenerator;
 import app.managementapp.college.com.collegemanagement.api.UniversityProfile.UniversityProfileResponse;
-import app.managementapp.college.com.collegemanagement.management.CollegeProfile.CollegeProfileActivity;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -81,14 +80,14 @@ public class UniversityFragment extends Fragment {
         loginCall.enqueue(new Callback<RegularLoginResponse>() {
             @Override
             public void onResponse(Call<RegularLoginResponse> call, Response<RegularLoginResponse> response) {
-                final Call<UniversityProfileResponse> studentListResponseCall = collegeManagementApiService.getUniversityProfile(response.body().getToken(), 0);
-                studentListResponseCall.enqueue(new Callback<UniversityProfileResponse>() {
+                final Call<UniversityProfileResponse> universityResponseCall = collegeManagementApiService.getUniversityProfile(response.body().getToken(), 0);
+                universityResponseCall.enqueue(new Callback<UniversityProfileResponse>() {
                     @Override
                     public void onResponse(Call<UniversityProfileResponse> call, Response<UniversityProfileResponse> response) {
                         universityRecyclerViewAdapter.mValues = response.body().getDataList();
                         universityRecyclerViewAdapter.notifyDataSetChanged();
                         if (response.body().getDataList().size() == 1) {
-                            i = new Intent(getActivity(), CollegeProfileActivity.class);
+                            i = new Intent(getActivity(), UniversityDetailedActivity.class);
                             startActivity(i);
                         }
 

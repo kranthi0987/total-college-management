@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.UniversityProfile.DataList;
@@ -27,8 +26,11 @@ public class UniversityDetailedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_university_detailed);
         findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
         data = getIntent().getParcelableExtra("data");
-        TextView about = (TextView) findViewById(R.id.aboutdetails);
-        about.setText(data.getUniversityID());
+        Log.d("university", "onCreate: " + data);
+//        TextView about = (TextView) findViewById(R.id.aboutdetails);
+//        about.setText(data.getUniversityID());
+
+
 
     }
 

@@ -12,6 +12,17 @@ import java.util.List;
 
 public class College implements Parcelable {
 
+    public static final Creator<College> CREATOR = new Creator<College>() {
+        @Override
+        public College createFromParcel(Parcel in) {
+            return new College(in);
+        }
+
+        @Override
+        public College[] newArray(int size) {
+            return new College[size];
+        }
+    };
     @SerializedName("AddressList")
     @Expose
     private List<Object> addressList = new ArrayList<Object>();
@@ -51,6 +62,10 @@ public class College implements Parcelable {
     @SerializedName("Website")
     @Expose
     private Object website;
+
+    protected College(Parcel in) {
+        collegeAddress = in.readParcelable(CollegeAddress.class.getClassLoader());
+    }
 
     /**
      * @return The addressList
@@ -241,6 +256,6 @@ public class College implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeParcelable(collegeAddress, flags);
     }
 }

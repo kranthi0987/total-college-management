@@ -119,7 +119,7 @@ public class ManagementHome extends AppCompatActivity
         Palette.generateAsync(decodedByte, new Palette.PaletteAsyncListener() {
             public void onGenerated(Palette palette) {
                 // Do something with colors...
-                headerView.setBackgroundColor(palette.getVibrantColor(Color.BLUE));
+                headerView.setBackgroundColor(palette.getVibrantColor(Color.BLACK));
                 nameLabel.setTextColor(palette.getMutedColor(Color.WHITE));
                 departmentLabel.setTextColor(palette.getMutedColor(Color.BLACK));
                 phoneLabel.setTextColor(palette.getMutedColor(Color.BLACK));
@@ -146,9 +146,13 @@ public class ManagementHome extends AppCompatActivity
                             Log.i("feed",response.body().toString());
                             data=response.body().getDataList().get(0);
                             nameLabel.setText(data.getFirstName());
+                            nameLabel.setTextColor(R.color.black);
                             emailLabel.setText(data.getEmail());
+                            emailLabel.setTextColor(R.color.black);
                             departmentLabel.setText(data.getDepartment());
+                            departmentLabel.setTextColor(R.color.black);
                             phoneLabel.setText(data.getPhone());
+                            phoneLabel.setTextColor(R.color.black);
                         }
                         catch (NullPointerException e){
                             Toast.makeText(getApplicationContext(),"No Data from Server",Toast.LENGTH_SHORT).show();
@@ -188,8 +192,6 @@ public class ManagementHome extends AppCompatActivity
         MenuGridAdapter mAdapter = new MenuGridAdapter(this, getMenuData(this));
         recyclerView.setAdapter(mAdapter);
     }
-//
-
 
     public void clicked(String clickOn) {
         Log.d("yyy", "clicked: " + clickOn);
@@ -222,6 +224,8 @@ public class ManagementHome extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             Intent intent = new Intent(this, LoginActivity.class);
+            Toast.makeText(getApplicationContext(),
+                    "logged out", Toast.LENGTH_LONG).show();
             startActivity(intent);
 
             return true;
@@ -237,8 +241,11 @@ public class ManagementHome extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.nav_logout) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            Toast.makeText(getApplicationContext(),
+                    "logged out", Toast.LENGTH_LONG).show();
+            startActivity(intent);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
