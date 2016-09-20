@@ -18,8 +18,9 @@ public class AdmissionDetails extends AbstractOtherDetails {
     private static final String DEBUG_TAG = "admissionDetails";
     List<OtherAdmissionDetailsItem> admissionDetailsList;
 
-    public AdmissionDetails() {
+    public AdmissionDetails(String code) {
         super();
+        super.setID(code);
     }
 
 
@@ -37,8 +38,6 @@ public class AdmissionDetails extends AbstractOtherDetails {
                 List<OtherAdmissionDetailsItem> admissionDetailsList = admissionDetailsList(resultJSON.getJSONArray("DataList"));
 
                 Log.d(DEBUG_TAG, "init: Admission size " + admissionDetailsList.size());
-
-
 //                String AdmissionMonth;
 //                int ApplicationNo;
 //                int AdmissionYear;
@@ -50,7 +49,6 @@ public class AdmissionDetails extends AbstractOtherDetails {
 //                String EntranceExam;
 //                String Quota;
 //                String Sem;
-
                 for (int i = 0; i < admissionDetailsList.size(); i++) {
                     OtherAdmissionDetailsItem item = admissionDetailsList.get(i);
 
@@ -119,8 +117,8 @@ public class AdmissionDetails extends AbstractOtherDetails {
         return data;
     }
 
-    public String getURL(String id) {
-        return "/ManagementService.svc/GetAdmissionDetails?StudentID=10";
+    public String getURL() {
+        return "/ManagementService.svc/GetAdmissionDetails?StudentID=" + super.id;
     }
 
 

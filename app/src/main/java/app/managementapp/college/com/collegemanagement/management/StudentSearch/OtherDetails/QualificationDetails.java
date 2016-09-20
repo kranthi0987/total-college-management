@@ -100,7 +100,7 @@ public class QualificationDetails extends AbstractOtherDetails {
     }
 
     public String getURL(String id) {
-        return "/ManagementService.svc/GetAttendanceDetails?StudentID=10";
+        return "/ManagementService.svc/GetAttendanceDetails?StudentID=" + id;
     }
 
 

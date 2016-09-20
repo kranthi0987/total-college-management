@@ -25,13 +25,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.LoginActivity;
 import app.managementapp.college.com.collegemanagement.R;
+import app.managementapp.college.com.collegemanagement.api.StudentSearch.StudentList.DataList;
 import app.managementapp.college.com.collegemanagement.management.StudentSearch.StudentDetails;
 import app.managementapp.college.com.collegemanagement.model.GlobalData;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
@@ -81,6 +81,8 @@ public class CommonOtherDetails extends AppCompatActivity {
 
         Intent i2 = getIntent();
         Integer CommonClassCase = i2.getIntExtra("case1", 0);
+        DataList dataList = i2.getParcelableExtra("data");
+        dataList.getCode();
 // i.getExtras().getParcelable("data");
 //                    = (Integer) i.getIntExtra("admission", 6);
 //            Integer studentId = (Integer) i.getIntExtra("studentId", 0);
@@ -91,25 +93,25 @@ public class CommonOtherDetails extends AppCompatActivity {
 
         switch (CommonClassCase) {
             case 1:
-                commonClass = new AdmissionDetails();
+                commonClass = new AdmissionDetails(dataList.getCode());
                 break;
             case 2:
-                commonClass = new AttendanceDetails();
+                commonClass = new AttendanceDetails(dataList.getCode());
                 break;
             case 3:
-                commonClass = new ExamMarksDetails();
+                commonClass = new ExamMarksDetails(dataList.getCode());
                 break;
             case 4:
-                commonClass = new PaymentDetails();
+                commonClass = new PaymentDetails(dataList.getCode());
                 break;
             case 5:
-                commonClass = new QualificationDetails();
+                commonClass = new QualificationDetails(dataList.getCode());
                 break;
             case 6:
-                commonClass = new StudentActivityDetails();
+                commonClass = new StudentActivityDetails(dataList.getCode());
                 break;
             default:
-                commonClass = new AbstractOtherDetails();
+                commonClass = new AbstractOtherDetails(dataList.getCode());
                 break;
         }
         clickSetup();
@@ -147,7 +149,7 @@ public class CommonOtherDetails extends AppCompatActivity {
 //            String GetFeePaymentDetails = credentialManager.getUniversityUrl() + "/ManagementService.svc/GetFeePaymentDetails?StudentID=10";
 //            Log.d(DEBUG_TAG, "makeNetworkCall: url: " + GetFeePaymentDetails);
             progressBarHolder.setVisibility(View.VISIBLE);
-            new CommonOthersDetailsTask().execute(loginURL, credentialManager.getUniversityUrl() + commonClass.getURL(""));
+            new CommonOthersDetailsTask().execute(loginURL, credentialManager.getUniversityUrl() + commonClass.getURL());
         } else {
             Toast.makeText(this, "Network not available.", Toast.LENGTH_SHORT).show();
 
@@ -158,8 +160,7 @@ public class CommonOtherDetails extends AppCompatActivity {
         ConnectivityManager connMgr = (ConnectivityManager)
                 this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) return true;
-        return false;
+        return networkInfo != null && networkInfo.isConnected();
     }
 
     private String downloadUrl(String myurl) throws IOException {
@@ -201,7 +202,7 @@ public class CommonOtherDetails extends AppCompatActivity {
         return "";
     }
 
-    public String readIt(InputStream stream, int len) throws IOException, UnsupportedEncodingException {
+    public String readIt(InputStream stream, int len) throws IOException {
         Reader reader = null;
         reader = new InputStreamReader(stream, "UTF-8");
         BufferedReader r = new BufferedReader(reader);

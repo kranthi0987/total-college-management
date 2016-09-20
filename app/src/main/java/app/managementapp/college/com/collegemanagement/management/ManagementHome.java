@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -120,10 +119,10 @@ public class ManagementHome extends AppCompatActivity
             public void onGenerated(Palette palette) {
                 // Do something with colors...
                 headerView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                nameLabel.setTextColor(palette.getMutedColor(Color.WHITE));
-                departmentLabel.setTextColor(palette.getMutedColor(Color.BLACK));
-                phoneLabel.setTextColor(palette.getMutedColor(Color.BLACK));
-                emailLabel.setTextColor(palette.getMutedColor(Color.BLACK));
+                nameLabel.setTextColor(getResources().getColor(R.color.white));
+                departmentLabel.setTextColor(getResources().getColor(R.color.white));
+                phoneLabel.setTextColor(getResources().getColor(R.color.white));
+                emailLabel.setTextColor(getResources().getColor(R.color.white));
             }
         });
 
@@ -146,13 +145,13 @@ public class ManagementHome extends AppCompatActivity
                             Log.i("feed",response.body().toString());
                             data=response.body().getDataList().get(0);
                             nameLabel.setText(data.getFirstName());
-                            nameLabel.setTextColor(R.color.black);
+
                             emailLabel.setText(data.getEmail());
-                            emailLabel.setTextColor(R.color.black);
+
                             departmentLabel.setText(data.getDepartment());
-                            departmentLabel.setTextColor(R.color.black);
+
                             phoneLabel.setText(data.getPhone());
-                            phoneLabel.setTextColor(R.color.black);
+
                         }
                         catch (NullPointerException e){
                             Toast.makeText(getApplicationContext(),"No Data from Server",Toast.LENGTH_SHORT).show();
