@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch.OtherDetails;
 
 import android.util.Log;
@@ -8,7 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.model.OtherAdmissionDetailsItem;
+import app.managementapp.college.com.collegemanagement.management.StudentSearch.Item.OtherAdmissionDetailsItem;
 
 /**
  * Created by Sanjay on 8/30/2016.
@@ -18,9 +22,8 @@ public class AdmissionDetails extends AbstractOtherDetails {
     private static final String DEBUG_TAG = "admissionDetails";
     List<OtherAdmissionDetailsItem> admissionDetailsList;
 
-    public AdmissionDetails(String code) {
+    public AdmissionDetails() {
         super();
-        super.setID(code);
     }
 
 
@@ -38,6 +41,8 @@ public class AdmissionDetails extends AbstractOtherDetails {
                 List<OtherAdmissionDetailsItem> admissionDetailsList = admissionDetailsList(resultJSON.getJSONArray("DataList"));
 
                 Log.d(DEBUG_TAG, "init: Admission size " + admissionDetailsList.size());
+
+
 //                String AdmissionMonth;
 //                int ApplicationNo;
 //                int AdmissionYear;
@@ -49,6 +54,7 @@ public class AdmissionDetails extends AbstractOtherDetails {
 //                String EntranceExam;
 //                String Quota;
 //                String Sem;
+
                 for (int i = 0; i < admissionDetailsList.size(); i++) {
                     OtherAdmissionDetailsItem item = admissionDetailsList.get(i);
 
@@ -117,8 +123,8 @@ public class AdmissionDetails extends AbstractOtherDetails {
         return data;
     }
 
-    public String getURL() {
-        return "/ManagementService.svc/GetAdmissionDetails?StudentID=" + super.id;
+    public String getURL(String id) {
+        return "/ManagementService.svc/GetAdmissionDetails?StudentID=10";
     }
 
 

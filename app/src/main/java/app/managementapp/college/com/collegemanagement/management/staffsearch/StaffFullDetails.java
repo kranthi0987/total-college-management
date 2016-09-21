@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StaffSearch;
 
 import android.content.Intent;
@@ -11,6 +15,7 @@ import android.widget.TextView;
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffList.DataList;
 import app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails.StaffCommonOtherDetails;
+import app.managementapp.college.com.collegemanagement.model.util.Converter;
 
 /**
  * Created by Sanjay on 9/7/2016.
@@ -33,9 +38,9 @@ public class StaffFullDetails extends AppCompatActivity {
         findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
         data = getIntent().getParcelableExtra("data");
         TextView textView = (TextView) this.findViewById(R.id.aboutdetails);
-        textView.setText(data.getFullName() +"\n" + data.getDOJ() + "\n" + data.getDateOfBirth() + "\n" + data.getEmail() + "\n" + data.getCode());
+        textView.setText(data.getFullName() + "\n" + Converter.retroDateConvert(data.getDOJ()) + "\n" + "DOB:" + Converter.retroDateConvert(data.getDateOfBirth()) + "\n" + data.getEmail() + "\n" + data.getCode());
         TextView addressTextView = (TextView) this.findViewById(R.id.addressdetails);
-        addressTextView.setText((CharSequence) data.getAddress());
+        addressTextView.setText(data.getAddress().toString());
 
     }
 

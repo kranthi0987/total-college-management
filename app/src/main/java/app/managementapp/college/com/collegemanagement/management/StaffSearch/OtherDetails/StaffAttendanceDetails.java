@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails;
 
 import android.util.Log;
@@ -8,7 +12,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.model.Staff.OtherStaffAttendanceDetailsItem;
+import app.managementapp.college.com.collegemanagement.management.StaffSearch.Item.OtherStaffAttendanceDetailsItem;
+import app.managementapp.college.com.collegemanagement.model.util.Converter;
 
 /**
  * Created by Sanjay on 9/2/2016.
@@ -82,7 +87,7 @@ public class StaffAttendanceDetails extends StaffAbstractOtherDetails {
                 JSONObject objectInArray = body.getJSONObject(i);
                 OtherStaffAttendanceDetailsItem OtherStaffattendanceDetailsItem = new OtherStaffAttendanceDetailsItem
                         (
-                                objectInArray.getString("Date"),
+                                Converter.retroDateConvert(objectInArray.getString("Date")),
                                 objectInArray.getString("InTime"),
                                 objectInArray.getString("IsLateSanctioned"),
                                 objectInArray.getString("LateRemark"),

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch.OtherDetails;
 
 import android.util.Log;
@@ -8,7 +12,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.model.OtherPaymentDetailsItem;
+import app.managementapp.college.com.collegemanagement.management.StudentSearch.Item.OtherPaymentDetailsItem;
+import app.managementapp.college.com.collegemanagement.model.util.Converter;
 
 /**
  * Created by Sanjay on 8/30/2016.
@@ -92,7 +97,7 @@ public class PaymentDetails extends AbstractOtherDetails {
                         (
                                 objectInArray.getString("FeeName"),
                                 objectInArray.getString("PaidAmount"),
-                                objectInArray.getString("PaymentDate"),
+                                Converter.retroDateConvert(objectInArray.getString("PaymentDate")),
                                 objectInArray.getString("PaymentModeWithDocNo"),
                                 objectInArray.getString("Receipt"),
                                 objectInArray.getString("RefundAmount"),

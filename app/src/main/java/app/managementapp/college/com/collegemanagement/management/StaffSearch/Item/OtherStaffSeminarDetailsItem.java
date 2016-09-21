@@ -1,4 +1,8 @@
-package app.managementapp.college.com.collegemanagement.model.Staff;
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.management.StaffSearch.Item;
 
 /**
  * Created by Sanjay on 9/2/2016.
@@ -24,6 +28,27 @@ public class OtherStaffSeminarDetailsItem {
                 String Name;
                 String StartDateTime;
                 String Type;
+
+    public OtherStaffSeminarDetailsItem(
+            String CertificateName,
+            String CertifiedDate,
+            String CertifiedFrom,
+            String Description,
+            String EndDateTime,
+            String Name,
+            String StartDateTime,
+            String Type
+    ) {
+        this.CertificateName = CertificateName;
+        this.CertifiedDate = CertifiedDate;
+        this.CertifiedFrom = CertifiedFrom;
+        this.Description = Description;
+        this.EndDateTime = EndDateTime;
+        this.Name = Name;
+        this.StartDateTime = StartDateTime;
+        this.Type = Type;
+
+    }
 
     public String getCertificateName() {
         return CertificateName;
@@ -87,27 +112,6 @@ public class OtherStaffSeminarDetailsItem {
 
     public void setType(String type) {
         Type = type;
-    }
-
-    public OtherStaffSeminarDetailsItem(
-            String CertificateName,
-            String CertifiedDate,
-            String CertifiedFrom,
-            String Description,
-            String EndDateTime,
-            String Name,
-            String StartDateTime,
-            String Type
-    ){
-        this.CertificateName=CertificateName;
-        this.CertifiedDate=CertifiedDate;
-        this.CertifiedFrom=CertifiedFrom;
-        this.Description=Description;
-        this.EndDateTime=EndDateTime;
-        this.Name=Name;
-        this.StartDateTime=StartDateTime;
-        this.Type=Type;
-
     }
 
 }

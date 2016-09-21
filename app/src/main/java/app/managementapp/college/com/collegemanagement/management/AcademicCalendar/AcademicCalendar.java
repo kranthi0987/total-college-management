@@ -1,4 +1,8 @@
-package app.managementapp.college.com.collegemanagement;
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.management.AcademicCalendar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +19,6 @@ import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
@@ -30,16 +33,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.adapters.AcademicCalendarAdapter;
+import app.managementapp.college.com.collegemanagement.LoginActivity;
+import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.management.ManagementHome;
-import app.managementapp.college.com.collegemanagement.model.AcademicCalendarItem;
 import app.managementapp.college.com.collegemanagement.model.GlobalData;
+import app.managementapp.college.com.collegemanagement.model.util.Converter;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
 import app.managementapp.college.com.collegemanagement.util.ErrorToaster;
 
@@ -91,7 +94,7 @@ public class AcademicCalendar extends AppCompatActivity {
         credentialManager = new CredentialManager(ctx);
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
         loginURL = credentialManager.getUniversityUrl() + "/AuthenticationService.svc/AuthenticateRequest?username=" + credentialManager.getUserName() + "&Password=" + credentialManager.getPassword();
-        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackclickListener);
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
         makeNetworkCall();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -103,7 +106,6 @@ public class AcademicCalendar extends AppCompatActivity {
 //         Make network call
         if (isNetworkAvailable()) {
             String getacademiccalendar = credentialManager.getUniversityUrl() + "/ManagementService.svc/GetAcademicCalendar";
-//            String getLeavetype = credentialManager.getUniversityUrl() + "/StaffAttendanceService.svc/GetLeavetype";
             Log.d(DEBUG_TAG, "makeNetworkCall: url: " + getacademiccalendar);
             progressBarHolder.setVisibility(View.VISIBLE);
             new AcademicCalendarTask().execute(loginURL, getacademiccalendar);
@@ -117,8 +119,7 @@ public class AcademicCalendar extends AppCompatActivity {
         ConnectivityManager connMgr = (ConnectivityManager)
                 ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) return true;
-        return false;
+        return networkInfo != null && networkInfo.isConnected();
     }
 
     private List<AcademicCalendarItem> getAcademicCalendarList(JSONArray dataList) {
@@ -131,11 +132,11 @@ public class AcademicCalendar extends AppCompatActivity {
                         objectInArray.getInt("BranchID"),
                         objectInArray.getString("Course"),
                         objectInArray.getInt("CourseID"),
-                        objectInArray.getString("EndDate"),
+                        Converter.retroDateConvert(objectInArray.getString("EndDate")),
                         objectInArray.getString("Event"),
                         objectInArray.getString("EventType"),
                         objectInArray.getString("Sem"),
-                        objectInArray.getString("StartDate"));
+                        Converter.retroDateConvert(objectInArray.getString("StartDate")));
                 data.add(academicCalendarItem);
             } catch (Exception e) {
                 Log.e(DEBUG_TAG, "getFeeSummaryList: " + e.getMessage());
@@ -307,7 +308,7 @@ public class AcademicCalendar extends AppCompatActivity {
             return "";
         }
 
-        public String readIt(InputStream stream, int len) throws IOException, UnsupportedEncodingException {
+        public String readIt(InputStream stream, int len) throws IOException {
             Reader reader = null;
             reader = new InputStreamReader(stream, "UTF-8");
         /*char[] buffer = new char[len];

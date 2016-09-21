@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch;
 
 import android.content.Intent;
@@ -6,9 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -40,7 +42,7 @@ public class StudentSearch extends AppCompatActivity {
     Spinner semesterSpinner;
     CredentialManager credentialManager;
     SpinnerLoading progressBarholder;
-    app.managementapp.college.com.collegemanagement.api.CourseList.DataList defaultcourse = new DataList();
+    DataList defaultcourse = new DataList();
     app.managementapp.college.com.collegemanagement.api.StudentSearch.SemesterList.DataList defaultsemester = new app.managementapp.college.com.collegemanagement.api.StudentSearch.SemesterList.DataList();
     app.managementapp.college.com.collegemanagement.api.StudentSearch.BranchList.DataList defaultbranch = new app.managementapp.college.com.collegemanagement.api.StudentSearch.BranchList.DataList();
 
@@ -62,7 +64,7 @@ public class StudentSearch extends AppCompatActivity {
 
         }
     };
-    private ArrayList<app.managementapp.college.com.collegemanagement.api.CourseList.DataList> courseList = new ArrayList<DataList>(3);
+    private ArrayList<DataList> courseList = new ArrayList<DataList>(3);
     private ArrayList<app.managementapp.college.com.collegemanagement.api.StudentSearch.BranchList.DataList> branchList;
     private ArrayList<app.managementapp.college.com.collegemanagement.api.StudentSearch.SemesterList.DataList> semesterList;
     private Call<RegularLoginResponse> loginCall;
@@ -86,8 +88,8 @@ public class StudentSearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_search);
-        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackclickListener);
-        ((Button) findViewById(R.id.searchStudents)).setOnClickListener(onSearchclickListener);
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
+        findViewById(R.id.searchStudents).setOnClickListener(onSearchclickListener);
         courseSpinner = (Spinner) this.findViewById(R.id.course_spinner);
         courseAdapter = new CourseDropDownAdapter(this, courseList);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -153,9 +155,9 @@ public class StudentSearch extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
                 branchSpinner.setEnabled(false);
-                branchAdapter.branchId = "";
-                semesterAdapter.semesterId = "";
-                courseAdapter.courseId = courseAdapter.courses.get(position).getDrpID();
+                BranchDropDownAdapter.branchId = "";
+                SemesterDropDownAdapter.semesterId = "";
+                CourseDropDownAdapter.courseId = courseAdapter.courses.get(position).getDrpID();
                 progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
                 loginCall = collegeManagementApiService.doRegularLogin(credentialManager.getUserName(), credentialManager.getPassword());
                 loginCall.enqueue(new Callback<RegularLoginResponse>() {
@@ -174,8 +176,8 @@ public class StudentSearch extends AppCompatActivity {
                                 semesterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, final int semposition, long id) {
-                                        semesterAdapter.semesterId = semesterAdapter.semesters.get(semposition).getDrpID();
-                                        branchAdapter.branchId = "";
+                                        SemesterDropDownAdapter.semesterId = semesterAdapter.semesters.get(semposition).getDrpID();
+                                        BranchDropDownAdapter.branchId = "";
 
                                         loginCall = collegeManagementApiService.doRegularLogin(credentialManager.getUserName(), credentialManager.getPassword());
                                         loginCall.enqueue(new Callback<RegularLoginResponse>() {
@@ -196,7 +198,7 @@ public class StudentSearch extends AppCompatActivity {
 
                                                             @Override
                                                             public void onItemSelected(AdapterView<?> parent, View view, int brposition, long id) {
-                                                                branchAdapter.branchId = branchAdapter.branches.get(brposition).getDrpID();
+                                                                BranchDropDownAdapter.branchId = branchAdapter.branches.get(brposition).getDrpID();
                                                             }
 
                                                             @Override

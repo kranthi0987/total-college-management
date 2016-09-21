@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails;
 
 import android.util.Log;
@@ -8,7 +12,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.model.Staff.OtherStaffMemoEntryDetailsItem;
+import app.managementapp.college.com.collegemanagement.management.StaffSearch.Item.OtherStaffMemoEntryDetailsItem;
+import app.managementapp.college.com.collegemanagement.model.util.Converter;
 
 /**
  * Created by Sanjay on 9/2/2016.
@@ -85,7 +90,7 @@ public class StaffMemoEntryDetails extends StaffAbstractOtherDetails {
                                 objectInArray.getString("Action"),
                                 objectInArray.getString("Activity"),
                                 objectInArray.getString("Description"),
-                                objectInArray.getString("MemoDate"),
+                                Converter.retroDateConvert(objectInArray.getString("MemoDate")),
                                 objectInArray.getString("ReportedBy")
                         );
                 data.add(OtherStaffMemoEntryDetailsItem);

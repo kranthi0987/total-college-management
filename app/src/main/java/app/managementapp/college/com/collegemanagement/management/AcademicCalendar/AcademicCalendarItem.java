@@ -1,4 +1,8 @@
-package app.managementapp.college.com.collegemanagement.model;
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.management.AcademicCalendar;
 
 /**
  * Created by Sanjay on 28/08/2016.

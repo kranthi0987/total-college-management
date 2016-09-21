@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails;
 
 import android.util.Log;
@@ -8,7 +12,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.model.Staff.OtherStaffSeminarDetailsItem;
+import app.managementapp.college.com.collegemanagement.management.StaffSearch.Item.OtherStaffSeminarDetailsItem;
+import app.managementapp.college.com.collegemanagement.model.util.Converter;
 
 
 /**
@@ -94,12 +99,12 @@ public class StaffSeminarDetails extends StaffAbstractOtherDetails {
                 OtherStaffSeminarDetailsItem OtherStaffseminarDetailsItem = new OtherStaffSeminarDetailsItem
                         (
                                 objectInArray.getString("CertificateName"),
-                                objectInArray.getString("CertifiedDate"),
+                                Converter.retroDateConvert(objectInArray.getString("CertifiedDate")),
                                 objectInArray.getString("CertifiedFrom"),
                                 objectInArray.getString("Description"),
-                                objectInArray.getString("EndDateTime"),
+                                Converter.retroDateConvert(objectInArray.getString("EndDateTime")),
                                 objectInArray.getString("Name"),
-                                objectInArray.getString("StartDateTime"),
+                                Converter.retroDateConvert(objectInArray.getString("StartDateTime")),
                                 objectInArray.getString("Type")
                         );
                 data.add(OtherStaffseminarDetailsItem);

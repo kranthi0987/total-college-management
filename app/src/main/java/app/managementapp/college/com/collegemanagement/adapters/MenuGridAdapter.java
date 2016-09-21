@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.adapters;
 
 import android.content.Context;
@@ -19,11 +23,11 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.AcademicCalendar;
 import app.managementapp.college.com.collegemanagement.ExternalExams;
 import app.managementapp.college.com.collegemanagement.InternalExams;
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.management.Absentees.Absentees;
+import app.managementapp.college.com.collegemanagement.management.AcademicCalendar.AcademicCalendar;
 import app.managementapp.college.com.collegemanagement.management.CollegeProfile.CollegeProfileActivity;
 import app.managementapp.college.com.collegemanagement.management.FeeSummary.FeeSummary;
 import app.managementapp.college.com.collegemanagement.management.Feedback.FeedbackList;

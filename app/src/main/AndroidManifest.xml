@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016.
+  -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.managementapp.college.com.collegemanagement">
 
@@ -96,7 +100,7 @@
             android:label="@string/title_activity_management_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AcademicCalendar"
+            android:name=".management.AcademicCalendar.AcademicCalendar"
             android:label="@string/title_activity_management_home"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

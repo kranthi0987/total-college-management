@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.model.util;
 
 import android.util.Log;
@@ -30,10 +34,26 @@ public class Converter {
 
     DateFormat keyFormatter = new SimpleDateFormat("dd-MM-yyyy");
 
+    public static String retroDateConvert(String restDate) {
+        String s = restDate.substring(6, restDate.length() - 2);
+        if (s.indexOf("+") > 0) s = s.substring(0, s.indexOf("+"));
+        long l = Long.parseLong(s);
+        Date d = new Date(l);
+        return getInFormatRetrofit(d, new SimpleDateFormat("dd/MM/yyyy"));
+    }
+
+    private static String getInFormatRetrofit(Date date, DateFormat formatter) {
+        try {
+            return formatter.format(date);
+        } catch (Exception e) {
+            Log.d(DEBUG_TAG, "getInFormat: " + e);
+        }
+        return null;
+    }
+
     public Map<Date, List<InternalInvigilationItem>> convertInternalInvigilationItems(String json) {
 
         Map<Date, List<InternalInvigilationItem>> finalData = new LinkedHashMap<Date, List<InternalInvigilationItem>>();
-        ;
         try {
             JSONObject resultJSON = new JSONObject(json);
             JSONArray dataList = resultJSON.getJSONArray("DataList");
@@ -63,7 +83,6 @@ public class Converter {
     public Map<String, List<InternalInvigilationItem>> convertInternalInvigilationItemsString(String json) {
 
         Map<String, List<InternalInvigilationItem>> finalData = new LinkedHashMap<String, List<InternalInvigilationItem>>();
-        ;
         try {
             JSONObject resultJSON = new JSONObject(json);
             JSONArray dataList = resultJSON.getJSONArray("DataList");
@@ -100,7 +119,6 @@ public class Converter {
     public Map<String, List<InternalInvigilationItem>> convertInvigilationSingleItemsString(String json) {
 
         Map<String, List<InternalInvigilationItem>> finalData = new LinkedHashMap<String, List<InternalInvigilationItem>>();
-        ;
         try {
             JSONObject resultJSON = new JSONObject(json);
             JSONArray dataList = resultJSON.getJSONArray("DataList");
@@ -180,7 +198,6 @@ public class Converter {
         return internalInvigilationItem;
     }
 
-
     public String invigilationDetailstoJson(List<InternalInvigilationItem> duties) {
         Iterator<InternalInvigilationItem> it = duties.iterator();
         String send = "{'DataList':[";
@@ -206,7 +223,6 @@ public class Converter {
     public Map<String, List<ExternalExamItem>> convertExternalExamsItemsString(String result) {
 
         Map<String, List<ExternalExamItem>> finalData = new LinkedHashMap<String, List<ExternalExamItem>>();
-        ;
         try {
             JSONObject resultJSON = new JSONObject(result);
             JSONArray dataList = resultJSON.getJSONArray("DataList");
@@ -319,7 +335,6 @@ public class Converter {
     public Map<String, List<ExternalExamItem>> convertExternalExamSingleItemsString(String extrs) {
 
         Map<String, List<ExternalExamItem>> finalData = new LinkedHashMap<String, List<ExternalExamItem>>();
-        ;
         try {
             JSONObject resultJSON = new JSONObject(extrs);
             JSONArray dataList = resultJSON.getJSONArray("DataList");
@@ -349,7 +364,6 @@ public class Converter {
     public Map<String, List<InternalExamItem>> convertInternalExamsItemsString(String result) {
 
         Map<String, List<InternalExamItem>> finalData = new LinkedHashMap<String, List<InternalExamItem>>();
-        ;
         try {
             JSONObject resultJSON = new JSONObject(result);
             JSONArray dataList = resultJSON.getJSONArray("DataList");
@@ -461,7 +475,6 @@ public class Converter {
     public Map<String, List<InternalExamItem>> convertInternalExamSingleItemsString(String extrs) {
 
         Map<String, List<InternalExamItem>> finalData = new LinkedHashMap<String, List<InternalExamItem>>();
-        ;
         try {
             JSONObject resultJSON = new JSONObject(extrs);
             JSONArray dataList = resultJSON.getJSONArray("DataList");
@@ -488,11 +501,9 @@ public class Converter {
         return finalData;
     }
 
-
     public Map<String, List<ClassData>> convertClassDataItemsString(String result) {
 
         Map<String, List<ClassData>> finalData = new LinkedHashMap<String, List<ClassData>>();
-        ;
         String ds = "";
         try {
             JSONObject resultJSON = new JSONObject(result).getJSONObject("GetClassScheduleResult");
@@ -611,7 +622,6 @@ public class Converter {
         return classData;
     }
 
-
     public String internalClassDataItemstoJson(List<ClassData> duties) {
 
         Iterator<ClassData> it = duties.iterator();
@@ -646,7 +656,6 @@ public class Converter {
     public Map<String, List<ClassData>> convertClassDataSingleItemsString(String extrs) {
 
         Map<String, List<ClassData>> finalData = new LinkedHashMap<String, List<ClassData>>();
-        ;
         try {
             JSONObject resultJSON = new JSONObject(extrs);
             JSONArray dataList = resultJSON.getJSONArray("DataList");
@@ -673,7 +682,6 @@ public class Converter {
         return finalData;
     }
 
-
     public String[] getApproverArray(JSONArray dataList) {
         String[] str;
         str = new String[dataList.length()];
@@ -689,7 +697,6 @@ public class Converter {
         return str;
     }
 
-
     public String[] getLeaveTypeArray(JSONArray dataList) {
         String[] str;
         str = new String[dataList.length()];
@@ -704,11 +711,9 @@ public class Converter {
         return str;
     }
 
-
     public Map<String, List<ClassData>> convertClassLeaveApplyItemsString(String extrs) {
 
         Map<String, List<ClassData>> finalData = new LinkedHashMap<String, List<ClassData>>();
-        ;
         try {
             JSONObject resultJSON = new JSONObject(extrs);
             JSONArray dataList = resultJSON.getJSONArray("DataList");

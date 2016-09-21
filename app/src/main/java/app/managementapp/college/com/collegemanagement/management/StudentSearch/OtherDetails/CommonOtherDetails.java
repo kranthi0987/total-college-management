@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch.OtherDetails;
 
 import android.content.Context;
@@ -93,25 +97,25 @@ public class CommonOtherDetails extends AppCompatActivity {
 
         switch (CommonClassCase) {
             case 1:
-                commonClass = new AdmissionDetails(dataList.getCode());
+                commonClass = new AdmissionDetails();
                 break;
             case 2:
-                commonClass = new AttendanceDetails(dataList.getCode());
+                commonClass = new AttendanceDetails();
                 break;
             case 3:
-                commonClass = new ExamMarksDetails(dataList.getCode());
+                commonClass = new ExamMarksDetails();
                 break;
             case 4:
-                commonClass = new PaymentDetails(dataList.getCode());
+                commonClass = new PaymentDetails();
                 break;
             case 5:
-                commonClass = new QualificationDetails(dataList.getCode());
+                commonClass = new QualificationDetails();
                 break;
             case 6:
-                commonClass = new StudentActivityDetails(dataList.getCode());
+                commonClass = new StudentActivityDetails();
                 break;
             default:
-                commonClass = new AbstractOtherDetails(dataList.getCode());
+                commonClass = new AbstractOtherDetails();
                 break;
         }
         clickSetup();
@@ -149,7 +153,7 @@ public class CommonOtherDetails extends AppCompatActivity {
 //            String GetFeePaymentDetails = credentialManager.getUniversityUrl() + "/ManagementService.svc/GetFeePaymentDetails?StudentID=10";
 //            Log.d(DEBUG_TAG, "makeNetworkCall: url: " + GetFeePaymentDetails);
             progressBarHolder.setVisibility(View.VISIBLE);
-            new CommonOthersDetailsTask().execute(loginURL, credentialManager.getUniversityUrl() + commonClass.getURL());
+            new CommonOthersDetailsTask().execute(loginURL, credentialManager.getUniversityUrl() + commonClass.getURL(""));
         } else {
             Toast.makeText(this, "Network not available.", Toast.LENGTH_SHORT).show();
 

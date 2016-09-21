@@ -1,4 +1,8 @@
-package app.managementapp.college.com.collegemanagement.model;
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.management.FeeSummary;
 
 /**
  * Created by yeshwanth on 8/27/2016.

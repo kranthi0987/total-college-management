@@ -1,4 +1,8 @@
-package app.managementapp.college.com.collegemanagement.model.Staff;
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.management.StaffSearch.Item;
 
 /**
  * Created by Sanjay on 9/2/2016.
@@ -18,6 +22,22 @@ public class OtherStaffMemoEntryDetailsItem {
         String Description;
         String MemoDate;
         String ReportedBy;
+
+    public OtherStaffMemoEntryDetailsItem(
+            String Action,
+            String Activity,
+            String Description,
+            String MemoDate,
+            String ReportedBy
+
+    ) {
+        this.Action = Action;
+        this.Activity = Activity;
+        this.Description = Description;
+        this.MemoDate = MemoDate;
+        this.ReportedBy = ReportedBy;
+
+    }
 
     public String getAction() {
         return Action;
@@ -57,22 +77,6 @@ public class OtherStaffMemoEntryDetailsItem {
 
     public void setReportedBy(String reportedBy) {
         ReportedBy = reportedBy;
-    }
-
-    public OtherStaffMemoEntryDetailsItem(
-            String Action,
-            String Activity,
-            String Description,
-            String MemoDate,
-            String ReportedBy
-
-    ){
-        this.Action=Action;
-        this.Activity=Activity;
-        this.Description=Description;
-        this.MemoDate=MemoDate;
-        this.ReportedBy=ReportedBy;
-
     }
 
 }

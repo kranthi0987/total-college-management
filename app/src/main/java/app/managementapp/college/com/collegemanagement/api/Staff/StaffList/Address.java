@@ -1,4 +1,8 @@
 
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.api.Staff.StaffList;
 
 
@@ -13,8 +17,8 @@ public class Address implements Parcelable {
 
     public static final Creator<Address> CREATOR = new Creator<Address>() {
         @Override
-        public Address createFromParcel(Parcel in) {
-            return new Address(in);
+        public Address createFromParcel(Parcel source) {
+            return new Address(source);
         }
 
         @Override
@@ -44,10 +48,17 @@ public class Address implements Parcelable {
     @Expose
     private String state;
 
+    public Address() {
+    }
+
     protected Address(Parcel in) {
-        address = in.readString();
-        country = in.readString();
-        state = in.readString();
+        this.address = in.readString();
+        this.addressType = in.readParcelable(Object.class.getClassLoader());
+        this.city = in.readParcelable(Object.class.getClassLoader());
+        this.country = in.readString();
+        this.mobile = in.readParcelable(Object.class.getClassLoader());
+        this.phone = in.readParcelable(Object.class.getClassLoader());
+        this.state = in.readString();
     }
 
     /**
@@ -149,14 +160,23 @@ public class Address implements Parcelable {
     }
 
     @Override
+    public String toString() {
+        return getAddress() + "\n" + getCity() + "\n" + getState() + "\n" + getCountry();
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(address);
-        dest.writeString(country);
-        dest.writeString(state);
+        dest.writeString(this.address);
+        dest.writeParcelable((Parcelable) this.addressType, flags);
+        dest.writeParcelable((Parcelable) this.city, flags);
+        dest.writeString(this.country);
+        dest.writeParcelable((Parcelable) this.mobile, flags);
+        dest.writeParcelable((Parcelable) this.phone, flags);
+        dest.writeString(this.state);
     }
 }

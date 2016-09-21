@@ -1,4 +1,8 @@
-package app.managementapp.college.com.collegemanagement.model;
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.management.StudentSearch.Item;
 
 /**
  * Created by Sanjay on 8/31/2016.

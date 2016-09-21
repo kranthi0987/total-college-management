@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch.OtherDetails;
 
 import android.os.Parcel;
@@ -24,16 +28,12 @@ public class AbstractOtherDetails implements Parcelable {
     public List<String> keys = new ArrayList<String>();
     public List<String> values = new ArrayList<String>();
     private int mData;
-    private String id;
 
     // example constructor that takes a Parcel and gives you an object populated with it's values
     AbstractOtherDetails() {
 //        mData = in.readInt();
     }
 
-    public String setID(String id) {
-        this.id = id;
-    }
     public String getURL(String id) {
         return "";
     }

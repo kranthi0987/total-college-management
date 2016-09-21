@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.api;
 
 import com.google.gson.GsonBuilder;
@@ -43,3 +47,4 @@ public class ServiceGenerator {
         return retrofit.create(serviceClass);
     }
 }
+

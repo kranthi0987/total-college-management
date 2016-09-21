@@ -1,4 +1,8 @@
-package app.managementapp.college.com.collegemanagement.adapters;
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.management.FeeSummary;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,18 +17,17 @@ import com.balysv.materialripple.MaterialRippleLayout;
 import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.R;
-import app.managementapp.college.com.collegemanagement.model.FeeSummaryItem;
 
 /**
- * Created by yeshwanth on 8/29/2016.
+ * Created by yeshwanth on 8/27/2016.
  */
-public class AbsenteesAdapter extends RecyclerView.Adapter<AbsenteesAdapter.ViewHolder> {
+public class FeeSummaryAdapter extends RecyclerView.Adapter<FeeSummaryAdapter.ViewHolder> {
 
 
     Context ctx;
     List<FeeSummaryItem> feeSummaryItem;
 
-    public AbsenteesAdapter(Context ctx, List<FeeSummaryItem> feeSummaryItem) {
+    public FeeSummaryAdapter(Context ctx, List<FeeSummaryItem> feeSummaryItem) {
         this.ctx = ctx;
         this.feeSummaryItem = feeSummaryItem;
     }
@@ -94,10 +97,10 @@ public class AbsenteesAdapter extends RecyclerView.Adapter<AbsenteesAdapter.View
         @Override
         public void onClick(View v) {
             Log.d(DEBUG_TAG, "onClick: FeeSummaryOnClickListener ");
-
+            ((FeeSummary) ctx).levelIds.add(studentItem.getItemTypeID());
+            ((FeeSummary) ctx).level += 1;
+            ((FeeSummary) ctx).makeNetworkCall();
         }
     }
-
-    ;
 
 }

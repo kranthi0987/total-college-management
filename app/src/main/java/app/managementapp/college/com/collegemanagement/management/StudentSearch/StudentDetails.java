@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch;
 
 import android.content.Intent;
@@ -6,12 +10,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.StudentSearch.StudentList.DataList;
 import app.managementapp.college.com.collegemanagement.management.StudentSearch.OtherDetails.CommonOtherDetails;
+import app.managementapp.college.com.collegemanagement.model.util.Converter;
 
 /**
  * Created by Sri Harrsha on 29-Aug-16.
@@ -33,8 +37,8 @@ public class StudentDetails extends AppCompatActivity {
 
         data = getIntent().getParcelableExtra("data");
         TextView textView = (TextView) this.findViewById(R.id.aboutdetails);
-        textView.setText(data.getBranchName() + "\n" + data.getDateOfBirth() + "\n" + data.getEmail() + "\n" + data.getMobile());
-        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackclickListener);
+        textView.setText(data.getBranchName() + "\n" + Converter.retroDateConvert(data.getDateOfBirth()) + "\n" + data.getEmail() + "\n" + data.getMobile());
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
         TextView addressTextView = (TextView) this.findViewById(R.id.addressdetails);
         addressTextView.setText(data.getAddressal());
 
@@ -42,11 +46,7 @@ public class StudentDetails extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
-
         moveToLanding();
-
-
     }
 
     private void moveToLanding() {

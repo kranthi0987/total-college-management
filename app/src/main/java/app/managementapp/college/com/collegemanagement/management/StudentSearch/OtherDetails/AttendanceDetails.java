@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch.OtherDetails;
 
 import android.util.Log;
@@ -8,7 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.model.OtherAttendanceDetailsItem;
+import app.managementapp.college.com.collegemanagement.management.StudentSearch.Item.OtherAttendanceDetailsItem;
 
 /**
  * Created by Sanjay on 8/30/2016.

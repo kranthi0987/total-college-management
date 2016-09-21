@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch.OtherDetails;
 
 import android.util.Log;
@@ -8,7 +12,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.model.OtherExamMarksDetailsItem;
+import app.managementapp.college.com.collegemanagement.management.StudentSearch.Item.OtherExamMarksDetailsItem;
+import app.managementapp.college.com.collegemanagement.model.util.Converter;
 
 /**
  * Created by Sanjay on 8/30/2016.
@@ -112,7 +117,7 @@ public class ExamMarksDetails extends AbstractOtherDetails {
                                 objectInArray.getInt("MaxMark"),
                                 objectInArray.getString("Result"),
                                 objectInArray.getInt("TotalMark"),
-                                objectInArray.getString("ResultDate"),
+                                Converter.retroDateConvert(objectInArray.getString("ResultDate")),
                                 objectInArray.getString("Sem")
                         );
                 data.add(examMarksDetailsItem);

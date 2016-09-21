@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.FeeSummary;
 
 import android.content.Context;
@@ -14,7 +18,6 @@ import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.lusfold.spinnerloading.SpinnerLoading;
@@ -27,7 +30,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,9 +37,7 @@ import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.LoginActivity;
 import app.managementapp.college.com.collegemanagement.R;
-import app.managementapp.college.com.collegemanagement.adapters.FeeSummaryAdapter;
 import app.managementapp.college.com.collegemanagement.management.ManagementHome;
-import app.managementapp.college.com.collegemanagement.model.FeeSummaryItem;
 import app.managementapp.college.com.collegemanagement.model.GlobalData;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
 import app.managementapp.college.com.collegemanagement.util.ErrorToaster;
@@ -103,7 +103,7 @@ public class FeeSummary extends AppCompatActivity {
         makeNetworkCall();
 
         // Setup Controls
-        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackTimeTableclickListener);
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackTimeTableclickListener);
 
 
     }
@@ -113,8 +113,7 @@ public class FeeSummary extends AppCompatActivity {
         ConnectivityManager connMgr = (ConnectivityManager)
                 ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) return true;
-        return false;
+        return networkInfo != null && networkInfo.isConnected();
     }
 
     public void makeNetworkCall() {
@@ -196,7 +195,7 @@ public class FeeSummary extends AppCompatActivity {
         return "";
     }
 
-    public String readIt(InputStream stream, int len) throws IOException, UnsupportedEncodingException {
+    public String readIt(InputStream stream, int len) throws IOException {
         Reader reader = null;
         reader = new InputStreamReader(stream, "UTF-8");
         /*char[] buffer = new char[len];

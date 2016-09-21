@@ -1,4 +1,8 @@
-package app.managementapp.college.com.collegemanagement.model.Staff;
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.management.StaffSearch.Item;
 
 /**
  * Created by Sanjay on 9/2/2016.

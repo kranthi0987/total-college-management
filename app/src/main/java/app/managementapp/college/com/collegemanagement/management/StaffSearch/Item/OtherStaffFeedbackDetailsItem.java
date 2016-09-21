@@ -1,4 +1,8 @@
-package app.managementapp.college.com.collegemanagement.model.Staff;
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.management.StaffSearch.Item;
 
 /**
  * Created by Sanjay on 9/2/2016.
@@ -22,6 +26,29 @@ public class OtherStaffFeedbackDetailsItem {
     int Percentage;
     String SubName;
     int TotalPoint;
+
+    public OtherStaffFeedbackDetailsItem(
+            String AppraisalDate,
+            String Department,
+            String EmpCode,
+            String EmpName,
+            int MaxPoint,
+            int Percentage,
+            String SubName,
+            int TotalPoint
+
+    ) {
+        this.AppraisalDate = AppraisalDate;
+        this.Department = Department;
+        this.EmpCode = EmpCode;
+        this.EmpName = EmpName;
+        this.MaxPoint = MaxPoint;
+        this.Percentage = Percentage;
+        this.SubName = SubName;
+        this.TotalPoint = TotalPoint;
+
+
+    }
 
     public String getAppraisalDate() {
         return AppraisalDate;
@@ -85,28 +112,5 @@ public class OtherStaffFeedbackDetailsItem {
 
     public void setTotalPoint(int totalPoint) {
         TotalPoint = totalPoint;
-    }
-
-    public OtherStaffFeedbackDetailsItem(
-            String AppraisalDate,
-            String Department,
-            String EmpCode,
-            String EmpName,
-            int MaxPoint,
-            int Percentage,
-            String SubName,
-            int TotalPoint
-
-    ){
-        this.AppraisalDate=AppraisalDate;
-        this.Department=Department;
-        this.EmpCode=EmpCode;
-        this.EmpName=EmpName;
-        this.MaxPoint=MaxPoint;
-        this.Percentage=Percentage;
-        this.SubName=SubName;
-        this.TotalPoint=TotalPoint;
-
-
     }
  }

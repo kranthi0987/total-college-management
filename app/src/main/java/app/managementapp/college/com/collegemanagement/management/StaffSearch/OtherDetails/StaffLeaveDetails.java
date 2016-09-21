@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails;
 
 import android.util.Log;
@@ -8,7 +12,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.model.Staff.OtherStaffLeaveDetailsItem;
+import app.managementapp.college.com.collegemanagement.management.StaffSearch.Item.OtherStaffLeaveDetailsItem;
+import app.managementapp.college.com.collegemanagement.model.util.Converter;
 
 /**
  * Created by Sanjay on 9/2/2016.
@@ -82,9 +87,9 @@ public class StaffLeaveDetails extends StaffAbstractOtherDetails {
                                 objectInArray.getString("AppliedByName"),
                                 objectInArray.getString("ApprovalStatus"),
                                 objectInArray.getString("Comment"),
-                                objectInArray.getString("LeaveAppliedDate"),
-                                objectInArray.getString("LeaveDateFrom"),
-                                objectInArray.getString("LeaveDateTo"),
+                                Converter.retroDateConvert(objectInArray.getString("LeaveAppliedDate")),
+                                Converter.retroDateConvert(objectInArray.getString("LeaveDateFrom")),
+                                Converter.retroDateConvert(objectInArray.getString("LeaveDateTo")),
                                 objectInArray.getString("LeaveRequestSentTo"),
                                 objectInArray.getString("LeaveStatusID"),
                                 objectInArray.getString("Reason"),

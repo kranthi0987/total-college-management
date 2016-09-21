@@ -1,4 +1,8 @@
 
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.api.Staff.StaffList;
 
 
@@ -13,8 +17,8 @@ public class DataList implements Parcelable {
 
     public static final Creator<DataList> CREATOR = new Creator<DataList>() {
         @Override
-        public DataList createFromParcel(Parcel in) {
-            return new DataList(in);
+        public DataList createFromParcel(Parcel source) {
+            return new DataList(source);
         }
 
         @Override
@@ -83,19 +87,30 @@ public class DataList implements Parcelable {
     @Expose
     private Object photo;
 
+    public DataList() {
+    }
+
     protected DataList(Parcel in) {
-        code = in.readString();
-        dateOfBirth = in.readString();
-        firstName = in.readString();
-        fullName = in.readString();
-        lastName = in.readString();
-        mGUID = in.readString();
-        middleName = in.readString();
-        dOJ = in.readString();
-        department = in.readString();
-        designation = in.readString();
-        email = in.readString();
-        phone = in.readString();
+        this.addressal = in.readParcelable(Object.class.getClassLoader());
+        this.cardNo = in.readParcelable(Object.class.getClassLoader());
+        this.code = in.readString();
+        this.dateOfBirth = in.readString();
+        this.firstName = in.readString();
+        this.fullName = in.readString();
+        this.gender = in.readParcelable(Object.class.getClassLoader());
+        this.iD = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.lastName = in.readString();
+        this.mGUID = in.readString();
+        this.middleName = in.readString();
+        this.address = in.readParcelable(Address.class.getClassLoader());
+        this.dOJ = in.readString();
+        this.department = in.readString();
+        this.departmentID = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.designation = in.readString();
+        this.designationID = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.email = in.readString();
+        this.phone = in.readString();
+        this.photo = in.readParcelable(Object.class.getClassLoader());
     }
 
     /**
@@ -385,17 +400,25 @@ public class DataList implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(code);
-        dest.writeString(dateOfBirth);
-        dest.writeString(firstName);
-        dest.writeString(fullName);
-        dest.writeString(lastName);
-        dest.writeString(mGUID);
-        dest.writeString(middleName);
-        dest.writeString(dOJ);
-        dest.writeString(department);
-        dest.writeString(designation);
-        dest.writeString(email);
-        dest.writeString(phone);
+        dest.writeParcelable((Parcelable) this.addressal, flags);
+        dest.writeParcelable((Parcelable) this.cardNo, flags);
+        dest.writeString(this.code);
+        dest.writeString(this.dateOfBirth);
+        dest.writeString(this.firstName);
+        dest.writeString(this.fullName);
+        dest.writeParcelable((Parcelable) this.gender, flags);
+        dest.writeValue(this.iD);
+        dest.writeString(this.lastName);
+        dest.writeString(this.mGUID);
+        dest.writeString(this.middleName);
+        dest.writeParcelable(this.address, flags);
+        dest.writeString(this.dOJ);
+        dest.writeString(this.department);
+        dest.writeValue(this.departmentID);
+        dest.writeString(this.designation);
+        dest.writeValue(this.designationID);
+        dest.writeString(this.email);
+        dest.writeString(this.phone);
+        dest.writeParcelable((Parcelable) this.photo, flags);
     }
 }

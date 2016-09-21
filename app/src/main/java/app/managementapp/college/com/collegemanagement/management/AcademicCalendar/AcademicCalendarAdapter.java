@@ -1,4 +1,8 @@
-package app.managementapp.college.com.collegemanagement.adapters;
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.management.AcademicCalendar;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +15,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.R;
-import app.managementapp.college.com.collegemanagement.model.AcademicCalendarItem;
 
 
 /**

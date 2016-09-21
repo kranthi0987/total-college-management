@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch.OtherDetails;
 
 import android.util.Log;
@@ -8,7 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.model.OtherQualificationDetailsItem;
+import app.managementapp.college.com.collegemanagement.management.StudentSearch.Item.OtherQualificationDetailsItem;
 
 /**
  * Created by Sanjay on 8/30/2016.
@@ -100,7 +104,7 @@ public class QualificationDetails extends AbstractOtherDetails {
     }
 
     public String getURL(String id) {
-        return "/ManagementService.svc/GetAttendanceDetails?StudentID=" + id;
+        return "/ManagementService.svc/GetQualificationDetails?StudentID=10";
     }
 
 

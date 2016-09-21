@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StaffSearch.OtherDetails;
 
 import android.util.Log;
@@ -8,7 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.model.Staff.OtherStaffFeedbackDetailsItem;
+import app.managementapp.college.com.collegemanagement.management.StaffSearch.Item.OtherStaffFeedbackDetailsItem;
 
 /**
  * Created by Sanjay on 9/2/2016.
