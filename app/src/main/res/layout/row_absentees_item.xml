@@ -5,7 +5,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="115dp"
+    android:layout_height="130dp"
     android:layout_marginBottom="2dp"
     android:background="@color/white"
     android:clickable="true"
@@ -25,7 +25,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingBottom="4dp">
 
                 <TextView
                     android:id="@+id/category"
@@ -33,16 +34,24 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="left"
                     android:text="Department Name"
+                    android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
+
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:divider="?android:dividerHorizontal"
                 android:orientation="horizontal"
-                android:paddingTop="8dp">
+                android:paddingTop="8dp"
+                android:showDividers="end">
 
 
                 <LinearLayout
@@ -57,6 +66,7 @@
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="25dp" />
 
                     <TextView
@@ -64,9 +74,14 @@
                         android:layout_height="wrap_content"
                         android:text="Absentees"
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="20dp" />
                 </LinearLayout>
 
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -79,6 +94,7 @@
                         android:layout_height="wrap_content"
                         android:text="0"
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="25dp" />
 
                     <TextView
@@ -86,6 +102,7 @@
                         android:layout_height="wrap_content"
                         android:text="Present"
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="20dp" />
 
 

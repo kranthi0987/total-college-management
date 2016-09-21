@@ -58,13 +58,16 @@ public class AbsenteesAdapter extends RecyclerView.Adapter<AbsenteesAdapter.View
             textView.setText(value);
         } else {
             Log.d("test", "setText: isssu3e with ");
+            Log.d("ddd", "getItemCount: " + getItemCount());
         }
 
     }
 
     @Override
     public int getItemCount() {
+
         return absenteesItems.size();
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

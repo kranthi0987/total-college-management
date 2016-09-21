@@ -10,7 +10,7 @@ package app.managementapp.college.com.collegemanagement.management.Absentees;
  */
 
 public class AbsenteesItem {
-    //data variables
+//data variables
 //
 //    {
 //        "DataList": [
