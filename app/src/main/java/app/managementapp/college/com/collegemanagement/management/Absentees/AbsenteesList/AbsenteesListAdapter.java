@@ -47,9 +47,20 @@ public class AbsenteesListAdapter extends RecyclerView.Adapter<AbsenteesListAdap
         Log.d("test", "onBindViewHolder: " + absenteesListItems);
         setText(holder.Code, absenteesListItem.getCode());
         setText(holder.GUID, absenteesListItem.getGUID());
-        setText(holder.InTime, absenteesListItem.getInTime());
+
+        if (absenteesListItem.getInTime().isEmpty()) {
+            setText(holder.InTime, "NA");
+        } else {
+            setText(holder.InTime, absenteesListItem.getInTime());
+        }
         setText(holder.Name, absenteesListItem.getName());
-        setText(holder.OutTime, absenteesListItem.getOutTime());
+
+        if (absenteesListItem.getOutTime().isEmpty()) {
+            setText(holder.OutTime, "NA");
+        } else {
+            setText(holder.OutTime, absenteesListItem.getOutTime());
+
+        }
     }
 
     public void setText(TextView textView, String value) {
