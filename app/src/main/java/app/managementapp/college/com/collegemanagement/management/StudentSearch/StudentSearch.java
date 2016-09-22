@@ -26,7 +26,6 @@ import app.managementapp.college.com.collegemanagement.api.CourseList.DataList;
 import app.managementapp.college.com.collegemanagement.api.ServiceGenerator;
 import app.managementapp.college.com.collegemanagement.api.StudentSearch.BranchList.BranchListResponse;
 import app.managementapp.college.com.collegemanagement.api.StudentSearch.SemesterList.SemesterListResponse;
-import app.managementapp.college.com.collegemanagement.management.ManagementHome;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,7 +50,7 @@ public class StudentSearch extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Log.d(DEBUG_TAG, "onClick: onFilterbackTimeTableclickListener");
-            moveToLanding();
+            onBackPressed();
         }
     };
     View.OnClickListener onSearchclickListener = new View.OnClickListener() {
@@ -71,18 +70,8 @@ public class StudentSearch extends AppCompatActivity {
     private BranchDropDownAdapter branchAdapter;
     private SemesterDropDownAdapter semesterAdapter;
 
-    @Override
-    public void onBackPressed() {
 
-        moveToLanding();
 
-    }
-
-    private void moveToLanding() {
-        Intent i = new Intent(StudentSearch.this, ManagementHome.class);
-        startActivity(i);
-        finish();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

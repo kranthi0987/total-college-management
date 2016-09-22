@@ -1,3 +1,7 @@
+<!--
+  ~ Copyright (c) 2016.
+  -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,7 +15,7 @@
     tools:context="app.managementapp.college.com.collegemanagement.LoginActivity">
 
     <!-- Login progress -->
-    <ProgressBar
+    <com.lusfold.spinnerloading.SpinnerLoading
         android:id="@+id/login_progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
