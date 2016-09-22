@@ -2,7 +2,7 @@
  * Copyright (c) 2016.
  */
 
-package app.managementapp.college.com.collegemanagement.management.Absentees;
+package app.managementapp.college.com.collegemanagement.management.Absentees.AbsenteesList;
 
 import android.content.Context;
 import android.content.Intent;
@@ -40,13 +40,18 @@ import app.managementapp.college.com.collegemanagement.model.GlobalData;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
 import app.managementapp.college.com.collegemanagement.util.ErrorToaster;
 
-public class Absentees extends AppCompatActivity {
-    private static final String DEBUG_TAG = "Absentees";
+/**
+ * Created by Sanjay on 9/21/2016.
+ * total
+ */
+
+public class AbsenteesList extends AppCompatActivity {
+    private static final String DEBUG_TAG = "AbsenteesList";
     FrameLayout progressBarHolder;
     String loginURL = "";
     Context ctx;
     Exception error;
-    List<AbsenteesItem> absenteeslist;
+    List<AbsenteesListItem> absenteeslist;
     View.OnClickListener onFilterbackTimeTableclickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -54,21 +59,20 @@ public class Absentees extends AppCompatActivity {
             onBackPressed();
         }
     };
-
     private CredentialManager credentialManager;
     private RecyclerView recyclerView;
+
     private void moveToLanding() {
-        Intent i = new Intent(Absentees.this, ManagementHome.class);
+        Intent i = new Intent(AbsenteesList.this, ManagementHome.class);
         startActivity(i);
         finish();
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_absentees);
+        setContentView(R.layout.activity_absenteeslist);
         credentialManager = new CredentialManager(this);
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
         loginURL = credentialManager.getUniversityUrl() + "/AuthenticationService.svc/AuthenticateRequest?username=" + credentialManager.getUserName() + "&Password=" + credentialManager.getPassword();
@@ -84,10 +88,11 @@ public class Absentees extends AppCompatActivity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
+
     private void makeNetworkCall() {
         // Make network call
         if (isNetworkAvailable()) {
-            String getAbsenteesURL = credentialManager.getUniversityUrl() + "/ManagementService.svc/GetStaffLoginAbsenteesSummary?ItemID=1&LevelID=2&Date=2009-03-02";
+            String getAbsenteesURL = credentialManager.getUniversityUrl() + "/ManagementService.svc/GetStaffLoginAbsenteesDetails?ItemID=1&LevelID=1&Date=2009-03-02&Status=3";
             Log.d(DEBUG_TAG, "makeNetworkCall: url: " + getAbsenteesURL);
             progressBarHolder.setVisibility(View.VISIBLE);
             new AbsenteesTask().execute(loginURL, getAbsenteesURL);
@@ -95,66 +100,40 @@ public class Absentees extends AppCompatActivity {
             Toast.makeText(this, "Network not available.", Toast.LENGTH_SHORT).show();
 
         }
+
     }
 
-    private List<AbsenteesItem> getAbsenteesList(JSONArray dataList) {
-        List<AbsenteesItem> data = new ArrayList<>();
+    private List<AbsenteesListItem> getAbsenteesList(JSONArray dataList) {
+        List<AbsenteesListItem> data = new ArrayList<>();
         for (int i = 0, size = dataList.length(); i < size; i++) {
+            Log.d(DEBUG_TAG, "getAbsenteesListdata: " + dataList);
             try {
                 JSONObject objectInArray = dataList.getJSONObject(i);
-                AbsenteesItem absenteesItem = new AbsenteesItem(
-                        objectInArray.getString("Absentees"),
-                        objectInArray.getString("Active"),
-                        objectInArray.getString("Category"),
-                        objectInArray.getString("CategoryID"),
-                        objectInArray.getString("CurrentLevel"),
-                        objectInArray.getString("IsChildAvailable"),
-                        objectInArray.getString("OnLeave"),
-                        objectInArray.getString("Present")
+                AbsenteesListItem absenteesListItem = new AbsenteesListItem(
+                        objectInArray.getString("Code"),
+                        objectInArray.getString("GUID"),
+                        objectInArray.getString("InTime"),
+                        objectInArray.getString("Name"),
+                        objectInArray.getString("OutTime")
                 );
-                data.add(absenteesItem);
+                data.add(absenteesListItem);
+
             } catch (Exception e) {
-                Log.e(DEBUG_TAG, "getFeeSummaryList: " + e.getMessage());
+                Log.e(DEBUG_TAG, "getabsenteesList: " + e.getMessage());
             }
         }
         return data;
     }
 
-    public void setAbsentees(List<AbsenteesItem> absenteesItems) {
-        recyclerView = (RecyclerView) findViewById(R.id.absentees);
+    public void setAbsenteesList(List<AbsenteesListItem> absenteesListItems) {
+        recyclerView = (RecyclerView) findViewById(R.id.absenteeslist);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new AbsenteesAdapter(this.ctx, absenteesItems));
+        recyclerView.setAdapter(new AbsenteesListAdapter(this.ctx, absenteesListItems));
 
     }
 
-    //    private void setTheAbsenteesScreen(String result) {
-////        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.absenteesOverViewItemsCont);
-////        linearLayout.removeAllViews();
-//        LayoutInflater inflater = LayoutInflater.from(this);
-//        try {
-//            JSONObject resultJSON = new JSONObject(result);
-//            JSONArray dataList = resultJSON.getJSONArray("DataList");
-//            for (int i = 0; i < dataList.length(); i++) {
-//                JSONObject data = (JSONObject) dataList.get(i);
-//                View view = inflater.inflate(R.layout.row_fee_summary_item, linearLayout, false);
-////                ((TextView) view.findViewById(R.id.newsTitle)).setText(data.getString("NotificationTitle"));
-////                ((TextView) view.findViewById(R.id.newsBody)).setText(data.getString("NotificationDescription"));
-//                // set item content in view
-//                linearLayout.addView(view);
-//            }
-//            if (dataList.length() == 0) {
-//                ((TextView) findViewById(R.id.newsStatus)).setText("No News to show.");
-//            }
-//        } catch (Exception ex) {
-//
-//        }
-//
-//    }
-    // Given a URL, establishes an HttpUrlConnection and retrieves
-    // the web page content as a InputStream, which it returns as
-    // a string.
     private String downloadUrl(String myurl) throws IOException {
         InputStream is = null;
         // Only display the first 500 characters of the retrieved
@@ -219,8 +198,8 @@ public class Absentees extends AppCompatActivity {
                 if (resultJSON.getInt("ServiceResult") == 0) {
                     Log.d(DEBUG_TAG, "onPostExecute: from network");
                     absenteeslist = getAbsenteesList(resultJSON.getJSONArray("DataList"));
-                    Log.d(DEBUG_TAG, "Academic Calendar: " + absenteeslist.size());
-                    setAbsentees(absenteeslist);
+                    Log.d(DEBUG_TAG, "absentees list: " + absenteeslist.size());
+                    setAbsenteesList(absenteeslist);
                 } else {
 
                 }
@@ -252,7 +231,7 @@ public class Absentees extends AppCompatActivity {
                 } else {
                     Log.d(DEBUG_TAG, "onPostExecute: The user is not valid ==> use: " + credentialManager.getUserName() +
                             ", password: " + credentialManager.getPassword());
-                    i = new Intent(Absentees.this, LoginActivity.class);
+                    i = new Intent(AbsenteesList.this, LoginActivity.class);
 
                     startActivity(i);
                     // kill current activity
@@ -281,6 +260,5 @@ public class Absentees extends AppCompatActivity {
         }
 
     }
-
 
 }
