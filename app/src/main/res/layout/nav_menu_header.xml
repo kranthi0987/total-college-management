@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016.
+  -->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/nav_menu"
     android:layout_width="match_parent"
@@ -22,9 +26,10 @@
         android:id="@+id/profile_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/avatar"
+        android:layout_alignBottom="@+id/avatar"
         android:layout_toEndOf="@+id/avatar"
         android:layout_toRightOf="@+id/avatar"
+        android:drawableLeft="@drawable/name"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -34,20 +39,23 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/avatar"
         android:layout_alignStart="@+id/avatar"
-        android:layout_below="@+id/avatar" />
+        android:layout_below="@+id/avatar"
+        android:drawableLeft="@drawable/dept_name" />
 
     <TextView
         android:id="@+id/profile_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/avatar"
-        android:layout_below="@+id/profile_dept" />
+        android:layout_below="@+id/profile_dept"
+        android:drawableLeft="@drawable/phone" />
 
     <TextView
         android:id="@+id/profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/avatar"
-        android:layout_below="@+id/profile_phone" />
+        android:layout_below="@+id/profile_phone"
+        android:drawableLeft="@drawable/email" />
 
 </RelativeLayout>

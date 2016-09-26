@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.api;
 
 
@@ -8,9 +12,11 @@ import app.managementapp.college.com.collegemanagement.api.CollegeProfile.Colleg
 import app.managementapp.college.com.collegemanagement.api.CourseFeedback.CourseFeedbackResponse;
 import app.managementapp.college.com.collegemanagement.api.CourseList.CourseListResponse;
 import app.managementapp.college.com.collegemanagement.api.ExamMark.ExamMarkResponse;
+import app.managementapp.college.com.collegemanagement.api.ExamResult.ExamResultResponse;
 import app.managementapp.college.com.collegemanagement.api.FacultyProfile.FacultyProfileResult;
 import app.managementapp.college.com.collegemanagement.api.FeePaymentDetails.FeePaymentDetailsResponse;
 import app.managementapp.college.com.collegemanagement.api.FeedbackList.FeedbackListResponse;
+import app.managementapp.college.com.collegemanagement.api.InvigilatorExamDuty.InvigilatorExamDutyResponse;
 import app.managementapp.college.com.collegemanagement.api.QualificationDetails.QualificationDetailsResponse;
 import app.managementapp.college.com.collegemanagement.api.Staff.Department.DepartmentResponse;
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffAttendance.StaffAttendanceResponse;
@@ -126,4 +132,13 @@ public interface CollegeManagementApiService {
 
     @GET("FacultyProfileService.svc/GetFacultyProfile")
     Call<FacultyProfileResult> getProfileData(@Header("Token") String token);
+
+    @GET("ManagementService.svc/GetExamResult")
+    Call<ExamResultResponse> getExamResult(@Header("Token") String token, @Query("ExamType") String examType, @Query("CourseID") String courseID, @Query("BranchID") String branchID, @Query("Sem") String sem);
+
+    @GET("ManagementService.svc/GetInvigilatorExamDuty")
+//20-May-2016
+    Call<InvigilatorExamDutyResponse> getInvigilatorExamDuty(@Header("Token") String token, @Query("Date") String date);
+
+
 }

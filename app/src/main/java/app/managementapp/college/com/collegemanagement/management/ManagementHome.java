@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management;
 
 import android.content.Context;
@@ -190,10 +194,6 @@ public class ManagementHome extends AppCompatActivity
 
         MenuGridAdapter mAdapter = new MenuGridAdapter(this, getMenuData(this));
         recyclerView.setAdapter(mAdapter);
-    }
-
-    public void clicked(String clickOn) {
-        Log.d("yyy", "clicked: " + clickOn);
     }
 
     @Override

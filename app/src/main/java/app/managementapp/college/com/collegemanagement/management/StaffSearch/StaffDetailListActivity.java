@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StaffSearch;
 
 import android.content.Intent;
@@ -6,26 +10,30 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
+
+import com.lusfold.spinnerloading.SpinnerLoading;
 
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffList.DataList;
 
 public class StaffDetailListActivity extends FragmentActivity implements StaffDetailsFragment.OnListFragmentInteractionListener {
 
+    public FrameLayout progressBarHolder;
     View.OnClickListener onFilterbackclickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Log.d("Staff Search", "onClick: onFilterbackTimeTableclickListener");
-            moveToLanding();
+            onBackPressed();
         }
     };
-
+    SpinnerLoading progressBarholder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_detail_list);
-        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackclickListener);
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
+        progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
         String staffCode = getIntent().getStringArrayListExtra("parameters").get(0);
 
         String staffName = getIntent().getStringArrayListExtra("parameters").get(1);
@@ -36,20 +44,6 @@ public class StaffDetailListActivity extends FragmentActivity implements StaffDe
         fragmentManager.beginTransaction().add(R.id.stafflistfrag, fragment).commit();
     }
 
-    @Override
-    public void onBackPressed() {
-
-
-        moveToLanding();
-
-
-    }
-
-    private void moveToLanding() {
-        Intent i = new Intent(this, StaffSearch.class);
-        startActivity(i);
-        finish();
-    }
 
     @Override
     public void onListFragmentInteraction(DataList item) {
