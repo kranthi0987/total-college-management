@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.UniversityProfile;
 
 import android.content.Intent;
@@ -16,7 +20,7 @@ public class UniversityProfileActivity extends AppCompatActivity implements Univ
         @Override
         public void onClick(View v) {
             Log.d("University Profile", "onClick: onFilterbackTimeTableclickListener");
-            moveToLanding();
+            onBackPressed();
         }
     };
 
@@ -31,10 +35,6 @@ public class UniversityProfileActivity extends AppCompatActivity implements Univ
     }
 
 
-
-    private void moveToLanding() {
-        onBackPressed();
-    }
 
 
     @Override

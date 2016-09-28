@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.Feedback;
 
 import android.content.Intent;
@@ -26,12 +30,20 @@ public class FeedbackReply extends AppCompatActivity {
     EditText replyView;
     DataList messagedata;
     FeedbackReplyRequest reply = null;
+    View.OnClickListener onFilterbackclickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.d("University Profile", "onClick: onFilterbackTimeTableclickListener");
+            onBackPressed();
+        }
+    };
     private TextView repliedTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback_reply);
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
         messagedata = getIntent().getParcelableExtra("data");
         TextView messageTitle = (TextView) findViewById(R.id.message_title);
         messageTitle.setText(messagedata.getMessageTitle().toString().trim());
@@ -43,6 +55,7 @@ public class FeedbackReply extends AppCompatActivity {
 //        getSupportActionBar().setTitle("Feedback");
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
 
     public void onReplyClick(View view) {
         String feedback = replyView.getText().toString();

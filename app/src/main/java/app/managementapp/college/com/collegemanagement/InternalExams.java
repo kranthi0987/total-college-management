@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement;
 
 import android.content.Context;
@@ -40,7 +44,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
@@ -75,8 +78,8 @@ public class InternalExams extends AppCompatActivity implements Serializable {
     Exception error;
     String from = "";
     String to = "";
-    DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-    DateFormat keyFormatter = new SimpleDateFormat("dd-MM-yyyy");
+    DateFormat formatter = new SimpleDateFormat("dd-MMMM-yyyy");
+    DateFormat keyFormatter = new SimpleDateFormat("dd-MMMM-yyyy");
     Calendar showingCalander = Calendar.getInstance(Locale.getDefault());
     LinearLayout layoutOfPopup;
     LinearLayout layoutInnerOfPopup;
@@ -294,7 +297,6 @@ public class InternalExams extends AppCompatActivity implements Serializable {
 //        popupMessage.showAsDropDown(insidePopupButton, 0, 0);
 
         backTimeTable.setOnClickListener(onFilterbackTimeTableclickListener);
-        insidePopupButton.setOnClickListener(onFilterOkclickListener);
     }
 
     private void setupPopUp() {
@@ -308,7 +310,6 @@ public class InternalExams extends AppCompatActivity implements Serializable {
         insidePopupButton.setTextColor(Color.parseColor("#FFFFFF"));
         insidePopupButton.setBackgroundColor(Color.parseColor("#03A7E9"));
         popupText.setText("Month");
-        ;
         popupText.setTextColor(Color.parseColor("#000000"));
         popupText.setTextSize(16);
         popupText.setPadding(0, 0, 0, 10);
@@ -316,7 +317,7 @@ public class InternalExams extends AppCompatActivity implements Serializable {
         fromDatePicker = new DatePicker(this);
         toDatePicker = new DatePicker(this);
         fromDatePicker.setCalendarViewShown(false);
-        View dayId = (View) fromDatePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android"));
+        View dayId = fromDatePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android"));
         if (dayId != null) dayId.setVisibility(View.GONE);
         toDatePicker.setCalendarViewShown(false);
         layoutOfPopup.addView(popupText);
@@ -407,8 +408,7 @@ public class InternalExams extends AppCompatActivity implements Serializable {
         ConnectivityManager connMgr = (ConnectivityManager)
                 ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) return true;
-        return false;
+        return networkInfo != null && networkInfo.isConnected();
     }
 
     private void setPickers() {
@@ -455,7 +455,7 @@ public class InternalExams extends AppCompatActivity implements Serializable {
         return "";
     }
 
-    public String readIt(InputStream stream, int len) throws IOException, UnsupportedEncodingException {
+    public String readIt(InputStream stream, int len) throws IOException {
         Reader reader = null;
         reader = new InputStreamReader(stream, "UTF-8");
         /*char[] buffer = new char[len];

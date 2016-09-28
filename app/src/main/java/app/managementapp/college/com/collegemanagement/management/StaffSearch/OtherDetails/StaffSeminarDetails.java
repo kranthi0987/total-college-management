@@ -109,7 +109,7 @@ public class StaffSeminarDetails extends StaffAbstractOtherDetails {
                         );
                 data.add(OtherStaffseminarDetailsItem);
             } catch (Exception e) {
-                Log.e(DEBUG_TAG, "getattendanceList: " + e.getMessage());
+                Log.e(DEBUG_TAG, "get staff  seminar: " + e.getMessage());
             }
         }
         return data;

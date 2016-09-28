@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.CollegeProfile;
 
 import android.content.Intent;
@@ -16,7 +20,8 @@ public class CollegeProfileActivity extends AppCompatActivity implements College
         @Override
         public void onClick(View v) {
             Log.d("College profile", "onClick: onFilterbackTimeTableclickListener");
-            moveToLanding();
+            onBackPressed();
+
         }
     };
 
@@ -28,13 +33,6 @@ public class CollegeProfileActivity extends AppCompatActivity implements College
         FragmentManager fragmentManager = getSupportFragmentManager();
         CollegeListFragment fragment = CollegeListFragment.newInstance(0);
         fragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit();
-
-    }
-
-
-    private void moveToLanding() {
-        onBackPressed();
-
 
     }
 

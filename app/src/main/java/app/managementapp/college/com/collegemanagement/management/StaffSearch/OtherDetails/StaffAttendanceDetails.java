@@ -96,14 +96,14 @@ public class StaffAttendanceDetails extends StaffAbstractOtherDetails {
                         );
                 data.add(OtherStaffattendanceDetailsItem);
             } catch (Exception e) {
-                Log.e(DEBUG_TAG, "getattendanceList: " + e.getMessage());
+                Log.e(DEBUG_TAG, "getstaffattendanceList: " + e.getMessage());
             }
         }
         return data;
     }
 
     public String getURL(String id) {
-        return "/ManagementService.svc/GetStaffAttendance?StaffID=01B5A3AC-3274-44AF-A06F-03D085AB57F7\n";
+        return "/ManagementService.svc/GetStaffAttendance?StaffID=01B5A3AC-3274-44AF-A06F-03D085AB57F7";
     }
 
 

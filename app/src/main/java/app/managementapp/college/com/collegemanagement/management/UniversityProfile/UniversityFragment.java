@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.UniversityProfile;
 
 import android.content.Context;
@@ -11,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -37,6 +42,7 @@ public class UniversityFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     UniversityRecyclerViewAdapter universityRecyclerViewAdapter;
     Intent i;
+    FrameLayout progressBarHolder;
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
@@ -64,7 +70,8 @@ public class UniversityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        progressBarHolder = (FrameLayout) getActivity().findViewById(R.id.progressBarHolder);
+        progressBarHolder.setVisibility(View.VISIBLE);
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -91,6 +98,7 @@ public class UniversityFragment extends Fragment {
                             i = new Intent(getActivity(), CollegeProfileActivity.class);
                             i.putExtra("data", response.body().getDataList().get(0));
                             startActivity(i);
+                            progressBarHolder.setVisibility(View.GONE);
                         }
                         Log.e("success", "Succesfully fetched");
                         Toast.makeText(getContext(), "Succesfully fetched", Toast.LENGTH_LONG).show();
@@ -99,6 +107,7 @@ public class UniversityFragment extends Fragment {
                     @Override
                     public void onFailure(Call<UniversityProfileResponse> call, Throwable t) {
                         Log.e("ERROR", t.toString());
+                        progressBarHolder.setVisibility(View.GONE);
                         Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
 
                     }
@@ -108,6 +117,7 @@ public class UniversityFragment extends Fragment {
             @Override
             public void onFailure(Call<RegularLoginResponse> call, Throwable t) {
                 Log.e("ERROR", t.toString());
+                progressBarHolder.setVisibility(View.GONE);
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
             }
         });

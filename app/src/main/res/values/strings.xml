@@ -1,3 +1,7 @@
+<!--
+  ~ Copyright (c) 2016.
+  -->
+
 <resources>
     <string name="app_name">Management</string>
     <string name="action_settings">Settings</string>
@@ -41,6 +45,7 @@
         <item>Feedback</item>
         <item>Internal Exam</item>
         <item>External Exam</item>
+        <item>Invigilator Duty</item>
 
     </string-array>
 
@@ -55,6 +60,8 @@
         <item>@drawable/menu_icon_feedback</item>
         <item>@drawable/menu_icon_internal_exam_marks</item>
         <item>@drawable/external_exam_marks</item>
+        <item>@drawable/ic_invigilation_duty</item>
+
     </integer-array>
 
     <string-array name="groups_date">

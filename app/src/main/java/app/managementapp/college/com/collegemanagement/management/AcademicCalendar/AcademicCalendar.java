@@ -40,7 +40,6 @@ import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.LoginActivity;
 import app.managementapp.college.com.collegemanagement.R;
-import app.managementapp.college.com.collegemanagement.management.ManagementHome;
 import app.managementapp.college.com.collegemanagement.model.GlobalData;
 import app.managementapp.college.com.collegemanagement.model.util.Converter;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
@@ -60,7 +59,7 @@ public class AcademicCalendar extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Log.d(DEBUG_TAG, "onClick: onFilterbackTimeTableclickListener");
-            moveToLanding();
+            onBackPressed();
         }
     };
     private RecyclerView recyclerView;
@@ -71,20 +70,6 @@ public class AcademicCalendar extends AppCompatActivity {
      */
     private GoogleApiClient client;
 
-    @Override
-    public void onBackPressed() {
-
-
-        moveToLanding();
-
-
-    }
-
-    private void moveToLanding() {
-        Intent i = new Intent(AcademicCalendar.this, ManagementHome.class);
-        startActivity(i);
-        finish();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

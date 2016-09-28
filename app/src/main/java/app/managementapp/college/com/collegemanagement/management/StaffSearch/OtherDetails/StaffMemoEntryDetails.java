@@ -95,7 +95,7 @@ public class StaffMemoEntryDetails extends StaffAbstractOtherDetails {
                         );
                 data.add(OtherStaffMemoEntryDetailsItem);
             } catch (Exception e) {
-                Log.e(DEBUG_TAG, "getattendanceList: " + e.getMessage());
+                Log.e(DEBUG_TAG, "staffmemo: " + e.getMessage());
             }
         }
         return data;

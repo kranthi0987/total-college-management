@@ -78,7 +78,8 @@ public class StaffDetailsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        progressBarHolder = (FrameLayout) getActivity().findViewById(R.id.progressBarHolder);
+        progressBarHolder.setVisibility(View.VISIBLE);
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
             staffCode=getArguments().getString(STAFF_CODE);

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch;
 
 import android.content.Context;
@@ -10,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.util.Collections;
@@ -37,6 +42,7 @@ public class StudentListFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
+    FrameLayout progressBarHolder;
     private List<DataList> mData = Collections.emptyList();
     // TODO: Customize parameters
     private int mColumnCount = 1;
@@ -68,6 +74,8 @@ public class StudentListFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+        progressBarHolder = (FrameLayout) getActivity().findViewById(R.id.progressBarHolder);
+        progressBarHolder.setVisibility(View.VISIBLE);
         fetchData();
     }
 
@@ -110,6 +118,7 @@ public class StudentListFragment extends Fragment {
                         studentListRecyclerViewAdapter.mValues = response.body().getDataList();
                         studentListRecyclerViewAdapter.notifyDataSetChanged();
                         Log.e("success", "Succesfully fetched");
+                        progressBarHolder.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Succesfully fetched", Toast.LENGTH_LONG).show();
                     }
 

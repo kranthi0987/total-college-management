@@ -31,6 +31,7 @@ import app.managementapp.college.com.collegemanagement.management.AcademicCalend
 import app.managementapp.college.com.collegemanagement.management.CollegeProfile.CollegeProfileActivity;
 import app.managementapp.college.com.collegemanagement.management.FeeSummary.FeeSummary;
 import app.managementapp.college.com.collegemanagement.management.Feedback.FeedbackList;
+import app.managementapp.college.com.collegemanagement.management.InvigilatorExamDuty.InvigilatorExamDutyActivity;
 import app.managementapp.college.com.collegemanagement.management.StaffSearch.StaffSearch;
 import app.managementapp.college.com.collegemanagement.management.StudentSearch.StudentSearch;
 import app.managementapp.college.com.collegemanagement.management.UniversityProfile.UniversityProfileActivity;
@@ -188,7 +189,9 @@ public class MenuGridAdapter extends RecyclerView.Adapter<MenuGridAdapter.ViewHo
             if (position == 9) {
                 i = new Intent(ctx, ExternalExams.class);
             }
-
+            if (position == 10) {
+                i = new Intent(ctx, InvigilatorExamDutyActivity.class);
+            }
             if (i != null) ctx.startActivity(i);
         }
     }

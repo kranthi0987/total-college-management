@@ -14,9 +14,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.R;
@@ -35,12 +39,14 @@ public class InvigilatorInfoListFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
+    DateFormat formatter = new SimpleDateFormat("dd-MMMM-yyyy");
+    FrameLayout progressBarHolder;
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private Call<RegularLoginResponse> loginCall;
     private InvigilatorInfoListRecyclerViewAdapter invigilatorInfoListRecyclerViewAdapter;
     private List<DataList> mItems = Collections.emptyList();
-
+    private String date = "";
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -50,10 +56,11 @@ public class InvigilatorInfoListFragment extends Fragment {
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static InvigilatorInfoListFragment newInstance(int columnCount) {
+    public static InvigilatorInfoListFragment newInstance(int columnCount, String date) {
         InvigilatorInfoListFragment fragment = new InvigilatorInfoListFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putString("date", date);
         fragment.setArguments(args);
         return fragment;
     }
@@ -61,15 +68,20 @@ public class InvigilatorInfoListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        progressBarHolder = (FrameLayout) getActivity().findViewById(R.id.progressBarHolder);
+        progressBarHolder.setVisibility(View.VISIBLE);
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            this.date = getArguments().getString("date");
+            if (this.date.equalsIgnoreCase("")) {
+                this.date = formatter.format(new Date()).toString();
+            }
         }
-        fetchData();
+        fetchData(this.date);
     }
 
 
-    public void fetchData() {
+    public void fetchData(final String date) {
         CredentialManager credentialManager;
         final CollegeManagementApiService collegeManagementApiService = ServiceGenerator.createService(CollegeManagementApiService.class);
         credentialManager = new CredentialManager(getContext());
@@ -77,13 +89,14 @@ public class InvigilatorInfoListFragment extends Fragment {
         loginCall.enqueue(new Callback<RegularLoginResponse>() {
             @Override
             public void onResponse(Call<RegularLoginResponse> call, Response<RegularLoginResponse> response) {
-                final Call<InvigilatorExamDutyResponse> invigilatorExamDutyResponseCall = collegeManagementApiService.getInvigilatorExamDuty(response.body().getToken(), "20-May-2016");//// TODO: 9/26/2016
+                final Call<InvigilatorExamDutyResponse> invigilatorExamDutyResponseCall = collegeManagementApiService.getInvigilatorExamDuty(response.body().getToken(), date);
                 invigilatorExamDutyResponseCall.enqueue(new Callback<InvigilatorExamDutyResponse>() {
                     @Override
                     public void onResponse(Call<InvigilatorExamDutyResponse> call, Response<InvigilatorExamDutyResponse> response) {
                         invigilatorInfoListRecyclerViewAdapter.mValues = response.body().getDataList();
                         invigilatorInfoListRecyclerViewAdapter.notifyDataSetChanged();
                         Log.e("success", "Succesfully fetched");
+                        progressBarHolder.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Succesfully fetched", Toast.LENGTH_LONG).show();
                     }
 
@@ -91,7 +104,6 @@ public class InvigilatorInfoListFragment extends Fragment {
                     public void onFailure(Call<InvigilatorExamDutyResponse> call, Throwable t) {
                         Log.e("ERROR", t.toString());
                         Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
-
                     }
                 });
             }

@@ -35,8 +35,11 @@ public class InvigilatorInfoListRecyclerViewAdapter extends RecyclerView.Adapter
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.examName.setText(mValues.get(position).getExamName());
+        holder.examSession.setText(mValues.get(position).getExamSession());
+        holder.staffName.setText(mValues.get(position).getStaffName());
+        holder.roomNo.setText(mValues.get(position).getRoomNo());
+        holder.subjectName.setText(mValues.get(position).getSubjects());
     }
 
     @Override
@@ -46,20 +49,27 @@ public class InvigilatorInfoListRecyclerViewAdapter extends RecyclerView.Adapter
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+        private final TextView examName;
+        private final TextView examSession;
+        private final TextView staffName;
+        private final TextView roomNo;
+        private final TextView subjectName;
         public DataList mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            examName = (TextView) view.findViewById(R.id.examname);
+            examSession = (TextView) view.findViewById(R.id.examsession);
+            staffName = (TextView) view.findViewById(R.id.staffname);
+            roomNo = (TextView) view.findViewById(R.id.roomno);
+            subjectName = (TextView) view.findViewById(R.id.subjectname);
+
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + examName.getText() + "'";
         }
     }
 }

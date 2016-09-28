@@ -18,15 +18,9 @@ public class OtherStaffLeaveDetailsItem {
     String MaximumNoOfDays;
     String MinimumNoOfDays;
     String ShortName;
-    String AlternateStaffName;
-    //    String Comment;
-    String GUID;
-    String IsModified;
-    String ScheduleID;
-    String Status;
     String ApplicationID;
     String AppliedByID;
-    //    String AppliedByName;
+    String AppliedByName;
     String ApprovalStatus;
     String Comment;
     String LeaveAppliedDate;
@@ -36,6 +30,7 @@ public class OtherStaffLeaveDetailsItem {
     String LeaveStatusID;
     String Reason;
 
+
     public OtherStaffLeaveDetailsItem(
             String AvailableLeaves,
             String IsHalfdayAllowed,
@@ -44,17 +39,11 @@ public class OtherStaffLeaveDetailsItem {
             String MaximumNoOfDays,
             String MinimumNoOfDays,
             String ShortName,
-//                String AlternateStaffName,
-            String Comment,
-            String GUID,
-            String IsModified,
-            String ScheduleID,
-            String Status,
             String ApplicationID,
             String AppliedByID,
-//                String AppliedByName,
+            String AppliedByName,
             String ApprovalStatus,
-//                String Comment,
+            String Comment,
             String LeaveAppliedDate,
             String LeaveDateFrom,
             String LeaveDateTo,
@@ -69,20 +58,18 @@ public class OtherStaffLeaveDetailsItem {
         this.MaximumNoOfDays = MaximumNoOfDays;
         this.MinimumNoOfDays = MinimumNoOfDays;
         this.ShortName = ShortName;
-        this.Comment = Comment;
-        this.GUID = GUID;
-        this.IsModified = IsModified;
-        this.ScheduleID = ScheduleID;
-        this.Status = Status;
         this.ApplicationID = ApplicationID;
         this.AppliedByID = AppliedByID;
+        this.AppliedByName = AppliedByName;
         this.ApprovalStatus = ApprovalStatus;
+        this.Comment = Comment;
         this.LeaveAppliedDate = LeaveAppliedDate;
         this.LeaveDateFrom = LeaveDateFrom;
         this.LeaveDateTo = LeaveDateTo;
         this.LeaveRequestSentTo = LeaveRequestSentTo;
         this.LeaveStatusID = LeaveStatusID;
         this.Reason = Reason;
+
 
     }
 
@@ -92,14 +79,6 @@ public class OtherStaffLeaveDetailsItem {
 
     public void setAlternateStaffStatusDetails(AlternateStaffStatusDetails alternateStaffStatusDetails) {
         this.alternateStaffStatusDetails = alternateStaffStatusDetails;
-    }
-
-    public String getAlternateStaffName() {
-        return AlternateStaffName;
-    }
-
-    public void setAlternateStaffName(String alternateStaffName) {
-        AlternateStaffName = alternateStaffName;
     }
 
     public String getAvailableLeaves() {
@@ -158,38 +137,6 @@ public class OtherStaffLeaveDetailsItem {
         ShortName = shortName;
     }
 
-    public String getGUID() {
-        return GUID;
-    }
-
-    public void setGUID(String GUID) {
-        this.GUID = GUID;
-    }
-
-    public String getIsModified() {
-        return IsModified;
-    }
-
-    public void setIsModified(String isModified) {
-        IsModified = isModified;
-    }
-
-    public String getScheduleID() {
-        return ScheduleID;
-    }
-
-    public void setScheduleID(String scheduleID) {
-        ScheduleID = scheduleID;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String status) {
-        Status = status;
-    }
-
     public String getApplicationID() {
         return ApplicationID;
     }
@@ -206,20 +153,20 @@ public class OtherStaffLeaveDetailsItem {
         AppliedByID = appliedByID;
     }
 
+    public String getAppliedByName() {
+        return AppliedByName;
+    }
+
+    public void setAppliedByName(String appliedByName) {
+        AppliedByName = appliedByName;
+    }
+
     public String getApprovalStatus() {
         return ApprovalStatus;
     }
 
     public void setApprovalStatus(String approvalStatus) {
         ApprovalStatus = approvalStatus;
-    }
-
-    public String getComment() {
-        return Comment;
-    }
-
-    public void setComment(String comment) {
-        Comment = comment;
     }
 
     public String getLeaveAppliedDate() {
@@ -270,6 +217,14 @@ public class OtherStaffLeaveDetailsItem {
         Reason = reason;
     }
 
+    public String getComment() {
+        return Comment;
+    }
+
+    public void setComment(String comment) {
+        Comment = comment;
+    }
+
     public class AlternateStaffStatusDetails {
         String AlternateStaffName;
         String Comment;
@@ -293,6 +248,55 @@ public class OtherStaffLeaveDetailsItem {
             this.ScheduleID = ScheduleID;
             this.Status = Status;
 
+
+        }
+
+        public String getAlternateStaffName() {
+            return AlternateStaffName;
+        }
+
+        public void setAlternateStaffName(String alternateStaffName) {
+            AlternateStaffName = alternateStaffName;
+        }
+
+        public String getComment() {
+            return Comment;
+        }
+
+        public void setComment(String comment) {
+            Comment = comment;
+        }
+
+        public String getGUID() {
+            return GUID;
+        }
+
+        public void setGUID(String GUID) {
+            this.GUID = GUID;
+        }
+
+        public String getIsModified() {
+            return IsModified;
+        }
+
+        public void setIsModified(String isModified) {
+            IsModified = isModified;
+        }
+
+        public String getScheduleID() {
+            return ScheduleID;
+        }
+
+        public void setScheduleID(String scheduleID) {
+            ScheduleID = scheduleID;
+        }
+
+        public String getStatus() {
+            return Status;
+        }
+
+        public void setStatus(String status) {
+            Status = status;
         }
 
     }

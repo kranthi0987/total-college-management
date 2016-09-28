@@ -209,7 +209,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".management.InvigilatorExamDuty.InvigilatorExamDutyActivity"></activity>
+        <activity
+            android:name=".management.InvigilatorExamDuty.InvigilatorExamDutyActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.CollegeProfile;
 
 import android.content.Context;
@@ -11,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -26,28 +31,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
 public class CollegeListFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     Intent i;
     CollegeListRecyclerViewAdapter collegeListRecyclerViewAdapter;
+    FrameLayout progressBarHolder;
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private List<DataList> mItems;
     private Call<RegularLoginResponse> loginCall;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public CollegeListFragment() {
     }
 
@@ -64,7 +60,8 @@ public class CollegeListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        progressBarHolder = (FrameLayout) getActivity().findViewById(R.id.progressBarHolder);
+        progressBarHolder.setVisibility(View.VISIBLE);
         i = new Intent(getActivity(), CollegeDetailedView.class);
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
@@ -92,12 +89,14 @@ public class CollegeListFragment extends Fragment {
                         }
                         collegeListRecyclerViewAdapter.notifyDataSetChanged();
                         Log.e("success", "Succesfully fetched");
+                        progressBarHolder.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Succesfully fetched", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onFailure(Call<CollegeProfileResponse> call, Throwable t) {
                         Log.e("ERROR", t.toString());
+                        progressBarHolder.setVisibility(View.GONE);
                         Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
 
                     }
@@ -107,6 +106,7 @@ public class CollegeListFragment extends Fragment {
             @Override
             public void onFailure(Call<RegularLoginResponse> call, Throwable t) {
                 Log.e("ERROR", t.toString());
+                progressBarHolder.setVisibility(View.GONE);
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
             }
         });

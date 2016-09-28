@@ -1,11 +1,15 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.StudentSearch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +68,10 @@ public class StudentSearchList extends AppCompatActivity implements OnListFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_search_list);
-        ((ImageView) findViewById(R.id.backTimeTable)).setOnClickListener(onFilterbackclickListener);
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        StudentListFragment fragment = StudentListFragment.newInstance(0);
+        fragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit();
     }
 
     @Override

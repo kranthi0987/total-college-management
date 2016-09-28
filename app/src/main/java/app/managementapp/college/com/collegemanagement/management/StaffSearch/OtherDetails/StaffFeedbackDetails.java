@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.management.StaffSearch.Item.OtherStaffFeedbackDetailsItem;
+import app.managementapp.college.com.collegemanagement.model.util.Converter;
 
 /**
  * Created by Sanjay on 9/2/2016.
@@ -95,7 +96,7 @@ public class StaffFeedbackDetails extends StaffAbstractOtherDetails {
                 JSONObject objectInArray = body.getJSONObject(i);
                 OtherStaffFeedbackDetailsItem OtherStaffFeedbackDetailsItem = new OtherStaffFeedbackDetailsItem
                         (
-                                objectInArray.getString("AppraisalDate"),
+                                Converter.retroDateConvert(objectInArray.getString("AppraisalDate")),
                                 objectInArray.getString("Department"),
                                 objectInArray.getString("EmpCode"),
                                 objectInArray.getString("EmpName"),
