@@ -1,0 +1,85 @@
+
+/*
+ * Copyright (c) 2016.
+ */
+
+package app.managementapp.college.com.collegemanagement.api.Fcm;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FcmTokenUpdateResponse {
+
+    @SerializedName("DataList")
+    @Expose
+    private List<String> dataList = new ArrayList<String>();
+    @SerializedName("ErrorMessage")
+    @Expose
+    private Object errorMessage;
+    @SerializedName("ExtendedToken")
+    @Expose
+    private String extendedToken;
+    @SerializedName("ServiceResult")
+    @Expose
+    private Integer serviceResult;
+
+    /**
+     * @return The dataList
+     */
+    public List<String> getDataList() {
+        return dataList;
+    }
+
+    /**
+     * @param dataList The DataList
+     */
+    public void setDataList(List<String> dataList) {
+        this.dataList = dataList;
+    }
+
+    /**
+     * @return The errorMessage
+     */
+    public Object getErrorMessage() {
+        return errorMessage;
+    }
+
+    /**
+     * @param errorMessage The ErrorMessage
+     */
+    public void setErrorMessage(Object errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    /**
+     * @return The extendedToken
+     */
+    public String getExtendedToken() {
+        return extendedToken;
+    }
+
+    /**
+     * @param extendedToken The ExtendedToken
+     */
+    public void setExtendedToken(String extendedToken) {
+        this.extendedToken = extendedToken;
+    }
+
+    /**
+     * @return The serviceResult
+     */
+    public Integer getServiceResult() {
+        return serviceResult;
+    }
+
+    /**
+     * @param serviceResult The ServiceResult
+     */
+    public void setServiceResult(Integer serviceResult) {
+        this.serviceResult = serviceResult;
+    }
+
+}
