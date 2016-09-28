@@ -21,42 +21,54 @@ public class FcmTokenUpdateRequest {
     private String token;
 
     /**
-     * @return The iMEI
+     *
+     * @return
+     *     The iMEI
      */
     public String getIMEI() {
         return iMEI;
     }
 
     /**
-     * @param iMEI The IMEI
+     *
+     * @param iMEI
+     *     The IMEI
      */
     public void setIMEI(String iMEI) {
         this.iMEI = iMEI;
     }
 
     /**
-     * @return The userID
+     *
+     * @return
+     *     The userID
      */
     public String getUserID() {
         return userID;
     }
 
     /**
-     * @param userID The userID
+     *
+     * @param userID
+     *     The userID
      */
     public void setUserID(String userID) {
         this.userID = userID;
     }
 
     /**
-     * @return The token
+     *
+     * @return
+     *     The token
      */
     public String getToken() {
         return token;
     }
 
     /**
-     * @param token The Token
+     *
+     * @param token
+     *     The Token
      */
     public void setToken(String token) {
         this.token = token;
