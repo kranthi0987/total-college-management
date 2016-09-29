@@ -75,7 +75,7 @@ public class ManagementHome extends AppCompatActivity
         items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[8], "", drw_arr.getResourceId(8, -1)));
         items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[9], "", drw_arr.getResourceId(9, -1)));
         items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[10], "", drw_arr.getResourceId(10, -1)));
-//        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[11], "", drw_arr.getResourceId(11, -1)));
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[11], "", drw_arr.getResourceId(11, -1)));
 //        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[12], "", drw_arr.getResourceId(12, -1)));
 
         return items;
@@ -141,13 +141,13 @@ public class ManagementHome extends AppCompatActivity
             public void onResponse(Call<RegularLoginResponse> call, Response<RegularLoginResponse> response) {
                 Log.i("token", response.body().toString());
 
-                final Call<FacultyProfileResult> facultyProfileCall=collegeApiService.getProfileData(response.body().getToken());
+                final Call<FacultyProfileResult> facultyProfileCall = collegeApiService.getProfileData(response.body().getToken());
                 facultyProfileCall.enqueue(new Callback<FacultyProfileResult>() {
                     @Override
                     public void onResponse(Call<FacultyProfileResult> call, Response<FacultyProfileResult> response) {
-                        try{
-                            Log.i("feed",response.body().toString());
-                            data=response.body().getDataList().get(0);
+                        try {
+                            Log.i("feed", response.body().toString());
+                            data = response.body().getDataList().get(0);
                             nameLabel.setText(data.getFirstName());
 
                             emailLabel.setText(data.getEmail());
@@ -156,15 +156,14 @@ public class ManagementHome extends AppCompatActivity
 
                             phoneLabel.setText(data.getPhone());
 
-                        }
-                        catch (NullPointerException e){
-                            Toast.makeText(getApplicationContext(),"No Data from Server",Toast.LENGTH_SHORT).show();
+                        } catch (NullPointerException e) {
+                            Toast.makeText(getApplicationContext(), "No Data from Server", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<FacultyProfileResult> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -245,7 +244,7 @@ public class ManagementHome extends AppCompatActivity
             Toast.makeText(getApplicationContext(),
                     "logged out", Toast.LENGTH_LONG).show();
             startActivity(intent);
-        } 
+        }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

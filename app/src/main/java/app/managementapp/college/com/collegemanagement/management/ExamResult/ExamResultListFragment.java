@@ -2,7 +2,7 @@
  * Copyright (c) 2016.
  */
 
-package app.managementapp.college.com.collegemanagement.management.StudentSearch;
+package app.managementapp.college.com.collegemanagement.management.ExamResult;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -23,10 +23,9 @@ import java.util.List;
 import app.managementapp.college.com.collegemanagement.R;
 import app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth.RegularLoginResponse;
 import app.managementapp.college.com.collegemanagement.api.CollegeManagementApiService;
+import app.managementapp.college.com.collegemanagement.api.ExamResult.DataList;
+import app.managementapp.college.com.collegemanagement.api.ExamResult.ExamResultResponse;
 import app.managementapp.college.com.collegemanagement.api.ServiceGenerator;
-import app.managementapp.college.com.collegemanagement.api.StudentSearch.StudentList.DataList;
-import app.managementapp.college.com.collegemanagement.api.StudentSearch.StudentList.StudentListRequest;
-import app.managementapp.college.com.collegemanagement.api.StudentSearch.StudentList.StudentListResponse;
 import app.managementapp.college.com.collegemanagement.util.CredentialManager;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,7 +37,7 @@ import retrofit2.Response;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class StudentListFragment extends Fragment {
+public class ExamResultListFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -48,7 +47,7 @@ public class StudentListFragment extends Fragment {
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private Call<RegularLoginResponse> loginCall;
-    private StudentListRecyclerViewAdapter studentListRecyclerViewAdapter;
+    private ExamSearchListRecyclerViewAdapter examResultListRecyclerViewAdapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -58,8 +57,8 @@ public class StudentListFragment extends Fragment {
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static StudentListFragment newInstance(int columnCount) {
-        StudentListFragment fragment = new StudentListFragment();
+    public static ExamResultListFragment newInstance(int columnCount) {
+        ExamResultListFragment fragment = new ExamResultListFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -93,8 +92,8 @@ public class StudentListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            studentListRecyclerViewAdapter = new StudentListRecyclerViewAdapter(mData, mListener);
-            recyclerView.setAdapter(studentListRecyclerViewAdapter);
+            examResultListRecyclerViewAdapter = new ExamSearchListRecyclerViewAdapter(mData, mListener);
+            recyclerView.setAdapter(examResultListRecyclerViewAdapter);
         }
         return view;
     }
@@ -107,23 +106,19 @@ public class StudentListFragment extends Fragment {
         loginCall.enqueue(new Callback<RegularLoginResponse>() {
             @Override
             public void onResponse(Call<RegularLoginResponse> call, Response<RegularLoginResponse> response) {
-                StudentListRequest studentListRequest = new StudentListRequest();
-                studentListRequest.setBranchID(BranchDropDownAdapter.branchId);
-                studentListRequest.setCourseID(CourseDropDownAdapter.courseId);
-                studentListRequest.setSemID(SemesterDropDownAdapter.semesterId);
-                final Call<StudentListResponse> studentListResponseCall = collegeManagementApiService.getStudentList(response.body().getToken(), studentListRequest);
-                studentListResponseCall.enqueue(new Callback<StudentListResponse>() {
+                final Call<ExamResultResponse> examResultResponseCall = collegeManagementApiService.getExamResult(response.body().getToken(), "14", CourseDropDownAdapter.courseId, BranchDropDownAdapter.branchId, SemesterDropDownAdapter.semesterId);
+                examResultResponseCall.enqueue(new Callback<ExamResultResponse>() {
                     @Override
-                    public void onResponse(Call<StudentListResponse> call, Response<StudentListResponse> response) {
-                        studentListRecyclerViewAdapter.mValues = response.body().getDataList();
-                        studentListRecyclerViewAdapter.notifyDataSetChanged();
+                    public void onResponse(Call<ExamResultResponse> call, Response<ExamResultResponse> response) {
+                        examResultListRecyclerViewAdapter.mValues = response.body().getDataList();
+                        examResultListRecyclerViewAdapter.notifyDataSetChanged();
                         Log.e("success", "Succesfully fetched");
                         progressBarHolder.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Succesfully fetched", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
-                    public void onFailure(Call<StudentListResponse> call, Throwable t) {
+                    public void onFailure(Call<ExamResultResponse> call, Throwable t) {
                         Log.e("ERROR", t.toString());
                         progressBarHolder.setVisibility(View.GONE);
                         Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
@@ -169,8 +164,7 @@ public class StudentListFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DataList mItem);
-
+        void onListFragmentInteraction(app.managementapp.college.com.collegemanagement.api.ExamResult.DataList mItem);
 
     }
 }

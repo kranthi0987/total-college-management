@@ -6,6 +6,8 @@ package app.managementapp.college.com.collegemanagement.management.Absentees;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -16,8 +18,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.Time;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -30,8 +39,12 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import app.managementapp.college.com.collegemanagement.LoginActivity;
 import app.managementapp.college.com.collegemanagement.R;
@@ -46,6 +59,18 @@ public class Absentees extends AppCompatActivity {
     String loginURL = "";
     Context ctx;
     Exception error;
+    DateFormat formatter = new SimpleDateFormat("dd-MMMM-yyyy");
+    DateFormat keyFormatter = new SimpleDateFormat("dd-MMMM-yyyy");
+    Calendar showingCalander = Calendar.getInstance(Locale.getDefault());
+    LinearLayout layoutOfPopup;
+    LinearLayout layoutInnerOfPopup;
+    PopupWindow popupMessage;
+    Button popupButton, insidePopupButton;
+    TextView popupText;
+    TextView toText;
+    DatePicker fromDatePicker;
+    DatePicker toDatePicker;
+    String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     List<AbsenteesItem> absenteeslist;
     View.OnClickListener onFilterbackTimeTableclickListener = new View.OnClickListener() {
         @Override
@@ -54,16 +79,42 @@ public class Absentees extends AppCompatActivity {
             onBackPressed();
         }
     };
-
+    View.OnClickListener onFilterclickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.d(DEBUG_TAG, "onClick: onFilterclickListener");
+//                popupMessage.showAsDropDown(insidePopupButton, 0, 0);
+            popupMessage.showAtLocation(insidePopupButton, Gravity.CENTER, 0, 0);
+        }
+    };
     private CredentialManager credentialManager;
+    View.OnClickListener onFilterOkclickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.d(DEBUG_TAG, "onClick: onFilterOkclickListener");
+            if (popupMessage.isShowing()) {
+                popupMessage.dismiss();
+                try {
+                    String date = (fromDatePicker.getDayOfMonth() + "-" + months[fromDatePicker.getMonth()] + "-" + fromDatePicker.getYear());
+                    Toast.makeText(Absentees.this, "working." + date.toString(), Toast.LENGTH_SHORT).show();
+                    // Make network call
+                    makeNetworkCall();
+                } catch (Exception e) {
+                    Toast.makeText(Absentees.this, "error." + e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            } else {
+//                Toast.makeText(this, "From ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    };
     private RecyclerView recyclerView;
+
     private void moveToLanding() {
         Intent i = new Intent(Absentees.this, ManagementHome.class);
         startActivity(i);
         finish();
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +124,52 @@ public class Absentees extends AppCompatActivity {
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
         loginURL = credentialManager.getUniversityUrl() + "/AuthenticationService.svc/AuthenticateRequest?username=" + credentialManager.getUserName() + "&Password=" + credentialManager.getPassword();
         this.ctx = getApplicationContext();
-        makeNetworkCall();
+//        makeNetworkCall();
+        ImageView filter = (ImageView) findViewById(R.id.filter);
+        filter.setOnClickListener(onFilterclickListener);
 
         findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackTimeTableclickListener);
+        setupPopUp();
+        insidePopupButton.setOnClickListener(onFilterOkclickListener);
+
+    }
+
+    private void setupPopUp() {
+
+        popupText = new TextView(this);
+        insidePopupButton = new Button(this);
+
+        layoutOfPopup = new LinearLayout(this);
+        layoutInnerOfPopup = new LinearLayout(this);
+        insidePopupButton.setText("OK");
+        insidePopupButton.setTextColor(Color.parseColor("#FFFFFF"));
+        insidePopupButton.setBackgroundColor(Color.parseColor("#03A7E9"));
+        popupText.setText("Month");
+        popupText.setTextColor(Color.parseColor("#000000"));
+        popupText.setTextSize(16);
+        popupText.setPadding(0, 0, 0, 10);
+        layoutOfPopup.setOrientation(LinearLayout.VERTICAL);
+        fromDatePicker = new DatePicker(this);
+        toDatePicker = new DatePicker(this);
+        fromDatePicker.setCalendarViewShown(false);
+        View dayId = fromDatePicker.findViewById(Resources.getSystem().getIdentifier("day", "id", "android"));
+        if (dayId != null) dayId.setVisibility(View.GONE);
+        toDatePicker.setCalendarViewShown(false);
+        layoutOfPopup.addView(popupText);
+        layoutOfPopup.addView(fromDatePicker);
+//        layoutOfPopup.addView(toText);
+        layoutOfPopup.addView(insidePopupButton);
+        layoutOfPopup.setBackgroundColor(Color.parseColor("#ffffff"));
+        layoutOfPopup.setPadding(40, 40, 40, 40);
+        layoutOfPopup.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        layoutInnerOfPopup.setPadding(40, 40, 40, 40);
+        layoutInnerOfPopup.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        layoutInnerOfPopup.setBackgroundColor(Color.parseColor("#80000000"));
+        layoutInnerOfPopup.addView(layoutOfPopup);
+
+        popupMessage = new PopupWindow(layoutInnerOfPopup, LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+        popupMessage.setContentView(layoutInnerOfPopup);
+
     }
 
     private boolean isNetworkAvailable() {
@@ -87,7 +181,7 @@ public class Absentees extends AppCompatActivity {
     private void makeNetworkCall() {
         // Make network call
         if (isNetworkAvailable()) {
-            String getAbsenteesURL = credentialManager.getUniversityUrl() + "/ManagementService.svc/GetStaffLoginAbsenteesSummary?ItemID=1&LevelID=2&Date=2009-03-02";
+            String getAbsenteesURL = credentialManager.getUniversityUrl() + "/ManagementService.svc/GetStaffLoginAbsenteesSummary?ItemID=1&LevelID=2&Date=" + (fromDatePicker.getDayOfMonth() + "-" + months[fromDatePicker.getMonth()] + "-" + fromDatePicker.getYear());
             Log.d(DEBUG_TAG, "makeNetworkCall: url: " + getAbsenteesURL);
             progressBarHolder.setVisibility(View.VISIBLE);
             new AbsenteesTask().execute(loginURL, getAbsenteesURL);
@@ -129,36 +223,9 @@ public class Absentees extends AppCompatActivity {
 
     }
 
-    //    private void setTheAbsenteesScreen(String result) {
-////        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.absenteesOverViewItemsCont);
-////        linearLayout.removeAllViews();
-//        LayoutInflater inflater = LayoutInflater.from(this);
-//        try {
-//            JSONObject resultJSON = new JSONObject(result);
-//            JSONArray dataList = resultJSON.getJSONArray("DataList");
-//            for (int i = 0; i < dataList.length(); i++) {
-//                JSONObject data = (JSONObject) dataList.get(i);
-//                View view = inflater.inflate(R.layout.row_fee_summary_item, linearLayout, false);
-////                ((TextView) view.findViewById(R.id.newsTitle)).setText(data.getString("NotificationTitle"));
-////                ((TextView) view.findViewById(R.id.newsBody)).setText(data.getString("NotificationDescription"));
-//                // set item content in view
-//                linearLayout.addView(view);
-//            }
-//            if (dataList.length() == 0) {
-//                ((TextView) findViewById(R.id.newsStatus)).setText("No News to show.");
-//            }
-//        } catch (Exception ex) {
-//
-//        }
-//
-//    }
-    // Given a URL, establishes an HttpUrlConnection and retrieves
-    // the web page content as a InputStream, which it returns as
-    // a string.
+
     private String downloadUrl(String myurl) throws IOException {
         InputStream is = null;
-        // Only display the first 500 characters of the retrieved
-        // web page content.
         int len = 50000;
 
         try {
@@ -208,8 +275,6 @@ public class Absentees extends AppCompatActivity {
     // Network code
     private class AbsenteesTask extends AsyncTask<String, Void, String> {
 
-
-        // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
             progressBarHolder.setVisibility(View.GONE);

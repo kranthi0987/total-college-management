@@ -5,11 +5,25 @@
 
 package app.managementapp.college.com.collegemanagement.api.ExamResult;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Parcelable.Creator<DataList> CREATOR = new Parcelable.Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel source) {
+            return new DataList(source);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("Addressal")
     @Expose
     private Object addressal;
@@ -52,6 +66,26 @@ public class DataList {
     @SerializedName("Sem")
     @Expose
     private String sem;
+
+    public DataList() {
+    }
+
+    protected DataList(Parcel in) {
+        this.addressal = in.readParcelable(Object.class.getClassLoader());
+        this.cardNo = in.readParcelable(Object.class.getClassLoader());
+        this.code = in.readString();
+        this.dateOfBirth = in.readString();
+        this.firstName = in.readParcelable(Object.class.getClassLoader());
+        this.fullName = in.readString();
+        this.gender = in.readParcelable(Object.class.getClassLoader());
+        this.iD = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.lastName = in.readParcelable(Object.class.getClassLoader());
+        this.mGUID = in.readParcelable(Object.class.getClassLoader());
+        this.middleName = in.readParcelable(Object.class.getClassLoader());
+        this.branch = in.readString();
+        this.sGPA = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.sem = in.readString();
+    }
 
     /**
      * @return The addressal
@@ -249,4 +283,26 @@ public class DataList {
         this.sem = sem;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable((Parcelable) this.addressal, flags);
+        dest.writeParcelable((Parcelable) this.cardNo, flags);
+        dest.writeString(this.code);
+        dest.writeString(this.dateOfBirth);
+        dest.writeParcelable((Parcelable) this.firstName, flags);
+        dest.writeString(this.fullName);
+        dest.writeParcelable((Parcelable) this.gender, flags);
+        dest.writeValue(this.iD);
+        dest.writeParcelable((Parcelable) this.lastName, flags);
+        dest.writeParcelable((Parcelable) this.mGUID, flags);
+        dest.writeParcelable((Parcelable) this.middleName, flags);
+        dest.writeString(this.branch);
+        dest.writeValue(this.sGPA);
+        dest.writeString(this.sem);
+    }
 }

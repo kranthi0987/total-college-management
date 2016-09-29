@@ -211,7 +211,14 @@
 
         <activity
             android:name=".management.InvigilatorExamDuty.InvigilatorExamDutyActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".management.ExamResult.ExamResultSearch"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".management.ExamResult.ExamResultSearchList"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

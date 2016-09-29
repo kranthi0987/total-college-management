@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016.
+ */
+
 package app.managementapp.college.com.collegemanagement.management.Feedback;
 
 import android.content.Context;
@@ -113,7 +117,7 @@ public class FeedbackFragment extends Fragment {
 
                         } catch (NullPointerException e) {
                             Toast.makeText(getContext(), "No Data from Server", Toast.LENGTH_SHORT).show();
-                            progressBarHolder.setVisibility(View.INVISIBLE);
+                            progressBarHolder.setVisibility(View.GONE);
 
                         }
                     }
@@ -121,7 +125,7 @@ public class FeedbackFragment extends Fragment {
                     @Override
                     public void onFailure(Call<FeedbackListResponse> call, Throwable t) {
                         Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-                        progressBarHolder.setVisibility(View.INVISIBLE);
+                        progressBarHolder.setVisibility(View.GONE);
                     }
 
                 });
@@ -132,7 +136,7 @@ public class FeedbackFragment extends Fragment {
             @Override
             public void onFailure(Call<RegularLoginResponse> call, Throwable t) {
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-                progressBarHolder.setVisibility(View.INVISIBLE);
+                progressBarHolder.setVisibility(View.GONE);
 
             }
 

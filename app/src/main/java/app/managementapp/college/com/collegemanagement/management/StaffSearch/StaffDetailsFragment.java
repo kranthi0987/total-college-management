@@ -114,6 +114,7 @@ public class StaffDetailsFragment extends Fragment {
                     @Override
                     public void onFailure(Call<StaffListResponse> call, Throwable t) {
                         Log.e("ERROR", t.toString());
+                        progressBarHolder.setVisibility(View.GONE);
                         Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
 
                     }
@@ -123,6 +124,7 @@ public class StaffDetailsFragment extends Fragment {
             @Override
             public void onFailure(Call<RegularLoginResponse> call, Throwable t) {
                 Log.e("ERROR", t.toString());
+                progressBarHolder.setVisibility(View.GONE);
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
             }
         });

@@ -46,7 +46,7 @@
         <item>Internal Exam</item>
         <item>External Exam</item>
         <item>Invigilator Duty</item>
-
+        <item>Exam Result</item>
     </string-array>
 
     <integer-array name="menu_photos">
@@ -61,6 +61,7 @@
         <item>@drawable/menu_icon_internal_exam_marks</item>
         <item>@drawable/external_exam_marks</item>
         <item>@drawable/ic_invigilation_duty</item>
+        <item>@drawable/ic_exam_results</item>
 
     </integer-array>
 

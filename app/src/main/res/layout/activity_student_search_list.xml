@@ -68,7 +68,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
             android:orientation="vertical"
-                tools:layout="@layout/fragment_student_list" />
+            tools:layout="@layout/fragment_exam_result_list" />
 
 
     </LinearLayout>
