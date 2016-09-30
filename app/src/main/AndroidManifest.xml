@@ -218,6 +218,25 @@
         <activity
             android:name=".management.ExamResult.ExamResultSearchList"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".management.StudentInternalMarks.details.StudentInternalMarkDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".management.StudentInternalMarks.summary.StudentInternalMarkActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".management.StudentInternalMarks.subjectdetails.StudentInternalMarkSubjectDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".management.StudentExternalMarks.details.StudentExternalMarkDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".management.StudentExternalMarks.summary.StudentExternalMarkActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".management.StudentExternalMarks.subjectdetails.StudentExternalMarkSubjectDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
     </application>
 

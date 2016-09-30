@@ -5,14 +5,28 @@
 
 package app.managementapp.college.com.collegemanagement.api.StudentInternalExamMarkSummary;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentInternalMarksSummaryResponse {
+public class StudentInternalMarksSummaryResponse implements Parcelable {
 
+    public static final Parcelable.Creator<StudentInternalMarksSummaryResponse> CREATOR = new Parcelable.Creator<StudentInternalMarksSummaryResponse>() {
+        @Override
+        public StudentInternalMarksSummaryResponse createFromParcel(Parcel source) {
+            return new StudentInternalMarksSummaryResponse(source);
+        }
+
+        @Override
+        public StudentInternalMarksSummaryResponse[] newArray(int size) {
+            return new StudentInternalMarksSummaryResponse[size];
+        }
+    };
     @SerializedName("DataList")
     @Expose
     private List<DataList> dataList = new ArrayList<DataList>();
@@ -25,6 +39,16 @@ public class StudentInternalMarksSummaryResponse {
     @SerializedName("ServiceResult")
     @Expose
     private Integer serviceResult;
+
+    public StudentInternalMarksSummaryResponse() {
+    }
+
+    protected StudentInternalMarksSummaryResponse(Parcel in) {
+        this.dataList = in.createTypedArrayList(DataList.CREATOR);
+        this.errorMessage = in.readParcelable(Object.class.getClassLoader());
+        this.extendedToken = in.readString();
+        this.serviceResult = (Integer) in.readValue(Integer.class.getClassLoader());
+    }
 
     /**
      * @return The dataList
@@ -82,4 +106,16 @@ public class StudentInternalMarksSummaryResponse {
         this.serviceResult = serviceResult;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeTypedList(this.dataList);
+        dest.writeParcelable((Parcelable) this.errorMessage, flags);
+        dest.writeString(this.extendedToken);
+        dest.writeValue(this.serviceResult);
+    }
 }

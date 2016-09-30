@@ -5,11 +5,25 @@
 
 package app.managementapp.college.com.collegemanagement.api.StudentInternalExamSubjectDetails;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Parcelable.Creator<DataList> CREATOR = new Parcelable.Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel source) {
+            return new DataList(source);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("Result")
     @Expose
     private Integer result;
@@ -22,6 +36,16 @@ public class DataList {
     @SerializedName("SubjectName")
     @Expose
     private String subjectName;
+
+    public DataList() {
+    }
+
+    protected DataList(Parcel in) {
+        this.result = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.resultEntered = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.subjectCode = in.readString();
+        this.subjectName = in.readString();
+    }
 
     /**
      * @return The result
@@ -79,4 +103,16 @@ public class DataList {
         this.subjectName = subjectName;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.result);
+        dest.writeValue(this.resultEntered);
+        dest.writeString(this.subjectCode);
+        dest.writeString(this.subjectName);
+    }
 }

@@ -27,6 +27,12 @@ import app.managementapp.college.com.collegemanagement.api.Staff.StaffMemoEntry.
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffMovementRegister.StaffMovementRegisterResponse;
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffSeminars.StaffSeminarsResponse;
 import app.managementapp.college.com.collegemanagement.api.StudentActivities.StudentActivitiesResponse;
+import app.managementapp.college.com.collegemanagement.api.StudentExternalExam.StudentExternalMarksSummaryResponse;
+import app.managementapp.college.com.collegemanagement.api.StudentExternalExamDetails.StudentExternalMarksDetailsResponse;
+import app.managementapp.college.com.collegemanagement.api.StudentExternalExamSubjectDetails.StudentExternalMarksSubjectDetailsResponse;
+import app.managementapp.college.com.collegemanagement.api.StudentInternalExamMarkDetails.StudentInternalMarkDetailsResponse;
+import app.managementapp.college.com.collegemanagement.api.StudentInternalExamMarkSummary.StudentInternalMarksSummaryResponse;
+import app.managementapp.college.com.collegemanagement.api.StudentInternalExamSubjectDetails.StudentInternalMarksSubjectDetailsResponse;
 import app.managementapp.college.com.collegemanagement.api.StudentPersonalDetails.StudentPersonalDetailsResponse;
 import app.managementapp.college.com.collegemanagement.api.StudentSearch.BranchList.BranchListResponse;
 import app.managementapp.college.com.collegemanagement.api.StudentSearch.SemesterList.SemesterListResponse;
@@ -137,8 +143,25 @@ public interface CollegeManagementApiService {
     Call<ExamResultResponse> getExamResult(@Header("Token") String token, @Query("ExamType") String examType, @Query("CourseID") String courseID, @Query("BranchID") String branchID, @Query("Sem") String sem);
 
     @GET("ManagementService.svc/GetInvigilatorExamDuty")
-//20-May-2016
     Call<InvigilatorExamDutyResponse> getInvigilatorExamDuty(@Header("Token") String token, @Query("Date") String date);
 
+    @GET("ManagementService.svc/GetStudentInternalMarkSummary")
+    Call<StudentInternalMarksSummaryResponse> getStudentInternalMarkSummary(@Header("Token") String token, @Query("ItemID") String itemId, @Query("LevelID") String levelId, @Query("Status") String status, @Query("ExamType") String examType);
+
+    @GET("ManagementService.svc/GetStudentInternalMarkDetails")
+    Call<StudentInternalMarkDetailsResponse> getStudentInternalMarkDetails(@Header("Token") String token, @Query("ItemID") String itemId, @Query("LevelID") String levelId, @Query("Status") String status, @Query("ExamType") String examType);
+
+    @GET("ManagementService.svc/GetStudentInternalMarkSubjectDetails")
+    Call<StudentInternalMarksSubjectDetailsResponse> getStudentInternalMarkSubjectDetails(@Header("Token") String token, @Query("GUID") String guid, @Query("ExamType") String examType);
+
+    @GET("ManagementService.svc/GetStudentExternalMarkSummary")
+    Call<StudentExternalMarksSummaryResponse> getStudentExternalMarkSummary(@Header("Token") String token, @Query("ItemID") String itemId, @Query("LevelID") String levelId, @Query("Status") String status, @Query("ExamType") String examType);
+
+    @GET("ManagementService.svc/GetStudentExternalMarkDetails")
+    Call<StudentExternalMarksDetailsResponse> getStudentExternalMarkDetails(@Header("Token") String token, @Query("ItemID") String itemId, @Query("LevelID") String levelId, @Query("Status") String status, @Query("ExamType") String examType);
+
+    @GET("ManagementService.svc/GetStudentExternalMarkSubjectDetails")
+    Call<StudentExternalMarksSubjectDetailsResponse> getStudentExternalMarkSubjectDetails(@Header("Token") String token, @Query("GUID") String guid, @Query("ExamType") String examType);
 
 }
+

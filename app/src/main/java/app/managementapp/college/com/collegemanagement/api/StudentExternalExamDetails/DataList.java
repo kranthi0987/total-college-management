@@ -5,11 +5,25 @@
 
 package app.managementapp.college.com.collegemanagement.api.StudentExternalExamDetails;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Parcelable.Creator<DataList> CREATOR = new Parcelable.Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel source) {
+            return new DataList(source);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("Code")
     @Expose
     private Object code;
@@ -25,6 +39,17 @@ public class DataList {
     @SerializedName("OutTime")
     @Expose
     private Object outTime;
+
+    public DataList() {
+    }
+
+    protected DataList(Parcel in) {
+        this.code = in.readParcelable(Object.class.getClassLoader());
+        this.gUID = in.readParcelable(Object.class.getClassLoader());
+        this.inTime = in.readParcelable(Object.class.getClassLoader());
+        this.name = in.readParcelable(Object.class.getClassLoader());
+        this.outTime = in.readParcelable(Object.class.getClassLoader());
+    }
 
     /**
      * @return The code
@@ -96,4 +121,17 @@ public class DataList {
         this.outTime = outTime;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable((Parcelable) this.code, flags);
+        dest.writeParcelable((Parcelable) this.gUID, flags);
+        dest.writeParcelable((Parcelable) this.inTime, flags);
+        dest.writeParcelable((Parcelable) this.name, flags);
+        dest.writeParcelable((Parcelable) this.outTime, flags);
+    }
 }
