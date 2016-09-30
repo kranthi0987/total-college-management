@@ -13,4 +13,4 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="app.managementapp.college.com.collegemanagement.management.StudentInternalMarks.details.StudentListFragment"
-    tools:listitem="@layout/fragment_student_int_ext_item" />
+    tools:listitem="@layout/fragment_int_ext_mark_details_item" />

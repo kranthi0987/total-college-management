@@ -117,7 +117,7 @@ public class CollegeListFragment extends Fragment {
                              Bundle savedInstanceState) {
         progressBarHolder = (FrameLayout) getActivity().findViewById(R.id.progressBarHolder);
         progressBarHolder.setVisibility(View.VISIBLE);
-        View view = inflater.inflate(R.layout.fragment_student_int_ext, container, false);
+        View view = inflater.inflate(R.layout.fragment_int_ext_mark_summary, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {

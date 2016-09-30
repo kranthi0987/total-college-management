@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.R;
@@ -19,7 +20,7 @@ import app.managementapp.college.com.collegemanagement.api.StudentInternalExamMa
 public class StudentRecyclerViewAdapter extends RecyclerView.Adapter<StudentRecyclerViewAdapter.ViewHolder> {
 
     private final StudentListFragment.OnListFragmentInteractionListener mListener;
-    public List<app.managementapp.college.com.collegemanagement.api.StudentInternalExamMarkDetails.DataList> mValues;
+    public List<app.managementapp.college.com.collegemanagement.api.StudentInternalExamMarkDetails.DataList> mValues = Collections.emptyList();
 
     public StudentRecyclerViewAdapter(List<app.managementapp.college.com.collegemanagement.api.StudentInternalExamMarkDetails.DataList> items, StudentListFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
@@ -29,7 +30,7 @@ public class StudentRecyclerViewAdapter extends RecyclerView.Adapter<StudentRecy
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_student_int_ext_item, parent, false);
+                .inflate(R.layout.fragment_int_ext_mark_details_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,6 +39,8 @@ public class StudentRecyclerViewAdapter extends RecyclerView.Adapter<StudentRecy
         holder.mItem = mValues.get(position);
         holder.mIdView.setText((CharSequence) mValues.get(position).getCode());
         holder.mContentView.setText((CharSequence) mValues.get(position).getName());
+        holder.Intime.setText((CharSequence) mValues.get(position).getInTime());
+        holder.Outtime.setText((CharSequence) mValues.get(position).getOutTime());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,13 +68,18 @@ public class StudentRecyclerViewAdapter extends RecyclerView.Adapter<StudentRecy
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
+        public TextView Intime;
+        public TextView Outtime;
         public DataList mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = (TextView) view.findViewById(R.id.code);
+            mContentView = (TextView) view.findViewById(R.id.name);
+            Intime = (TextView) view.findViewById(R.id.intime);
+            Outtime = (TextView) view.findViewById(R.id.outtime);
+
         }
 
         @Override

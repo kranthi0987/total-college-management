@@ -124,7 +124,7 @@ public class Absentees extends AppCompatActivity {
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
         loginURL = credentialManager.getUniversityUrl() + "/AuthenticationService.svc/AuthenticateRequest?username=" + credentialManager.getUserName() + "&Password=" + credentialManager.getPassword();
         this.ctx = getApplicationContext();
-//        makeNetworkCall();
+        makeNetworkCall();
         ImageView filter = (ImageView) findViewById(R.id.filter);
         filter.setOnClickListener(onFilterclickListener);
 

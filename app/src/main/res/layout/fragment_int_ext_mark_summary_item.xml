@@ -16,10 +16,38 @@
         android:divider="?android:dividerVertical"
         android:dividerPadding="5dp"
         android:orientation="horizontal"
+        android:showDividers="middle"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_weight="1.69"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="?android:dividerVertical"
+        android:dividerPadding="5dp"
+        android:orientation="horizontal"
         android:showDividers="middle">
 
         <TextView
-            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="PASS:"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/pass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
@@ -27,13 +55,20 @@
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/content"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="FAIL:"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/fail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="@color/black" />
-
     </LinearLayout>
 
 </LinearLayout>

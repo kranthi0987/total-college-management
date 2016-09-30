@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 
 import app.managementapp.college.com.collegemanagement.R;
@@ -18,7 +19,7 @@ import app.managementapp.college.com.collegemanagement.api.StudentExternalExamSu
 public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.ViewHolder> {
 
 
-    public List<DataList> mValues;
+    public List<DataList> mValues = Collections.emptyList();
 
     public SubjectListAdapter(List<DataList> items) {
         mValues = items;
