@@ -222,7 +222,7 @@
             android:name=".management.StudentInternalMarks.details.StudentInternalMarkDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".management.StudentInternalMarks.summary.StudentInternalMarkActivity"
+            android:name=".management.StudentInternalMarks.summary.StudentInternalMarkSummaryActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".management.StudentInternalMarks.subjectdetails.StudentInternalMarkSubjectDetailActivity"
@@ -232,7 +232,7 @@
             android:name=".management.StudentExternalMarks.details.StudentExternalMarkDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".management.StudentExternalMarks.summary.StudentExternalMarkActivity"
+            android:name=".management.StudentExternalMarks.summary.StudentExternalMarkSummaryActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".management.StudentExternalMarks.subjectdetails.StudentExternalMarkSubjectDetailActivity"

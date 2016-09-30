@@ -8,6 +8,7 @@ package app.managementapp.college.com.collegemanagement.management.StudentExtern
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,8 @@ public class StudentExternalMarkSubjectDetailActivity extends AppCompatActivity 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TextView header = (TextView) findViewById(R.id.title);
+        header.setText("External Marks Subject Details");
         setContentView(R.layout.activity_student_internal_mark);
         ArrayList<String> data = getIntent().getExtras().getStringArrayList("data");
         FragmentManager fragmentManager = getSupportFragmentManager();

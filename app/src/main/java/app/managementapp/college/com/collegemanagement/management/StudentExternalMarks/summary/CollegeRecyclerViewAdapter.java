@@ -28,7 +28,7 @@ public class CollegeRecyclerViewAdapter extends RecyclerView.Adapter<CollegeRecy
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_college_summary_item, parent, false);
+                .inflate(R.layout.fragment_student_int_ext_item, parent, false);
         return new ViewHolder(view);
     }
 

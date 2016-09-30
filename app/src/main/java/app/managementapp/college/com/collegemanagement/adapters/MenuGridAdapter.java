@@ -32,8 +32,8 @@ import app.managementapp.college.com.collegemanagement.management.FeeSummary.Fee
 import app.managementapp.college.com.collegemanagement.management.Feedback.FeedbackList;
 import app.managementapp.college.com.collegemanagement.management.InvigilatorExamDuty.InvigilatorExamDutyActivity;
 import app.managementapp.college.com.collegemanagement.management.StaffSearch.StaffSearch;
-import app.managementapp.college.com.collegemanagement.management.StudentExternalMarks.summary.StudentExternalMarkActivity;
-import app.managementapp.college.com.collegemanagement.management.StudentInternalMarks.summary.StudentInternalMarkActivity;
+import app.managementapp.college.com.collegemanagement.management.StudentExternalMarks.summary.StudentExternalMarkSummaryActivity;
+import app.managementapp.college.com.collegemanagement.management.StudentInternalMarks.summary.StudentInternalMarkSummaryActivity;
 import app.managementapp.college.com.collegemanagement.management.StudentSearch.StudentSearch;
 import app.managementapp.college.com.collegemanagement.management.UniversityProfile.UniversityProfileActivity;
 import app.managementapp.college.com.collegemanagement.model.MenuItem;
@@ -185,10 +185,10 @@ public class MenuGridAdapter extends RecyclerView.Adapter<MenuGridAdapter.ViewHo
                 i = new Intent(ctx, FeedbackList.class);
             }
             if (position == 8) {
-                i = new Intent(ctx, StudentInternalMarkActivity.class);
+                i = new Intent(ctx, StudentInternalMarkSummaryActivity.class);
             }
             if (position == 9) {
-                i = new Intent(ctx, StudentExternalMarkActivity.class);
+                i = new Intent(ctx, StudentExternalMarkSummaryActivity.class);
             }
             if (position == 10) {
                 i = new Intent(ctx, InvigilatorExamDutyActivity.class);
