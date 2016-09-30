@@ -14,6 +14,8 @@ import app.managementapp.college.com.collegemanagement.api.CourseList.CourseList
 import app.managementapp.college.com.collegemanagement.api.ExamMark.ExamMarkResponse;
 import app.managementapp.college.com.collegemanagement.api.ExamResult.ExamResultResponse;
 import app.managementapp.college.com.collegemanagement.api.FacultyProfile.FacultyProfileResult;
+import app.managementapp.college.com.collegemanagement.api.Fcm.FcmTokenUpdateRequest;
+import app.managementapp.college.com.collegemanagement.api.Fcm.FcmTokenUpdateResponse;
 import app.managementapp.college.com.collegemanagement.api.FeePaymentDetails.FeePaymentDetailsResponse;
 import app.managementapp.college.com.collegemanagement.api.FeedbackList.FeedbackListResponse;
 import app.managementapp.college.com.collegemanagement.api.InvigilatorExamDuty.InvigilatorExamDutyResponse;
@@ -162,6 +164,9 @@ public interface CollegeManagementApiService {
 
     @GET("ManagementService.svc/GetStudentExternalMarkSubjectDetails")
     Call<StudentExternalMarksSubjectDetailsResponse> getStudentExternalMarkSubjectDetails(@Header("Token") String token, @Query("GUID") String guid, @Query("ExamType") String examType);
+
+    @POST("ManagementService.svc/UpdateFCMToken")
+    Call<FcmTokenUpdateResponse> updateFirebaseToken(String loginToken, FcmTokenUpdateRequest request);
 
 }
 

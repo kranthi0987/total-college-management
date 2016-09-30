@@ -30,7 +30,7 @@ public class StudentRecyclerViewAdapter extends RecyclerView.Adapter<StudentRecy
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_int_ext_mark_details, parent, false);
+                .inflate(R.layout.fragment_int_ext_mark_details_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -74,8 +74,8 @@ public class StudentRecyclerViewAdapter extends RecyclerView.Adapter<StudentRecy
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = (TextView) view.findViewById(R.id.code);
+            mContentView = (TextView) view.findViewById(R.id.name);
             Intime = (TextView) view.findViewById(R.id.intime);
             Outtime = (TextView) view.findViewById(R.id.outtime);
         }
