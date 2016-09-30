@@ -8,6 +8,8 @@ package app.managementapp.college.com.collegemanagement.management.StudentExtern
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,6 +17,14 @@ import java.util.ArrayList;
 import app.managementapp.college.com.collegemanagement.R;
 
 public class StudentExternalMarkSubjectDetailActivity extends AppCompatActivity {
+
+    View.OnClickListener onFilterbackclickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.d("", "onClick: onFilterbackTimeTableclickListener");
+            onBackPressed();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +36,7 @@ public class StudentExternalMarkSubjectDetailActivity extends AppCompatActivity 
         FragmentManager fragmentManager = getSupportFragmentManager();
         SubjectListFragment fragment = SubjectListFragment.newInstance(0, data);
         fragmentManager.beginTransaction().add(R.id.fragment_container, fragment).commit();
-    }
+        findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
 
+    }
 }
