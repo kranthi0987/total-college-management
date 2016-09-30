@@ -29,9 +29,9 @@ public class StudentInternalMarkSubjectDetailActivity extends AppCompatActivity 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_student_internal_mark);
         TextView header = (TextView) findViewById(R.id.title);
         header.setText("Internal Marks Subject Details");
-        setContentView(R.layout.activity_student_internal_mark);
         findViewById(R.id.backTimeTable).setOnClickListener(onFilterbackclickListener);
         ArrayList<String> data = getIntent().getExtras().getStringArrayList("data");
         FragmentManager fragmentManager = getSupportFragmentManager();

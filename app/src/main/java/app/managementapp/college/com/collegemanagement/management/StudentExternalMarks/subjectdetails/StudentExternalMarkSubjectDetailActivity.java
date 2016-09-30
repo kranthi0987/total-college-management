@@ -29,9 +29,9 @@ public class StudentExternalMarkSubjectDetailActivity extends AppCompatActivity 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_student_internal_mark);
         TextView header = (TextView) findViewById(R.id.title);
         header.setText("External Marks Subject Details");
-        setContentView(R.layout.activity_student_internal_mark);
         ArrayList<String> data = getIntent().getExtras().getStringArrayList("data");
         FragmentManager fragmentManager = getSupportFragmentManager();
         SubjectListFragment fragment = SubjectListFragment.newInstance(0, data);
